@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.modules.text_field_embedders &mdash; AllenNLP 0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
+        <link rel="up" title="allennlp.modules" href="allennlp.modules.html"/>
+        <link rel="next" title="allennlp.modules.time_distributed" href="allennlp.modules.time_distributed.html"/>
+        <link rel="prev" title="allennlp.modules.stacked_alternating_lstm" href="allennlp.modules.stacked_alternating_lstm.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bidaf.html">allennlp.models.bidaf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.regularizers.html">allennlp.training.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.modules.html">allennlp.modules</a> &raquo;</li>
+        
+      <li>allennlp.modules.text_field_embedders</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.modules.text_field_embedders.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.modules.text_field_embedders">
+<span id="allennlp-modules-text-field-embedders"></span><h1>allennlp.modules.text_field_embedders<a class="headerlink" href="#module-allennlp.modules.text_field_embedders" title="Permalink to this headline">¶</a></h1>
+<p>A <a class="reference internal" href="#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder" title="allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder"><code class="xref py py-class docutils literal"><span class="pre">TextFieldEmbedder</span></code></a>
+is a <code class="docutils literal"><span class="pre">Module</span></code> that takes as input the <code class="docutils literal"><span class="pre">dict</span></code> of NumPy arrays
+produced by a <a class="reference internal" href="allennlp.data.fields.html#allennlp.data.fields.text_field.TextField" title="allennlp.data.fields.text_field.TextField"><code class="xref py py-class docutils literal"><span class="pre">TextField</span></code></a> and
+returns as output an embedded representation of the tokens in that field.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#text-field-embedder"><span class="std std-ref">TextFieldEmbedder</span></a></li>
+<li><a class="reference internal" href="#basic-text-field-embedder"><span class="std std-ref">BasicTextFieldEmbedder</span></a></li>
+</ul>
+<span class="target" id="module-allennlp.modules.text_field_embedders.text_field_embedder"><span id="text-field-embedder"></span></span><dl class="class">
+<dt id="allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder">
+<em class="property">class </em><code class="descclassname">allennlp.modules.text_field_embedders.text_field_embedder.</code><code class="descname">TextFieldEmbedder</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/text_field_embedders/text_field_embedder.py#L8-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">torch.nn.modules.module.Module</span></code>, <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
+<p>A <code class="docutils literal"><span class="pre">TextFieldEmbedder</span></code> is a <code class="docutils literal"><span class="pre">Module</span></code> that takes as input the
+<code class="xref py py-class docutils literal"><span class="pre">DataArray</span></code> produced by a <code class="xref py py-class docutils literal"><span class="pre">TextField</span></code> and
+returns as output an embedded representation of the tokens in that field.</p>
+<p>The <code class="docutils literal"><span class="pre">DataArrays</span></code> produced by <code class="docutils literal"><span class="pre">TextFields</span></code> are <cite>dictionaries</cite> with named representations,
+like &#8220;words&#8221; and &#8220;characters&#8221;.  When you create a <code class="docutils literal"><span class="pre">TextField</span></code>, you pass in a dictionary of
+<code class="xref py py-class docutils literal"><span class="pre">TokenIndexer</span></code> objects, telling the field how exactly the tokens in the
+field should be represented.  This class changes the type signature of <code class="docutils literal"><span class="pre">Module.forward</span></code>,
+restricting <code class="docutils literal"><span class="pre">TextFieldEmbedders</span></code> to take inputs corresponding to a single <code class="docutils literal"><span class="pre">TextField</span></code>,
+which is a dictionary of tensors with the same names as were passed to the <code class="docutils literal"><span class="pre">TextField</span></code>.</p>
+<p>We also add a method to the basic <code class="docutils literal"><span class="pre">Module</span></code> API: <a class="reference internal" href="#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.get_output_dim" title="allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.get_output_dim"><code class="xref py py-func docutils literal"><span class="pre">get_output_dim()</span></code></a>.  You might need
+this if you want to construct a <code class="docutils literal"><span class="pre">Linear</span></code> layer using the output of this embedder, for
+instance.</p>
+<dl class="attribute">
+<dt id="allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.default_implementation">
+<code class="descname">default_implementation</code><em class="property"> = 'basic'</em><a class="headerlink" href="#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.default_implementation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>text_field_input: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/text_field_embedders/text_field_embedder.py#L27-L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/text_field_embedders/text_field_embedder.py#L39-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.get_output_dim">
+<code class="descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/text_field_embedders/text_field_embedder.py#L31-L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the vector representing each token in the output of this
+<code class="docutils literal"><span class="pre">TextFieldEmbedder</span></code>.  This is <cite>not</cite> the shape of the returned tensor, but the last element of
+that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.text_field_embedders.basic_text_field_embedder"><span id="basic-text-field-embedder"></span></span><dl class="class">
+<dt id="allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder">
+<em class="property">class </em><code class="descclassname">allennlp.modules.text_field_embedders.basic_text_field_embedder.</code><code class="descname">BasicTextFieldEmbedder</code><span class="sig-paren">(</span><em>token_embedders: typing.Dict[str, allennlp.modules.token_embedders.token_embedder.TokenEmbedder]</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/text_field_embedders/basic_text_field_embedder.py#L14-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder" title="allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder"><code class="xref py py-class docutils literal"><span class="pre">allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</span></code></a></p>
+<p>This is a <code class="docutils literal"><span class="pre">TextFieldEmbedder</span></code> that wraps a collection of <code class="xref py py-class docutils literal"><span class="pre">TokenEmbedder</span></code> objects.  Each
+<code class="docutils literal"><span class="pre">TokenEmbedder</span></code> embeds or encodes the representation output from one
+<code class="xref py py-class docutils literal"><span class="pre">TokenIndexer</span></code>.  As the data produced by a
+<code class="xref py py-class docutils literal"><span class="pre">TextField</span></code> is a dictionary mapping names to these
+representations, we take <code class="docutils literal"><span class="pre">TokenEmbedders</span></code> with corresponding names.  Each <code class="docutils literal"><span class="pre">TokenEmbedders</span></code>
+embeds its input, and the result is concatenated in an arbitrary order.</p>
+<dl class="method">
+<dt id="allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>text_field_input: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/text_field_embedders/basic_text_field_embedder.py#L37-L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/text_field_embedders/basic_text_field_embedder.py#L51-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder.get_output_dim">
+<code class="descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/text_field_embedders/basic_text_field_embedder.py#L30-L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the dimension of the vector representing each token in the output of this
+<code class="docutils literal"><span class="pre">TextFieldEmbedder</span></code>.  This is <cite>not</cite> the shape of the returned tensor, but the last element of
+that shape.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.modules.time_distributed.html" class="btn btn-neutral float-right" title="allennlp.modules.time_distributed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.modules.stacked_alternating_lstm.html" class="btn btn-neutral" title="allennlp.modules.stacked_alternating_lstm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Allen Institute for Artificial Intelligence.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

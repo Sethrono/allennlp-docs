@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.data.dataset &mdash; AllenNLP 0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
+        <link rel="up" title="allennlp.data" href="allennlp.data.html"/>
+        <link rel="next" title="allennlp.data.dataset_readers" href="allennlp.data.dataset_readers.html"/>
+        <link rel="prev" title="allennlp.data" href="allennlp.data.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bidaf.html">allennlp.models.bidaf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.regularizers.html">allennlp.training.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.data.html">allennlp.data</a> &raquo;</li>
+        
+      <li>allennlp.data.dataset</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.data.dataset.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.data.dataset">
+<span id="allennlp-data-dataset"></span><h1>allennlp.data.dataset<a class="headerlink" href="#module-allennlp.data.dataset" title="Permalink to this headline">¶</a></h1>
+<p>A <a class="reference internal" href="#allennlp.data.dataset.Dataset" title="allennlp.data.dataset.Dataset"><code class="xref py py-class docutils literal"><span class="pre">Dataset</span></code></a> represents a collection of data suitable for feeding into a model.
+For example, when you train a model, you will likely have a <em>training</em> dataset and a <em>validation</em> dataset.</p>
+<dl class="class">
+<dt id="allennlp.data.dataset.Dataset">
+<em class="property">class </em><code class="descclassname">allennlp.data.dataset.</code><code class="descname">Dataset</code><span class="sig-paren">(</span><em>instances: typing.List[allennlp.data.instance.Instance]</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset.py#L20-L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset.Dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A collection of <a class="reference internal" href="allennlp.data.instance.html#allennlp.data.instance.Instance" title="allennlp.data.instance.Instance"><code class="xref py py-class docutils literal"><span class="pre">Instance</span></code></a> objects.
+The <code class="docutils literal"><span class="pre">Instances</span></code> have <code class="docutils literal"><span class="pre">Fields</span></code>, and the fields
+could be in an indexed or unindexed state - the <code class="docutils literal"><span class="pre">Dataset</span></code> has methods around indexing the
+data and converting the data into arrays.</p>
+<dl class="method">
+<dt id="allennlp.data.dataset.Dataset.as_array_dict">
+<code class="descname">as_array_dict</code><span class="sig-paren">(</span><em>padding_lengths: typing.Dict[str</em>, <em>typing.Dict[str</em>, <em>int]] = None</em>, <em>verbose: bool = True</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Union[numpy.ndarray, typing.Dict[str, numpy.ndarray]]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset.py#L86-L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset.Dataset.as_array_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method converts this <code class="docutils literal"><span class="pre">Dataset</span></code> into a set of numpy arrays that can be passed through
+a model.  In order for the numpy arrays to be valid arrays, all <code class="docutils literal"><span class="pre">Instances</span></code> in this
+dataset need to be padded to the same lengths wherever padding is necessary, so we do that
+first, then we combine all of the arrays for each field in each instance into a set of
+batched arrays for each field.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>padding_lengths</strong> : <code class="docutils literal"><span class="pre">Dict[str,</span> <span class="pre">Dict[str,</span> <span class="pre">int]]</span></code></p>
+<blockquote>
+<div><p>If a key is present in this dictionary with a non-<code class="docutils literal"><span class="pre">None</span></code> value, we will pad to that
+length instead of the length calculated from the data.  This lets you, e.g., set a
+maximum value for sentence length if you want to throw out long sequences.</p>
+<p>Entries in this dictionary are keyed first by field name (e.g., &#8220;question&#8221;), then by
+padding key (e.g., &#8220;num_tokens&#8221;).</p>
+</div></blockquote>
+<p><strong>verbose</strong> : <code class="docutils literal"><span class="pre">bool</span></code>, optional (default=``True``)</p>
+<blockquote>
+<div><p>Should we output logging information when we&#8217;re doing this padding?  If the dataset is
+large, this is nice to have, because padding a large dataset could take a long time.
+But if you&#8217;re doing this inside of a data generator, having all of this output per
+batch is a bit obnoxious.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data_arrays</strong> : <code class="docutils literal"><span class="pre">Dict[str,</span> <span class="pre">DataArray]</span></code></p>
+<blockquote class="last">
+<div><p>A dictionary of data arrays, keyed by field name, suitable for passing as input to a
+model.  This is a <cite>batch</cite> of instances, so, e.g., if the instances have a &#8220;question&#8221;
+field and an &#8220;answer&#8221; field, the &#8220;question&#8221; fields for all of the instances will be
+grouped together into a single array, and the &#8220;answer&#8221; fields for all instances will be
+similarly grouped in a parallel set of arrays, for batched computation. Additionally,
+for TextFields, the value of the dictionary key is no longer a single array, but another
+dictionary mapping TokenIndexer keys to arrays. The number of elements in this
+sub-dictionary therefore corresponds to the number of <code class="docutils literal"><span class="pre">TokenIndexers</span></code> used to index
+the Field.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset.Dataset.get_padding_lengths">
+<code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Dict[str, int]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset.py#L61-L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset.Dataset.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the maximum padding lengths from all <code class="docutils literal"><span class="pre">Instances</span></code> in this dataset.  Each <code class="docutils literal"><span class="pre">Instance</span></code>
+has multiple <code class="docutils literal"><span class="pre">Fields</span></code>, and each <code class="docutils literal"><span class="pre">Field</span></code> could have multiple things that need padding.
+We look at all fields in all instances, and find the max values for each (field_name,
+padding_key) pair, returning them in a dictionary.</p>
+<p>This can then be used to convert this dataset into arrays of consistent length, or to set
+model parameters, etc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset.Dataset.index_instances">
+<code class="descname">index_instances</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset.py#L52-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset.Dataset.index_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts all <code class="docutils literal"><span class="pre">UnindexedFields</span></code> in all <code class="docutils literal"><span class="pre">Instances</span></code> in this <code class="docutils literal"><span class="pre">Dataset</span></code> into
+<code class="docutils literal"><span class="pre">IndexedFields</span></code>.  This modifies the current object, it does not return a new object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset.Dataset.truncate">
+<code class="descname">truncate</code><span class="sig-paren">(</span><em>max_instances: int</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset.py#L43-L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset.Dataset.truncate" title="Permalink to this definition">¶</a></dt>
+<dd><p>If there are more instances than <code class="docutils literal"><span class="pre">max_instances</span></code> in this dataset, we truncate the
+instances to the first <code class="docutils literal"><span class="pre">max_instances</span></code>.  This <cite>modifies</cite> the current object, and returns
+nothing.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.data.dataset_readers.html" class="btn btn-neutral float-right" title="allennlp.data.dataset_readers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.data.html" class="btn btn-neutral" title="allennlp.data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Allen Institute for Artificial Intelligence.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

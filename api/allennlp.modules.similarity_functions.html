@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.modules.similarity_functions &mdash; AllenNLP 0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
+        <link rel="up" title="allennlp.modules" href="allennlp.modules.html"/>
+        <link rel="next" title="allennlp.modules.stacked_alternating_lstm" href="allennlp.modules.stacked_alternating_lstm.html"/>
+        <link rel="prev" title="allennlp.modules.seq2vec_encoders" href="allennlp.modules.seq2vec_encoders.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bidaf.html">allennlp.models.bidaf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.regularizers.html">allennlp.training.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.modules.html">allennlp.modules</a> &raquo;</li>
+        
+      <li>allennlp.modules.similarity_functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.modules.similarity_functions.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.modules.similarity_functions">
+<span id="allennlp-modules-similarity-functions"></span><h1>allennlp.modules.similarity_functions<a class="headerlink" href="#module-allennlp.modules.similarity_functions" title="Permalink to this headline">¶</a></h1>
+<p>A <code class="docutils literal"><span class="pre">SimilarityFunction</span></code> takes a pair of tensors with the same shape, and computes a similarity
+function on the vectors in the last dimension.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#similarity-function"><span class="std std-ref">SimilarityFunction</span></a></li>
+<li><a class="reference internal" href="#bilinear"><span class="std std-ref">BilinearSimilarity</span></a></li>
+<li><a class="reference internal" href="#cosine"><span class="std std-ref">CosineSimilarity</span></a></li>
+<li><a class="reference internal" href="#dot-product"><span class="std std-ref">DotProductSimilarity</span></a></li>
+<li><a class="reference internal" href="#linear"><span class="std std-ref">LinearSimilarity</span></a></li>
+</ul>
+<span class="target" id="module-allennlp.modules.similarity_function"><span id="similarity-function"></span></span><dl class="class">
+<dt id="allennlp.modules.similarity_function.SimilarityFunction">
+<em class="property">class </em><code class="descclassname">allennlp.modules.similarity_function.</code><code class="descname">SimilarityFunction</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_function.py#L5-L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_function.SimilarityFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">torch.nn.modules.module.Module</span></code>, <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
+<p>A <code class="docutils literal"><span class="pre">SimilarityFunction</span></code> takes a pair of tensors with the same shape, and computes a similarity
+function on the vectors in the last dimension.  For example, the tensors might both have shape
+<cite>(batch_size, sentence_length, embedding_dim)</cite>, and we will compute some function of the two
+vectors of length <cite>embedding_dim</cite> for each position <cite>(batch_size, sentence_length)</cite>, returning a
+tensor of shape <cite>(batch_size, sentence_length)</cite>.</p>
+<p>The similarity function could be as simple as a dot product, or it could be a more complex,
+parameterized function.</p>
+<p>If you want to compute a similarity between tensors of different sizes, you need to first tile
+them in the appropriate dimensions to make them the same before you can use these functions.
+The <code class="xref py py-class docutils literal"><span class="pre">Attention</span></code> and <code class="xref py py-class docutils literal"><span class="pre">MatrixAttention</span></code> modules
+do this.</p>
+<dl class="attribute">
+<dt id="allennlp.modules.similarity_function.SimilarityFunction.default_implementation">
+<code class="descname">default_implementation</code><em class="property"> = 'dot_product'</em><a class="headerlink" href="#allennlp.modules.similarity_function.SimilarityFunction.default_implementation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.similarity_function.SimilarityFunction.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>tensor_1: torch.FloatTensor</em>, <em>tensor_2: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_function.py#L23-L30"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_function.SimilarityFunction.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes two tensors of the same shape, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2,</span>
+<span class="pre">embedding_dim)</span></code>.  Computes a (possibly parameterized) similarity on the final dimension
+and returns a tensor with one less dimension, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2)</span></code>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="allennlp.modules.similarity_function.SimilarityFunction.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.similarity_function.SimilarityFunction<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_function.py#L32-L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_function.SimilarityFunction.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.similarity_functions.bilinear"><span id="bilinear"></span></span><dl class="class">
+<dt id="allennlp.modules.similarity_functions.bilinear.BilinearSimilarity">
+<em class="property">class </em><code class="descclassname">allennlp.modules.similarity_functions.bilinear.</code><code class="descname">BilinearSimilarity</code><span class="sig-paren">(</span><em>tensor_1_dim: int</em>, <em>tensor_2_dim: int</em>, <em>activation: allennlp.nn.activations.Activation = &lt;function &lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/bilinear.py#L11-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.bilinear.BilinearSimilarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.similarity_function.SimilarityFunction" title="allennlp.modules.similarity_function.SimilarityFunction"><code class="xref py py-class docutils literal"><span class="pre">allennlp.modules.similarity_function.SimilarityFunction</span></code></a></p>
+<p>This similarity function performs a bilinear transformation of the two input vectors.  This
+function has a matrix of weights <code class="docutils literal"><span class="pre">W</span></code> and a bias <code class="docutils literal"><span class="pre">b</span></code>, and the similarity between two vectors
+<code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code> is computed as <code class="docutils literal"><span class="pre">x^T</span> <span class="pre">W</span> <span class="pre">y</span> <span class="pre">+</span> <span class="pre">b</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tensor_1_dim</strong> : <code class="docutils literal"><span class="pre">int</span></code></p>
+<blockquote>
+<div><p>The dimension of the first tensor, <code class="docutils literal"><span class="pre">x</span></code>, described above.  This is <code class="docutils literal"><span class="pre">x.size()[-1]</span></code> - the
+length of the vector that will go into the similarity computation.  We need this so we can
+build the weight matrix correctly.</p>
+</div></blockquote>
+<p><strong>tensor_2_dim</strong> : <code class="docutils literal"><span class="pre">int</span></code></p>
+<blockquote>
+<div><p>The dimension of the second tensor, <code class="docutils literal"><span class="pre">y</span></code>, described above.  This is <code class="docutils literal"><span class="pre">y.size()[-1]</span></code> - the
+length of the vector that will go into the similarity computation.  We need this so we can
+build the weight matrix correctly.</p>
+</div></blockquote>
+<p><strong>activation</strong> : <code class="docutils literal"><span class="pre">Activation</span></code>, optional (default=linear (i.e. no activation))</p>
+<blockquote class="last">
+<div><p>An activation function applied after the <code class="docutils literal"><span class="pre">x^T</span> <span class="pre">W</span> <span class="pre">y</span> <span class="pre">+</span> <span class="pre">b</span></code> calculation.  Default is no
+activation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="allennlp.modules.similarity_functions.bilinear.BilinearSimilarity.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>tensor_1: torch.FloatTensor</em>, <em>tensor_2: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/bilinear.py#L45-L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.bilinear.BilinearSimilarity.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes two tensors of the same shape, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2,</span>
+<span class="pre">embedding_dim)</span></code>.  Computes a (possibly parameterized) similarity on the final dimension
+and returns a tensor with one less dimension, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2)</span></code>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="allennlp.modules.similarity_functions.bilinear.BilinearSimilarity.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.similarity_functions.bilinear.BilinearSimilarity<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/bilinear.py#L51-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.bilinear.BilinearSimilarity.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.similarity_functions.bilinear.BilinearSimilarity.reset_parameters">
+<code class="descname">reset_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/bilinear.py#L41-L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.bilinear.BilinearSimilarity.reset_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.similarity_functions.cosine"><span id="cosine"></span></span><dl class="class">
+<dt id="allennlp.modules.similarity_functions.cosine.CosineSimilarity">
+<em class="property">class </em><code class="descclassname">allennlp.modules.similarity_functions.cosine.</code><code class="descname">CosineSimilarity</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/cosine.py#L9-L23"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.cosine.CosineSimilarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.similarity_function.SimilarityFunction" title="allennlp.modules.similarity_function.SimilarityFunction"><code class="xref py py-class docutils literal"><span class="pre">allennlp.modules.similarity_function.SimilarityFunction</span></code></a></p>
+<p>This similarity function simply computes the cosine similarity between each pair of vectors.  It has
+no parameters.</p>
+<dl class="method">
+<dt id="allennlp.modules.similarity_functions.cosine.CosineSimilarity.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>tensor_1: torch.FloatTensor</em>, <em>tensor_2: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/cosine.py#L14-L18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.cosine.CosineSimilarity.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes two tensors of the same shape, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2,</span>
+<span class="pre">embedding_dim)</span></code>.  Computes a (possibly parameterized) similarity on the final dimension
+and returns a tensor with one less dimension, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2)</span></code>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="allennlp.modules.similarity_functions.cosine.CosineSimilarity.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.similarity_functions.cosine.CosineSimilarity<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/cosine.py#L20-L23"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.cosine.CosineSimilarity.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.similarity_functions.dot_product"><span id="dot-product"></span></span><dl class="class">
+<dt id="allennlp.modules.similarity_functions.dot_product.DotProductSimilarity">
+<em class="property">class </em><code class="descclassname">allennlp.modules.similarity_functions.dot_product.</code><code class="descname">DotProductSimilarity</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/dot_product.py#L9-L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.dot_product.DotProductSimilarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.similarity_function.SimilarityFunction" title="allennlp.modules.similarity_function.SimilarityFunction"><code class="xref py py-class docutils literal"><span class="pre">allennlp.modules.similarity_function.SimilarityFunction</span></code></a></p>
+<p>This similarity function simply computes the dot product between each pair of vectors.  It has
+no parameters.</p>
+<dl class="method">
+<dt id="allennlp.modules.similarity_functions.dot_product.DotProductSimilarity.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>tensor_1: torch.FloatTensor</em>, <em>tensor_2: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/dot_product.py#L14-L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.dot_product.DotProductSimilarity.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes two tensors of the same shape, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2,</span>
+<span class="pre">embedding_dim)</span></code>.  Computes a (possibly parameterized) similarity on the final dimension
+and returns a tensor with one less dimension, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2)</span></code>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="allennlp.modules.similarity_functions.dot_product.DotProductSimilarity.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.similarity_functions.dot_product.DotProductSimilarity<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/dot_product.py#L18-L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.dot_product.DotProductSimilarity.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.similarity_functions.linear"><span id="linear"></span></span><dl class="class">
+<dt id="allennlp.modules.similarity_functions.linear.LinearSimilarity">
+<em class="property">class </em><code class="descclassname">allennlp.modules.similarity_functions.linear.</code><code class="descname">LinearSimilarity</code><span class="sig-paren">(</span><em>tensor_1_dim: int</em>, <em>tensor_2_dim: int</em>, <em>combination: str = 'x</em>, <em>y'</em>, <em>activation: allennlp.nn.activations.Activation = &lt;function &lt;lambda&gt;.&lt;locals&gt;.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/linear.py#L14-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.linear.LinearSimilarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.similarity_function.SimilarityFunction" title="allennlp.modules.similarity_function.SimilarityFunction"><code class="xref py py-class docutils literal"><span class="pre">allennlp.modules.similarity_function.SimilarityFunction</span></code></a></p>
+<p>This similarity function performs a dot product between a vector of weights and some
+combination of the two input vectors, followed by an (optional) activation function.  The
+combination used is configurable.</p>
+<p>If the two vectors are <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">y</span></code>, we allow the following kinds of combinations: <code class="docutils literal"><span class="pre">x</span></code>,
+<code class="docutils literal"><span class="pre">y</span></code>, <code class="docutils literal"><span class="pre">x*y</span></code>, <code class="docutils literal"><span class="pre">x+y</span></code>, <code class="docutils literal"><span class="pre">x-y</span></code>, <code class="docutils literal"><span class="pre">x/y</span></code>, where each of those binary operations is performed
+elementwise.  You can list as many combinations as you want, comma separated.  For example, you
+might give <code class="docutils literal"><span class="pre">x,y,x*y</span></code> as the <code class="docutils literal"><span class="pre">combination</span></code> parameter to this class.  The computed similarity
+function would then be <code class="docutils literal"><span class="pre">w^T</span> <span class="pre">[x;</span> <span class="pre">y;</span> <span class="pre">x*y]</span> <span class="pre">+</span> <span class="pre">b</span></code>, where <code class="docutils literal"><span class="pre">w</span></code> is a vector of weights, <code class="docutils literal"><span class="pre">b</span></code> is a
+bias parameter, and <code class="docutils literal"><span class="pre">[;]</span></code> is vector concatenation.</p>
+<p>Note that if you want a bilinear similarity function with a diagonal weight matrix W, where the
+similarity function is computed as <cite>x * w * y + b</cite> (with <cite>w</cite> the diagonal of <cite>W</cite>), you can
+accomplish that with this class by using &#8220;x*y&#8221; for <cite>combination</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tensor_1_dim</strong> : <code class="docutils literal"><span class="pre">int</span></code></p>
+<blockquote>
+<div><p>The dimension of the first tensor, <code class="docutils literal"><span class="pre">x</span></code>, described above.  This is <code class="docutils literal"><span class="pre">x.size()[-1]</span></code> - the
+length of the vector that will go into the similarity computation.  We need this so we can
+build weight vectors correctly.</p>
+</div></blockquote>
+<p><strong>tensor_2_dim</strong> : <code class="docutils literal"><span class="pre">int</span></code></p>
+<blockquote>
+<div><p>The dimension of the second tensor, <code class="docutils literal"><span class="pre">y</span></code>, described above.  This is <code class="docutils literal"><span class="pre">y.size()[-1]</span></code> - the
+length of the vector that will go into the similarity computation.  We need this so we can
+build weight vectors correctly.</p>
+</div></blockquote>
+<p><strong>combination</strong> : <code class="docutils literal"><span class="pre">str</span></code>, optional (default=&#8221;x,y&#8221;)</p>
+<blockquote>
+<div><p>Described above.</p>
+</div></blockquote>
+<p><strong>activation</strong> : <code class="docutils literal"><span class="pre">Activation</span></code>, optional (default=linear (i.e. no activation))</p>
+<blockquote class="last">
+<div><p>An activation function applied after the <code class="docutils literal"><span class="pre">w^T</span> <span class="pre">*</span> <span class="pre">[x;y]</span> <span class="pre">+</span> <span class="pre">b</span></code> calculation.  Default is no
+activation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="allennlp.modules.similarity_functions.linear.LinearSimilarity.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>tensor_1: torch.FloatTensor</em>, <em>tensor_2: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/linear.py#L65-L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.linear.LinearSimilarity.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes two tensors of the same shape, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2,</span>
+<span class="pre">embedding_dim)</span></code>.  Computes a (possibly parameterized) similarity on the final dimension
+and returns a tensor with one less dimension, such as <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">length_1,</span> <span class="pre">length_2)</span></code>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="allennlp.modules.similarity_functions.linear.LinearSimilarity.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.similarity_functions.linear.LinearSimilarity<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/linear.py#L120-L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.linear.LinearSimilarity.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.similarity_functions.linear.LinearSimilarity.reset_parameters">
+<code class="descname">reset_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/similarity_functions/linear.py#L60-L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.similarity_functions.linear.LinearSimilarity.reset_parameters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.modules.stacked_alternating_lstm.html" class="btn btn-neutral float-right" title="allennlp.modules.stacked_alternating_lstm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.modules.seq2vec_encoders.html" class="btn btn-neutral" title="allennlp.modules.seq2vec_encoders" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Allen Institute for Artificial Intelligence.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
