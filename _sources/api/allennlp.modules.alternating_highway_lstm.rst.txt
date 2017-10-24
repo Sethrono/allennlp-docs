@@ -1,0 +1,7 @@
+allennlp.modules.alternating_highway_lstm
+=========================================
+
+.. automodule:: allennlp.modules.alternating_highway_lstm
+   :members:
+   :undoc-members:
+   :show-inheritance:

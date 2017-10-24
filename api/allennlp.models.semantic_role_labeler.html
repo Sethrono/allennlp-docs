@@ -40,7 +40,7 @@
     <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
         <link rel="up" title="allennlp.models" href="allennlp.models.html"/>
         <link rel="next" title="allennlp.models.simple_tagger" href="allennlp.models.simple_tagger.html"/>
-        <link rel="prev" title="allennlp.models.decomposable_attention" href="allennlp.models.decomposable_attention.html"/> 
+        <link rel="prev" title="allennlp.models.reading_comprehension" href="allennlp.models.reading_comprehension.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -107,15 +107,27 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.squad_eval.html">allennlp.common.squad_eval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
@@ -126,8 +138,11 @@
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bidaf.html">allennlp.models.bidaf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -135,6 +150,7 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
@@ -150,6 +166,7 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
 </ul>
 </li>
@@ -162,7 +179,6 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.training.regularizers.html">allennlp.training.regularizers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
 </ul>
 </li>
@@ -235,7 +251,7 @@
 <span id="allennlp-models-semantic-role-labeler"></span><h1>allennlp.models.semantic_role_labeler<a class="headerlink" href="#module-allennlp.models.semantic_role_labeler" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="allennlp.models.semantic_role_labeler.SemanticRoleLabeler">
-<em class="property">class </em><code class="descclassname">allennlp.models.semantic_role_labeler.</code><code class="descname">SemanticRoleLabeler</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>stacked_encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>binary_feature_dim: int</em>, <em>initializer: allennlp.nn.initializers.InitializerApplicator</em>, <em>embedding_dropout: float = 0.0</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L21-L214"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.models.semantic_role_labeler.</code><code class="descname">SemanticRoleLabeler</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>stacked_encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>binary_feature_dim: int</em>, <em>embedding_dropout: float = 0.0</em>, <em>initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em>regularizer: typing.Union[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L21-L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">allennlp.models.model.Model</span></code></a></p>
 <p>This model performs semantic role labeling using BIO tags using Propbank semantic roles.
 Specifically, it is an implmentation of <a class="reference external" href="https://homes.cs.washington.edu/~luheng/files/acl2017_hllz.pdf">Deep Semantic Role Labeling - What works
@@ -266,9 +282,13 @@ and predicting output tags.</p>
 <blockquote>
 <div><p>The dimensionality of the embedding of the binary verb predicate features.</p>
 </div></blockquote>
-<p><strong>initializer</strong> : <code class="docutils literal"><span class="pre">InitializerApplicator</span></code></p>
+<p><strong>initializer</strong> : <code class="docutils literal"><span class="pre">InitializerApplicator</span></code>, optional (default=``InitializerApplicator()``)</p>
+<blockquote>
+<div><p>Used to initialize the model parameters.</p>
+</div></blockquote>
+<p><strong>regularizer</strong> : <code class="docutils literal"><span class="pre">RegularizerApplicator</span></code>, optional (default=``None``)</p>
 <blockquote class="last">
-<div><p>We will use this to initialize the parameters in the model, calling <code class="docutils literal"><span class="pre">initializer(self)</span></code>.</p>
+<div><p>If provided, will be used to calculate the regularization penalty during training.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -276,7 +296,7 @@ and predicting output tags.</p>
 </table>
 <dl class="method">
 <dt id="allennlp.models.semantic_role_labeler.SemanticRoleLabeler.decode">
-<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L140-L164"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.decode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L148-L170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.decode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Does constrained viterbi decoding on class probabilities output in <a class="reference internal" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.forward" title="allennlp.models.semantic_role_labeler.SemanticRoleLabeler.forward"><code class="xref py py-func docutils literal"><span class="pre">forward()</span></code></a>.  The
 constraint simply specifies that the output tags must be a valid BIO sequence.  We add a
 <code class="docutils literal"><span class="pre">&quot;tags&quot;</span></code> key to the dictionary with the result.</p>
@@ -284,7 +304,7 @@ constraint simply specifies that the output tags must be a valid BIO sequence.  
 
 <dl class="method">
 <dt id="allennlp.models.semantic_role_labeler.SemanticRoleLabeler.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>tokens: typing.Dict[str, torch.LongTensor], verb_indicator: torch.LongTensor, tags: torch.LongTensor = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L75-L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>tokens: typing.Dict[str, torch.LongTensor], verb_indicator: torch.LongTensor, tags: torch.LongTensor = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L79-L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.forward" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -336,17 +356,17 @@ a distribution of the tag classes per word.</p>
 
 <dl class="classmethod">
 <dt id="allennlp.models.semantic_role_labeler.SemanticRoleLabeler.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.semantic_role_labeler.SemanticRoleLabeler<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L202-L214"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.semantic_role_labeler.SemanticRoleLabeler<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L208-L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.models.semantic_role_labeler.SemanticRoleLabeler.get_metrics">
-<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L166-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.get_metrics" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L172-L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.get_metrics" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.models.semantic_role_labeler.SemanticRoleLabeler.get_viterbi_pairwise_potentials">
-<code class="descname">get_viterbi_pairwise_potentials</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L177-L200"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.get_viterbi_pairwise_potentials" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_viterbi_pairwise_potentials</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L183-L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.SemanticRoleLabeler.get_viterbi_pairwise_potentials" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a matrix of pairwise transition potentials for the BIO labels.
 The only constraint implemented here is that I-XXX labels must be preceded
 by either an identical I-XXX tag or a B-XXX tag. In order to achieve this
@@ -370,7 +390,7 @@ pairwise potential of -inf.</p>
 
 <dl class="function">
 <dt id="allennlp.models.semantic_role_labeler.convert_bio_tags_to_conll_format">
-<code class="descclassname">allennlp.models.semantic_role_labeler.</code><code class="descname">convert_bio_tags_to_conll_format</code><span class="sig-paren">(</span><em>labels: typing.List[str]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L259-L298"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.convert_bio_tags_to_conll_format" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.models.semantic_role_labeler.</code><code class="descname">convert_bio_tags_to_conll_format</code><span class="sig-paren">(</span><em>labels: typing.List[str]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L270-L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.convert_bio_tags_to_conll_format" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts BIO formatted SRL tags to the format required for evaluation with the
 official CONLL 2005 perl script. Spans are represented by bracketed labels,
 with the labels of words inside spans being the same as those outside spans.
@@ -399,7 +419,7 @@ length 1 spans, (e.g &#8220;(ARG-0</em>)&#8221;).</p>
 
 <dl class="function">
 <dt id="allennlp.models.semantic_role_labeler.write_to_conll_eval_file">
-<code class="descclassname">allennlp.models.semantic_role_labeler.</code><code class="descname">write_to_conll_eval_file</code><span class="sig-paren">(</span><em>prediction_file: typing.TextIO, gold_file: typing.TextIO, verb_index: int, sentence: typing.List[str], prediction: typing.List[str], gold_labels: typing.List[str]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L216-L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.write_to_conll_eval_file" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.models.semantic_role_labeler.</code><code class="descname">write_to_conll_eval_file</code><span class="sig-paren">(</span><em>prediction_file: typing.TextIO, gold_file: typing.TextIO, verb_index: typing.Union[int, NoneType], sentence: typing.List[str], prediction: typing.List[str], gold_labels: typing.List[str]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/semantic_role_labeler.py#L225-L267"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.semantic_role_labeler.write_to_conll_eval_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints predicate argument predictions and gold labels for a single verbal
 predicate in a sentence to two provided file references.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -414,10 +434,11 @@ predicate in a sentence to two provided file references.</p>
 <blockquote>
 <div><p>A file reference to print gold labels to.</p>
 </div></blockquote>
-<p><strong>verb_index</strong> : int, required.</p>
+<p><strong>verb_index</strong> : Optional[int], required.</p>
 <blockquote>
 <div><p>The index of the verbal predicate in the sentence which
-the gold labels are the arguments for.</p>
+the gold labels are the arguments for, or None if the sentence
+contains no verbal predicate.</p>
 </div></blockquote>
 <p><strong>sentence</strong> : List[str], required.</p>
 <blockquote>
@@ -452,7 +473,7 @@ the gold labels are the arguments for.</p>
         <a href="allennlp.models.simple_tagger.html" class="btn btn-neutral float-right" title="allennlp.models.simple_tagger" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="allennlp.models.decomposable_attention.html" class="btn btn-neutral" title="allennlp.models.decomposable_attention" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="allennlp.models.reading_comprehension.html" class="btn btn-neutral" title="allennlp.models.reading_comprehension" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

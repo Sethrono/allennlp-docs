@@ -40,7 +40,7 @@
     <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
         <link rel="up" title="allennlp.data" href="allennlp.data.html"/>
         <link rel="next" title="allennlp.data.instance" href="allennlp.data.instance.html"/>
-        <link rel="prev" title="allennlp.data.dataset_readers" href="allennlp.data.dataset_readers.html"/> 
+        <link rel="prev" title="allennlp.data.dataset_readers.snli" href="allennlp.data.dataset_readers.snli.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -107,15 +107,28 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.squad_eval.html">allennlp.common.squad_eval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+</ul>
+</li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.data.fields</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
@@ -126,8 +139,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.models.bidaf.html">allennlp.models.bidaf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -135,6 +151,7 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
@@ -150,6 +167,7 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
 </ul>
 </li>
@@ -162,7 +180,6 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.training.regularizers.html">allennlp.training.regularizers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
 </ul>
 </li>
@@ -240,6 +257,7 @@ that ends up as an array in a model.</p>
 <li><a class="reference internal" href="#index-field"><span class="std std-ref">IndexField</span></a></li>
 <li><a class="reference internal" href="#label-field"><span class="std std-ref">LabelField</span></a></li>
 <li><a class="reference internal" href="#list-field"><span class="std std-ref">ListField</span></a></li>
+<li><a class="reference internal" href="#metadata-field"><span class="std std-ref">MetadataField</span></a></li>
 <li><a class="reference internal" href="#sequence-field"><span class="std std-ref">SequenceField</span></a></li>
 <li><a class="reference internal" href="#sequence-label-field"><span class="std std-ref">SequenceLabelField</span></a></li>
 <li><a class="reference internal" href="#text-field"><span class="std std-ref">TextField</span></a></li>
@@ -333,22 +351,23 @@ not need to implement this method.</p>
 
 <span class="target" id="module-allennlp.data.fields.index_field"><span id="index-field"></span></span><dl class="class">
 <dt id="allennlp.data.fields.index_field.IndexField">
-<em class="property">class </em><code class="descclassname">allennlp.data.fields.index_field.</code><code class="descname">IndexField</code><span class="sig-paren">(</span><em>index: int</em>, <em>sequence_field: allennlp.data.fields.sequence_field.SequenceField</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/index_field.py#L12-L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.index_field.IndexField" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.data.fields.index_field.</code><code class="descname">IndexField</code><span class="sig-paren">(</span><em>index: int</em>, <em>sequence_field: allennlp.data.fields.sequence_field.SequenceField</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/index_field.py#L12-L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.index_field.IndexField" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.data.fields.field.Field" title="allennlp.data.fields.field.Field"><code class="xref py py-class docutils literal"><span class="pre">allennlp.data.fields.field.Field</span></code></a></p>
-<p>An <code class="docutils literal"><span class="pre">IndexField</span></code> is an optional index into a
-<a class="reference internal" href="#allennlp.data.fields.sequence_field.SequenceField" title="allennlp.data.fields.sequence_field.SequenceField"><code class="xref py py-class docutils literal"><span class="pre">SequenceField</span></code></a>, as might be used for
-representing a correct answer option in a list, or a span begin and span end position in a
-passage, for example.  Because it&#8217;s an index into a <code class="xref py py-class docutils literal"><span class="pre">SequenceField</span></code>, we take one of
-those as input and use it to compute padding lengths.</p>
+<p>An <code class="docutils literal"><span class="pre">IndexField</span></code> is an index into a
+<a class="reference internal" href="#allennlp.data.fields.sequence_field.SequenceField" title="allennlp.data.fields.sequence_field.SequenceField"><code class="xref py py-class docutils literal"><span class="pre">SequenceField</span></code></a>, as might be used for representing
+a correct answer option in a list, or a span begin and span end position in a passage, for
+example.  Because it&#8217;s an index into a <code class="xref py py-class docutils literal"><span class="pre">SequenceField</span></code>, we take one of those as input
+and use it to compute padding lengths.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>index</strong> : <code class="docutils literal"><span class="pre">Optional[int]</span></code></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>index</strong> : <code class="docutils literal"><span class="pre">int</span></code></p>
 <blockquote>
 <div><p>The index of the answer in the <code class="xref py py-class docutils literal"><span class="pre">SequenceField</span></code>.  This is typically the &#8220;correct
 answer&#8221; in some classification decision over the sequence, like where an answer span starts
-in SQuAD, or which answer option is correct in a multiple choice question.</p>
+in SQuAD, or which answer option is correct in a multiple choice question.  A value of
+<code class="docutils literal"><span class="pre">-1</span></code> means there is no label, which can be used for padding or other purposes.</p>
 </div></blockquote>
 <p><strong>sequence_field</strong> : <code class="docutils literal"><span class="pre">SequenceField</span></code></p>
 <blockquote class="last">
@@ -360,7 +379,7 @@ in SQuAD, or which answer option is correct in a multiple choice question.</p>
 </table>
 <dl class="method">
 <dt id="allennlp.data.fields.index_field.IndexField.as_array">
-<code class="descname">as_array</code><span class="sig-paren">(</span><em>padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; &lt;built-in function array&gt;<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/index_field.py#L40-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.index_field.IndexField.as_array" title="Permalink to this definition">¶</a></dt>
+<code class="descname">as_array</code><span class="sig-paren">(</span><em>padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; &lt;built-in function array&gt;<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/index_field.py#L42-L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.index_field.IndexField.as_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a set of specified padding lengths, actually pad the data in this field and return a
 numpy array of the correct shape.  This actually returns a list instead of a single array,
 in case there are several related arrays for this field (e.g., a <code class="docutils literal"><span class="pre">TextField</span></code> might have a
@@ -369,7 +388,7 @@ word array and a characters-per-word array).</p>
 
 <dl class="method">
 <dt id="allennlp.data.fields.index_field.IndexField.empty_field">
-<code class="descname">empty_field</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/index_field.py#L44-L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.index_field.IndexField.empty_field" title="Permalink to this definition">¶</a></dt>
+<code class="descname">empty_field</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/index_field.py#L46-L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.index_field.IndexField.empty_field" title="Permalink to this definition">¶</a></dt>
 <dd><p>So that <code class="docutils literal"><span class="pre">ListField</span></code> can pad the number of fields in a list (e.g., the number of answer
 option <code class="docutils literal"><span class="pre">TextFields</span></code>), we need a representation of an empty field of each type.  This
 returns that.  This will only ever be called when we&#8217;re to the point of calling
@@ -381,7 +400,7 @@ in the Field, we can copy it over (e.g., the token indexers in <code class="docu
 
 <dl class="method">
 <dt id="allennlp.data.fields.index_field.IndexField.get_padding_lengths">
-<code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/index_field.py#L36-L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.index_field.IndexField.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/index_field.py#L38-L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.index_field.IndexField.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
 <dd><p>If there are things in this field that need padding, note them here.  In order to pad a
 batch of instance, we get all of the lengths from the batch, take the max, and pad
 everything to that length (or use a pre-specified maximum length).  The return value is a
@@ -574,6 +593,77 @@ not need to implement this method.</p>
 <dt id="allennlp.data.fields.list_field.ListField.sequence_length">
 <code class="descname">sequence_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/list_field.py#L53-L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.list_field.ListField.sequence_length" title="Permalink to this definition">¶</a></dt>
 <dd><p>How many elements are there in this sequence?</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.fields.metadata_field"><span id="metadata-field"></span></span><dl class="class">
+<dt id="allennlp.data.fields.metadata_field.MetadataField">
+<em class="property">class </em><code class="descclassname">allennlp.data.fields.metadata_field.</code><code class="descname">MetadataField</code><span class="sig-paren">(</span><em>metadata: typing.Any</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/metadata_field.py#L9-L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.metadata_field.MetadataField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.data.fields.field.Field" title="allennlp.data.fields.field.Field"><code class="xref py py-class docutils literal"><span class="pre">allennlp.data.fields.field.Field</span></code></a></p>
+<p>A <code class="docutils literal"><span class="pre">MetadataField</span></code> is a <code class="docutils literal"><span class="pre">Field</span></code> that does not get converted into arrays.  It just carries
+side information that might be needed later on, for computing some third-party metric, or
+outputting debugging information, or whatever else you need.  We use this in the BiDAF model,
+for instance, to keep track of question IDs and passage token offsets, so we can more easily
+use the official evaluation script to compute metrics.</p>
+<p>We don&#8217;t try to do any kind of smart combination of this field for batched input - when you use
+this <code class="docutils literal"><span class="pre">Field</span></code> in a model, you&#8217;ll get a list of metadata objects, one for each instance in the
+batch.</p>
+<p>Note that if you use this field, you are <cite>required</cite> to include <code class="docutils literal"><span class="pre">metadata</span></code> in the field name
+used as a key in <code class="docutils literal"><span class="pre">Instance</span></code>.  Otherwise we won&#8217;t know to treat the output of this field
+specially in <a class="reference internal" href="allennlp.nn.util.html#allennlp.nn.util.arrays_to_variables" title="allennlp.nn.util.arrays_to_variables"><code class="xref py py-func docutils literal"><span class="pre">arrays_to_variables()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>metadata</strong> : <code class="docutils literal"><span class="pre">Any</span></code></p>
+<blockquote class="last">
+<div><p>Some object containing the metadata that you want to store.  It&#8217;s likely that you&#8217;ll want
+this to be a dictionary, but it could be anything you want.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="allennlp.data.fields.metadata_field.MetadataField.as_array">
+<code class="descname">as_array</code><span class="sig-paren">(</span><em>padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; DataArray<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/metadata_field.py#L38-L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.metadata_field.MetadataField.as_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a set of specified padding lengths, actually pad the data in this field and return a
+numpy array of the correct shape.  This actually returns a list instead of a single array,
+in case there are several related arrays for this field (e.g., a <code class="docutils literal"><span class="pre">TextField</span></code> might have a
+word array and a characters-per-word array).</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="allennlp.data.fields.metadata_field.MetadataField.batch_arrays">
+<em class="property">classmethod </em><code class="descname">batch_arrays</code><span class="sig-paren">(</span><em>array_list: typing.List[DataArray]</em><span class="sig-paren">)</span> &#x2192; DataArray<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/metadata_field.py#L47-L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.metadata_field.MetadataField.batch_arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes the output of <code class="docutils literal"><span class="pre">Field.as_array()</span></code> from a list of <code class="docutils literal"><span class="pre">Instances</span></code> and merges it into
+one batched array for this <code class="docutils literal"><span class="pre">Field</span></code>.  The default implementation here in the base class
+handles cases where <code class="docutils literal"><span class="pre">as_array</span></code> returns a single numpy array per instance, or a dictionary
+of single arrays.  If your subclass returns something other than this, you need to
+override this method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.fields.metadata_field.MetadataField.empty_field">
+<code class="descname">empty_field</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; allennlp.data.fields.metadata_field.MetadataField<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/metadata_field.py#L43-L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.metadata_field.MetadataField.empty_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>So that <code class="docutils literal"><span class="pre">ListField</span></code> can pad the number of fields in a list (e.g., the number of answer
+option <code class="docutils literal"><span class="pre">TextFields</span></code>), we need a representation of an empty field of each type.  This
+returns that.  This will only ever be called when we&#8217;re to the point of calling
+<a class="reference internal" href="#allennlp.data.fields.metadata_field.MetadataField.as_array" title="allennlp.data.fields.metadata_field.MetadataField.as_array"><code class="xref py py-func docutils literal"><span class="pre">as_array()</span></code></a>, so you don&#8217;t need to worry about <code class="docutils literal"><span class="pre">get_padding_lengths</span></code>,
+<code class="docutils literal"><span class="pre">count_vocab_items</span></code>, etc., being called on this empty field.</p>
+<p>We make this an instance method instead of a static method so that if there is any state
+in the Field, we can copy it over (e.g., the token indexers in <code class="docutils literal"><span class="pre">TextField</span></code>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.fields.metadata_field.MetadataField.get_padding_lengths">
+<code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/metadata_field.py#L34-L36"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.metadata_field.MetadataField.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
+<dd><p>If there are things in this field that need padding, note them here.  In order to pad a
+batch of instance, we get all of the lengths from the batch, take the max, and pad
+everything to that length (or use a pre-specified maximum length).  The return value is a
+dictionary mapping keys to lengths, like {&#8216;num_tokens&#8217;: 13}.</p>
+<p>This is always called after <code class="xref py py-func docutils literal"><span class="pre">index()</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -792,7 +882,7 @@ not need to implement this method.</p>
         <a href="allennlp.data.instance.html" class="btn btn-neutral float-right" title="allennlp.data.instance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="allennlp.data.dataset_readers.html" class="btn btn-neutral" title="allennlp.data.dataset_readers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="allennlp.data.dataset_readers.snli.html" class="btn btn-neutral" title="allennlp.data.dataset_readers.snli" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

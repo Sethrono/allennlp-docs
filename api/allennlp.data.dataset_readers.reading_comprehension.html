@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>allennlp.data.dataset_readers.reading_comprehension &mdash; AllenNLP 0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
+        <link rel="up" title="allennlp.data.dataset_readers" href="allennlp.data.dataset_readers.html"/>
+        <link rel="next" title="allennlp.data.dataset_readers.semantic_role_labeling" href="allennlp.data.dataset_readers.semantic_role_labeling.html"/>
+        <link rel="prev" title="allennlp.data.dataset_readers.language_modeling" href="allennlp.data.dataset_readers.language_modeling.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/allennlp-logo-dark.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Package Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.common.html">allennlp.common</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.checks.html">allennlp.common.checks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.file_utils.html">allennlp.common.file_utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.params.html">allennlp.common.params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.registrable.html">allennlp.common.registrable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.squad_eval.html">allennlp.common.squad_eval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.tee_logger.html">allennlp.common.tee_logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.testing.html">allennlp.common.testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.common.util.html">allennlp.common.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.data.html">allennlp.data</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.snli.html">allennlp.data.dataset_readers.snli</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.fields.html">allennlp.data.fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.instance.html">allennlp.data.instance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.iterators.html">allennlp.data.iterators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.token_indexers.html">allennlp.data.token_indexers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.tokenizers.html">allennlp.data.tokenizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.data.vocabulary.html">allennlp.data.vocabulary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.models.html">allennlp.models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2vec_encoders.html">allennlp.modules.seq2vec_encoders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.similarity_functions.html">allennlp.modules.similarity_functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_alternating_lstm.html">allennlp.modules.stacked_alternating_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.activations.html">allennlp.nn.activations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.initializers.html">allennlp.nn.initializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.regularizers.html">allennlp.nn.regularizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.nn.util.html">allennlp.nn.util</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.training.html">allennlp.training</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.learning_rate_schedulers.html">allennlp.training.learning_rate_schedulers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.metrics.html">allennlp.training.metrics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.optimizers.html">allennlp.training.optimizers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.training.trainer.html">allennlp.training.trainer</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AllenNLP</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="allennlp.data.html">allennlp.data</a> &raquo;</li>
+        
+          <li><a href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a> &raquo;</li>
+        
+      <li>allennlp.data.dataset_readers.reading_comprehension</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/allennlp.data.dataset_readers.reading_comprehension.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-allennlp.data.dataset_readers.reading_comprehension">
+<span id="allennlp-data-dataset-readers-reading-comprehension"></span><h1>allennlp.data.dataset_readers.reading_comprehension<a class="headerlink" href="#module-allennlp.data.dataset_readers.reading_comprehension" title="Permalink to this headline">¶</a></h1>
+<p>Reading comprehension is loosely defined as follows: given a question and a passage of text that
+contains the answer, answer the question.</p>
+<p>These submodules contain readers for things that are predominantly reading comprehension datasets.</p>
+<span class="target" id="module-allennlp.data.dataset_readers.reading_comprehension.squad"></span><dl class="class">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader">
+<em class="property">class </em><code class="descclassname">allennlp.data.dataset_readers.reading_comprehension.squad.</code><code class="descname">SquadReader</code><span class="sig-paren">(</span><em>tokenizer: allennlp.data.tokenizers.tokenizer.Tokenizer = None</em>, <em>token_indexers: typing.Dict[str</em>, <em>allennlp.data.token_indexers.token_indexer.TokenIndexer] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/squad.py#L22-L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html#allennlp.data.dataset_readers.dataset_reader.DatasetReader" title="allennlp.data.dataset_readers.dataset_reader.DatasetReader"><code class="xref py py-class docutils literal"><span class="pre">allennlp.data.dataset_readers.dataset_reader.DatasetReader</span></code></a></p>
+<p>Reads a JSON-formatted SQuAD file and returns a <code class="docutils literal"><span class="pre">Dataset</span></code> where the <code class="docutils literal"><span class="pre">Instances</span></code> have four
+fields: <code class="docutils literal"><span class="pre">question</span></code>, a <code class="docutils literal"><span class="pre">TextField</span></code>, <code class="docutils literal"><span class="pre">passage</span></code>, another <code class="docutils literal"><span class="pre">TextField</span></code>, and <code class="docutils literal"><span class="pre">span_start</span></code>
+and <code class="docutils literal"><span class="pre">span_end</span></code>, both <code class="docutils literal"><span class="pre">IndexFields</span></code> into the <code class="docutils literal"><span class="pre">passage</span></code> <code class="docutils literal"><span class="pre">TextField</span></code>.  We also add a
+<code class="docutils literal"><span class="pre">MetadataField</span></code> that stores the instance&#8217;s ID, the original passage text, gold answer strings,
+and token offsets into the original passage, accessible as <code class="docutils literal"><span class="pre">metadata['id']</span></code>,
+<code class="docutils literal"><span class="pre">metadata['original_passage']</span></code>, <code class="docutils literal"><span class="pre">metadata['answer_texts']</span></code> and
+<code class="docutils literal"><span class="pre">metadata['token_offsets']</span></code>.  This is so that we can more easily use the official SQuAD
+evaluation script to get metrics.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tokenizer</strong> : <code class="docutils literal"><span class="pre">Tokenizer</span></code>, optional (default=``WordTokenizer()``)</p>
+<blockquote>
+<div><p>We use this <code class="docutils literal"><span class="pre">Tokenizer</span></code> for both the question and the passage.  See <code class="xref py py-class docutils literal"><span class="pre">Tokenizer</span></code>.
+Default is <code class="docutils literal"><span class="pre">`WordTokenizer()</span></code>.</p>
+</div></blockquote>
+<p><strong>token_indexers</strong> : <code class="docutils literal"><span class="pre">Dict[str,</span> <span class="pre">TokenIndexer]</span></code>, optional</p>
+<blockquote class="last">
+<div><p>We similarly use this for both the question and the passage.  See <code class="xref py py-class docutils literal"><span class="pre">TokenIndexer</span></code>.
+Default is <code class="docutils literal"><span class="pre">{&quot;tokens&quot;:</span> <span class="pre">SingleIdTokenIndexer()}</span></code>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/squad.py#L116-L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>file_path: str</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/squad.py#L48-L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actually reads some data from the <cite>file_path</cite> and returns a <code class="xref py py-class docutils literal"><span class="pre">Dataset</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader.text_to_instance">
+<code class="descname">text_to_instance</code><span class="sig-paren">(</span><em>question_text: str</em>, <em>passage_text: str</em>, <em>char_spans: typing.List[typing.Tuple[int</em>, <em>int]] = None</em>, <em>answer_texts: typing.List[str] = None</em>, <em>passage_tokens: typing.List[allennlp.data.tokenizers.token.Token] = None</em><span class="sig-paren">)</span> &#x2192; allennlp.data.instance.Instance<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/squad.py#L80-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader.text_to_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does whatever tokenization or processing is necessary to go from textual input to an
+<code class="docutils literal"><span class="pre">Instance</span></code>.  The primary intended use for this is with a
+<a class="reference internal" href="allennlp.service.predictors.html#allennlp.service.predictors.predictor.Predictor" title="allennlp.service.predictors.predictor.Predictor"><code class="xref py py-class docutils literal"><span class="pre">Predictor</span></code></a>, which gets text input as a JSON
+object and needs to process it to be input to a model.</p>
+<p>The intent here is to share code between <a class="reference internal" href="#allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader.read" title="allennlp.data.dataset_readers.reading_comprehension.squad.SquadReader.read"><code class="xref py py-func docutils literal"><span class="pre">read()</span></code></a> and what happens at
+model serving time, or any other time you want to make a prediction from new data.  We need
+to process the data in the same way it was done at training time.  Allowing the
+<code class="docutils literal"><span class="pre">DatasetReader</span></code> to process new text lets us accomplish this, as we can just call
+<code class="docutils literal"><span class="pre">DatasetReader.text_to_instance</span></code> when serving predictions.</p>
+<p>The input type here is rather vaguely specified, unfortunately.  The <code class="docutils literal"><span class="pre">Predictor</span></code> will
+have to make some assumptions about the kind of <code class="docutils literal"><span class="pre">DatasetReader</span></code> that it&#8217;s using, in order
+to pass it the right information.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.dataset_readers.reading_comprehension.triviaqa"></span><dl class="class">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader">
+<em class="property">class </em><code class="descclassname">allennlp.data.dataset_readers.reading_comprehension.triviaqa.</code><code class="descname">TriviaQaReader</code><span class="sig-paren">(</span><em>base_tarball_path: str</em>, <em>unfiltered_tarball_path: str = None</em>, <em>tokenizer: allennlp.data.tokenizers.tokenizer.Tokenizer = None</em>, <em>token_indexers: typing.Dict[str</em>, <em>allennlp.data.token_indexers.token_indexer.TokenIndexer] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/triviaqa.py#L24-L172"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html#allennlp.data.dataset_readers.dataset_reader.DatasetReader" title="allennlp.data.dataset_readers.dataset_reader.DatasetReader"><code class="xref py py-class docutils literal"><span class="pre">allennlp.data.dataset_readers.dataset_reader.DatasetReader</span></code></a></p>
+<p>Reads the TriviaQA dataset into a <code class="docutils literal"><span class="pre">Dataset</span></code> containing <code class="docutils literal"><span class="pre">Instances</span></code> with four fields:
+<code class="docutils literal"><span class="pre">question</span></code> (a <code class="docutils literal"><span class="pre">TextField</span></code>), <code class="docutils literal"><span class="pre">passage</span></code> (another <code class="docutils literal"><span class="pre">TextField</span></code>), <code class="docutils literal"><span class="pre">span_start</span></code>, and
+<code class="docutils literal"><span class="pre">span_end</span></code> (both <code class="docutils literal"><span class="pre">IndexFields</span></code>).</p>
+<p>TriviaQA is split up into several JSON files defining the questions, and a lot of text files
+containing crawled web documents.  We read these from a gzipped tarball, to avoid having to
+have millions of individual files on a filesystem.</p>
+<p>Because we need to read both train and validation files from the same tarball, we take the
+tarball itself as a constructor parameter, and take the question file as the argument to
+<code class="docutils literal"><span class="pre">read</span></code>.  This means that you should give the path to the tarball in the <code class="docutils literal"><span class="pre">dataset_reader</span></code>
+parameters in your experiment configuration file, and something like <code class="docutils literal"><span class="pre">&quot;wikipedia-train.json&quot;</span></code>
+for the <code class="docutils literal"><span class="pre">train_data_path</span></code> and <code class="docutils literal"><span class="pre">validation_data_path</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>base_tarball_path</strong> : <code class="docutils literal"><span class="pre">str</span></code></p>
+<blockquote>
+<div><p>This is the path to the main <code class="docutils literal"><span class="pre">tar.gz</span></code> file you can download from the TriviaQA website,
+with directories <code class="docutils literal"><span class="pre">evidence</span></code> and <code class="docutils literal"><span class="pre">qa</span></code>.</p>
+</div></blockquote>
+<p><strong>unfiltered_tarball_path</strong> : <code class="docutils literal"><span class="pre">str</span></code>, optional</p>
+<blockquote>
+<div><p>This is the path to the &#8220;unfiltered&#8221; TriviaQA data that you can download from the TriviaQA
+website, containing just question JSON files that point to evidence files in the base
+tarball.</p>
+</div></blockquote>
+<p><strong>tokenizer</strong> : <code class="docutils literal"><span class="pre">Tokenizer</span></code>, optional</p>
+<blockquote>
+<div><p>We&#8217;ll use this tokenizer on questions and evidence passages, defaulting to
+<code class="docutils literal"><span class="pre">WordTokenizer</span></code> if none is provided.</p>
+</div></blockquote>
+<p><strong>token_indexers</strong> : <code class="docutils literal"><span class="pre">Dict[str,</span> <span class="pre">TokenIndexer]</span></code>, optional</p>
+<blockquote class="last">
+<div><p>Determines how both the question and the evidence passages are represented as arrays.  See
+<code class="xref py py-class docutils literal"><span class="pre">TokenIndexer</span></code>.  Default is to have a single word ID for every token.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="classmethod">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/triviaqa.py#L162-L172"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.pick_paragraphs">
+<code class="descname">pick_paragraphs</code><span class="sig-paren">(</span><em>evidence_files: typing.List[typing.List[str]], question: str = None, answer_texts: typing.List[str] = None</em><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/triviaqa.py#L120-L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.pick_paragraphs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a list of evidence documents, return a list of paragraphs to use as training
+examples.  Each paragraph returned will be made into one training example.</p>
+<p>To aid in picking the best paragraph, you can also optionally pass the question text or the
+answer strings.  Note, though, that if you actually use the answer strings for picking the
+paragraph on the dev or test sets, that&#8217;s likely cheating, depending on how you&#8217;ve defined
+the task.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.read">
+<code class="descname">read</code><span class="sig-paren">(</span><em>file_path: str</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/triviaqa.py#L66-L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.read" title="Permalink to this definition">¶</a></dt>
+<dd><p>Actually reads some data from the <cite>file_path</cite> and returns a <code class="xref py py-class docutils literal"><span class="pre">Dataset</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.text_to_instance">
+<code class="descname">text_to_instance</code><span class="sig-paren">(</span><em>question_text: str</em>, <em>passage_text: str</em>, <em>token_spans: typing.List[typing.Tuple[int</em>, <em>int]] = None</em>, <em>answer_texts: typing.List[str] = None</em>, <em>question_tokens: typing.List[allennlp.data.tokenizers.token.Token] = None</em>, <em>passage_tokens: typing.List[allennlp.data.tokenizers.token.Token] = None</em><span class="sig-paren">)</span> &#x2192; allennlp.data.instance.Instance<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/triviaqa.py#L142-L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.text_to_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Does whatever tokenization or processing is necessary to go from textual input to an
+<code class="docutils literal"><span class="pre">Instance</span></code>.  The primary intended use for this is with a
+<a class="reference internal" href="allennlp.service.predictors.html#allennlp.service.predictors.predictor.Predictor" title="allennlp.service.predictors.predictor.Predictor"><code class="xref py py-class docutils literal"><span class="pre">Predictor</span></code></a>, which gets text input as a JSON
+object and needs to process it to be input to a model.</p>
+<p>The intent here is to share code between <a class="reference internal" href="#allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.read" title="allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.read"><code class="xref py py-func docutils literal"><span class="pre">read()</span></code></a> and what happens at
+model serving time, or any other time you want to make a prediction from new data.  We need
+to process the data in the same way it was done at training time.  Allowing the
+<code class="docutils literal"><span class="pre">DatasetReader</span></code> to process new text lets us accomplish this, as we can just call
+<code class="docutils literal"><span class="pre">DatasetReader.text_to_instance</span></code> when serving predictions.</p>
+<p>The input type here is rather vaguely specified, unfortunately.  The <code class="docutils literal"><span class="pre">Predictor</span></code> will
+have to make some assumptions about the kind of <code class="docutils literal"><span class="pre">DatasetReader</span></code> that it&#8217;s using, in order
+to pass it the right information.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.dataset_readers.reading_comprehension.util"></span><p>Utilities for reading comprehension dataset readers.</p>
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.util.char_span_to_token_span">
+<code class="descclassname">allennlp.data.dataset_readers.reading_comprehension.util.</code><code class="descname">char_span_to_token_span</code><span class="sig-paren">(</span><em>token_offsets: typing.List[typing.Tuple[int, int]], character_span: typing.Tuple[int, int]</em><span class="sig-paren">)</span> &#x2192; typing.Tuple[typing.Tuple[int, int], bool]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/util.py#L34-L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.util.char_span_to_token_span" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a character span from a passage into the corresponding token span in the tokenized
+version of the passage.  If you pass in a character span that does not correspond to complete
+tokens in the tokenized version, we&#8217;ll do our best, but the behavior is officially undefined.
+We return an error flag in this case, and have some debug logging so you can figure out the
+cause of this issue (in SQuAD, these are mostly either tokenization problems or annotation
+problems; there&#8217;s a fair amount of both).</p>
+<p>The basic outline of this method is to find the token span that has the same offsets as the
+input character span.  If the tokenizer tokenized the passage correctly and has matching
+offsets, this is easy.  We try to be a little smart about cases where they don&#8217;t match exactly,
+but mostly just find the closest thing we can.</p>
+<p>The returned <code class="docutils literal"><span class="pre">(begin,</span> <span class="pre">end)</span></code> indices are <cite>inclusive</cite> for both <code class="docutils literal"><span class="pre">begin</span></code> and <code class="docutils literal"><span class="pre">end</span></code>.
+So, for example, <code class="docutils literal"><span class="pre">(2,</span> <span class="pre">2)</span></code> is the one word span beginning at token index 2, <code class="docutils literal"><span class="pre">(3,</span> <span class="pre">4)</span></code> is the
+two-word span beginning at token index 3, and so on.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>token_span</strong> : <code class="docutils literal"><span class="pre">Tuple[int,</span> <span class="pre">int]</span></code></p>
+<blockquote>
+<div><p><cite>Inclusive</cite> span start and end token indices that match as closely as possible to the input
+character spans.</p>
+</div></blockquote>
+<p><strong>error</strong> : <code class="docutils literal"><span class="pre">bool</span></code></p>
+<blockquote class="last">
+<div><p>Whether the token spans match the input character spans exactly.  If this is <code class="docutils literal"><span class="pre">False</span></code>, it
+means there was an error in either the tokenization or the annotated character span.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.util.find_valid_answer_spans">
+<code class="descclassname">allennlp.data.dataset_readers.reading_comprehension.util.</code><code class="descname">find_valid_answer_spans</code><span class="sig-paren">(</span><em>passage_tokens: typing.List[allennlp.data.tokenizers.token.Token], answer_texts: typing.List[str]</em><span class="sig-paren">)</span> &#x2192; typing.List[typing.Tuple[int, int]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/util.py#L95-L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.util.find_valid_answer_spans" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds a list of token spans in <code class="docutils literal"><span class="pre">passage_tokens</span></code> that match the given <code class="docutils literal"><span class="pre">answer_texts</span></code>.  This
+tries to find all spans that would evaluate to correct given the SQuAD and TriviaQA official
+evaluation scripts, which do some normalization of the input text.</p>
+<p>Note that this could return duplicate spans!  The caller is expected to be able to handle
+possible duplicates (as already happens in the SQuAD dev set, for instance).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.util.make_reading_comprehension_instance">
+<code class="descclassname">allennlp.data.dataset_readers.reading_comprehension.util.</code><code class="descname">make_reading_comprehension_instance</code><span class="sig-paren">(</span><em>question_tokens: typing.List[allennlp.data.tokenizers.token.Token], passage_tokens: typing.List[allennlp.data.tokenizers.token.Token], token_indexers: typing.Dict[str, allennlp.data.token_indexers.token_indexer.TokenIndexer], passage_text: str, token_spans: typing.List[typing.Tuple[int, int]] = None, answer_texts: typing.List[str] = None, additional_metadata: typing.Dict[str, typing.Any] = None</em><span class="sig-paren">)</span> &#x2192; allennlp.data.instance.Instance<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/util.py#L136-L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.util.make_reading_comprehension_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a question, a passage, and an optional answer (or answers) to an <code class="docutils literal"><span class="pre">Instance</span></code> for use
+in a reading comprehension model.</p>
+<p>Creates an <code class="docutils literal"><span class="pre">Instance</span></code> with at least these fields: <code class="docutils literal"><span class="pre">question</span></code> and <code class="docutils literal"><span class="pre">passage</span></code>, both
+<code class="docutils literal"><span class="pre">TextFields</span></code>; and <code class="docutils literal"><span class="pre">metadata</span></code>, a <code class="docutils literal"><span class="pre">MetadataField</span></code>.  Additionally, if both <code class="docutils literal"><span class="pre">answer_texts</span></code>
+and <code class="docutils literal"><span class="pre">char_span_starts</span></code> are given, the <code class="docutils literal"><span class="pre">Instance</span></code> has <code class="docutils literal"><span class="pre">span_start</span></code> and <code class="docutils literal"><span class="pre">span_end</span></code>
+fields, which are both <code class="docutils literal"><span class="pre">IndexFields</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>question_tokens</strong> : <code class="docutils literal"><span class="pre">List[Token]</span></code></p>
+<blockquote>
+<div><p>An already-tokenized question.</p>
+</div></blockquote>
+<p><strong>passage_tokens</strong> : <code class="docutils literal"><span class="pre">List[Token]</span></code></p>
+<blockquote>
+<div><p>An already-tokenized passage that contains the answer to the given question.</p>
+</div></blockquote>
+<p><strong>token_indexers</strong> : <code class="docutils literal"><span class="pre">Dict[str,</span> <span class="pre">TokenIndexer]</span></code></p>
+<blockquote>
+<div><p>Determines how the question and passage <code class="docutils literal"><span class="pre">TextFields</span></code> will be converted into tensors that
+get input to a model.  See <code class="xref py py-class docutils literal"><span class="pre">TokenIndexer</span></code>.</p>
+</div></blockquote>
+<p><strong>passage_text</strong> : <code class="docutils literal"><span class="pre">str</span></code></p>
+<blockquote>
+<div><p>The original passage text.  We need this so that we can recover the actual span from the
+original passage that the model predicts as the answer to the question.  This is used in
+official evaluation scripts.</p>
+</div></blockquote>
+<p><strong>token_spans</strong> : <code class="docutils literal"><span class="pre">List[Tuple[int,</span> <span class="pre">int]]</span></code>, optional</p>
+<blockquote>
+<div><p>Indices into <code class="docutils literal"><span class="pre">passage_tokens</span></code> to use as the answer to the question for training.  This is
+a list because there might be several possible correct answer spans in the passage.
+Currently, we just select the most frequent span in this list (i.e., SQuAD has multiple
+annotations on the dev set; this will select the span that the most annotators gave as
+correct).</p>
+</div></blockquote>
+<p><strong>answer_texts</strong> : <code class="docutils literal"><span class="pre">List[str]</span></code>, optional</p>
+<blockquote>
+<div><p>All valid answer strings for the given question.  In SQuAD, e.g., the training set has
+exactly one answer per question, but the dev and test sets have several.  TriviaQA has many
+possible answers, which are the aliases for the known correct entity.  This is put into the
+metadata for use with official evaluation scripts, but not used anywhere else.</p>
+</div></blockquote>
+<p><strong>additional_metadata</strong> : <code class="docutils literal"><span class="pre">Dict[str,</span> <span class="pre">Any]</span></code>, optional</p>
+<blockquote class="last">
+<div><p>The constructed <code class="docutils literal"><span class="pre">metadata</span></code> field will by default contain <code class="docutils literal"><span class="pre">original_passage</span></code>,
+<code class="docutils literal"><span class="pre">token_offsets</span></code>, and <code class="docutils literal"><span class="pre">answer_texts</span></code> keys.  If you want any other metadata to be
+associated with each instance, you can pass that in here.  This dictionary will get added
+to the <code class="docutils literal"><span class="pre">metadata</span></code> dictionary we already construct.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.data.dataset_readers.reading_comprehension.util.normalize_text">
+<code class="descclassname">allennlp.data.dataset_readers.reading_comprehension.util.</code><code class="descname">normalize_text</code><span class="sig-paren">(</span><em>text: str</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/dataset_readers/reading_comprehension/util.py#L22-L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.dataset_readers.reading_comprehension.util.normalize_text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs a normalization that is very similar to that done by the normalization functions in
+SQuAD and TriviaQA.</p>
+<p>This involves splitting and rejoining the text, and could be a somewhat expensive operation.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="allennlp.data.dataset_readers.semantic_role_labeling.html" class="btn btn-neutral float-right" title="allennlp.data.dataset_readers.semantic_role_labeling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="allennlp.data.dataset_readers.language_modeling.html" class="btn btn-neutral" title="allennlp.data.dataset_readers.language_modeling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Allen Institute for Artificial Intelligence.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>
