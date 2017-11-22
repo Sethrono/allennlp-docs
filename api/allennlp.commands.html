@@ -38,7 +38,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
-        <link rel="next" title="allennlp.commands.evaluate" href="allennlp.commands.evaluate.html"/>
+        <link rel="next" title="allennlp.commands.subcommand" href="allennlp.commands.subcommand.html"/>
         <link rel="prev" title="Home" href="../index.html"/> 
 
   
@@ -98,6 +98,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -122,6 +123,7 @@
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -143,6 +145,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -171,6 +174,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -275,6 +280,7 @@ you&#8217;ll need to make your own script which imports them and then
 calls <code class="docutils literal"><span class="pre">main()</span></code>.</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -283,10 +289,10 @@ calls <code class="docutils literal"><span class="pre">main()</span></code>.</p>
 </div>
 <span class="target" id="module-allennlp.commands"></span><dl class="function">
 <dt id="allennlp.commands.main">
-<code class="descclassname">allennlp.commands.</code><code class="descname">main</code><span class="sig-paren">(</span><em>prog: str = None</em>, <em>model_overrides: typing.Dict[str</em>, <em>str] = {}</em>, <em>predictor_overrides: typing.Dict[str</em>, <em>str] = {}</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/commands.py#L26-L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.commands.main" title="Permalink to this definition">¶</a></dt>
-<dd><p>The :mod:<code class="docutils literal"><span class="pre">allennlp.run</span></code> command only knows about the registered classes
+<code class="descclassname">allennlp.commands.</code><code class="descname">main</code><span class="sig-paren">(</span><em>prog: str = None</em>, <em>model_overrides: typing.Dict[str</em>, <em>str] = {}</em>, <em>predictor_overrides: typing.Dict[str</em>, <em>str] = {}</em>, <em>subcommand_overrides: typing.Dict[str</em>, <em>allennlp.commands.subcommand.Subcommand] = {}</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/commands.py#L28-L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.commands.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="xref py py-mod docutils literal"><span class="pre">run</span></code> command only knows about the registered classes
 in the <code class="docutils literal"><span class="pre">allennlp</span></code> codebase. In particular, once you start creating your own
-<code class="docutils literal"><span class="pre">Model``s</span> <span class="pre">and</span> <span class="pre">so</span> <span class="pre">forth,</span> <span class="pre">it</span> <span class="pre">won't</span> <span class="pre">work</span> <span class="pre">for</span> <span class="pre">them.</span> <span class="pre">However,</span> <span class="pre">``allennlp.run</span></code> is
+<code class="docutils literal"><span class="pre">Model</span></code> s and so forth, it won&#8217;t work for them. However, <code class="docutils literal"><span class="pre">allennlp.run</span></code> is
 simply a wrapper around this function. To use the command line interface with your
 own custom classes, just create your own script that imports all of the classes you want
 and then calls <code class="docutils literal"><span class="pre">main()</span></code>.</p>
@@ -307,7 +313,7 @@ defined above. If you&#8217;d like to add more or use different ones, the
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="allennlp.commands.evaluate.html" class="btn btn-neutral float-right" title="allennlp.commands.evaluate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="allennlp.commands.subcommand.html" class="btn btn-neutral float-right" title="allennlp.commands.subcommand" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="Home" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -123,6 +124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -144,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -172,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -262,6 +267,8 @@ accuracy or F1 score.</p>
 <li><a class="reference internal" href="#f1-measure"><span class="std std-ref">F1Measure</span></a></li>
 <li><a class="reference internal" href="#span-based-f1-measure"><span class="std std-ref">SpanBasedF1Measure</span></a></li>
 <li><a class="reference internal" href="#squad-em-and-f1"><span class="std std-ref">SquadEmAndF1</span></a></li>
+<li><a class="reference internal" href="#mention-recall"><span class="std std-ref">MentionRecall</span></a></li>
+<li><a class="reference internal" href="#conll-coref-scores"><span class="std std-ref">ConllCorefScores</span></a></li>
 </ul>
 <span class="target" id="module-allennlp.training.metrics.metric"><span id="metric"></span></span><dl class="class">
 <dt id="allennlp.training.metrics.metric.Metric">
@@ -506,6 +513,115 @@ evaluation script.</p>
 <code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/squad_em_and_f1.py#L55-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.squad_em_and_f1.SquadEmAndF1.reset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reset any accumulators or internal state.</p>
 </dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.mention_recall"><span id="mention-recall"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.mention_recall.MentionRecall">
+<em class="property">class </em><code class="descclassname">allennlp.training.metrics.mention_recall.</code><code class="descname">MentionRecall</code> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/mention_recall.py#L10-L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.mention_recall.MentionRecall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<dl class="method">
+<dt id="allennlp.training.metrics.mention_recall.MentionRecall.get_metric">
+<code class="descname">get_metric</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; float<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/mention_recall.py#L27-L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.mention_recall.MentionRecall.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and return the metric. Optionally also call <code class="xref py py-func docutils literal"><span class="pre">self.reset()</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.mention_recall.MentionRecall.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/mention_recall.py#L37-L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.mention_recall.MentionRecall.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.training.metrics.conll_coref_scores"><span id="conll-coref-scores"></span></span><dl class="class">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores">
+<em class="property">class </em><code class="descclassname">allennlp.training.metrics.conll_coref_scores.</code><code class="descname">ConllCorefScores</code> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L11-L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
+<dl class="staticmethod">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_gold_clusters">
+<em class="property">static </em><code class="descname">get_gold_clusters</code><span class="sig-paren">(</span><em>gold_clusters</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L41-L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_gold_clusters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_metric">
+<code class="descname">get_metric</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Tuple[[float, float], float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L28-L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_metric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute and return the metric. Optionally also call <code class="xref py py-func docutils literal"><span class="pre">self.reset()</span></code>.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_predicted_clusters">
+<em class="property">static </em><code class="descname">get_predicted_clusters</code><span class="sig-paren">(</span><em>top_spans</em>, <em>antecedent_indices</em>, <em>predicted_antecedents</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L50-L84"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores.get_predicted_clusters" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.ConllCorefScores.reset">
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L37-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.ConllCorefScores.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any accumulators or internal state.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer">
+<em class="property">class </em><code class="descclassname">allennlp.training.metrics.conll_coref_scores.</code><code class="descname">Scorer</code><span class="sig-paren">(</span><em>metric</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L87-L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Mostly borrowed from &lt;<a class="reference external" href="https://github.com/clarkkev/deep-coref/blob/master/evaluation.py">https://github.com/clarkkev/deep-coref/blob/master/evaluation.py</a>&gt;</p>
+<dl class="staticmethod">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.b_cubed">
+<em class="property">static </em><code class="descname">b_cubed</code><span class="sig-paren">(</span><em>clusters</em>, <em>mention_to_gold</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L131-L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.b_cubed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Averaged per-mention precision and recall.
+&lt;<a class="reference external" href="https://pdfs.semanticscholar.org/cfe3/c24695f1c14b78a5b8e95bcbd1c666140fd1.pdf">https://pdfs.semanticscholar.org/cfe3/c24695f1c14b78a5b8e95bcbd1c666140fd1.pdf</a>&gt;</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.ceafe">
+<em class="property">static </em><code class="descname">ceafe</code><span class="sig-paren">(</span><em>clusters</em>, <em>gold_clusters</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L182-L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.ceafe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the  Constrained EntityAlignment F-Measure (CEAF) for evaluating coreference.
+Gold and predicted mentions are aligned into clusterings which maximise a metric - in
+this case, the F measure between gold and predicted clusters.</p>
+<p>&lt;<a class="reference external" href="https://www.semanticscholar.org/paper/On-Coreference-Resolution-Performance-Metrics-Luo/de133c1f22d0dfe12539e25dda70f28672459b99">https://www.semanticscholar.org/paper/On-Coreference-Resolution-Performance-Metrics-Luo/de133c1f22d0dfe12539e25dda70f28672459b99</a>&gt;</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.get_f1">
+<code class="descname">get_f1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L109-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.get_f1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.get_precision">
+<code class="descname">get_precision</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L122-L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.get_precision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.get_prf">
+<code class="descname">get_prf</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L128-L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.get_prf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.get_recall">
+<code class="descname">get_recall</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L116-L120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.get_recall" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.muc">
+<em class="property">static </em><code class="descname">muc</code><span class="sig-paren">(</span><em>clusters</em>, <em>mention_to_gold</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L153-L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.muc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Counts the mentions in each predicted cluster which need to be re-allocated in
+order for each predicted cluster to be contained by the respective gold cluster.
+&lt;<a class="reference external" href="http://aclweb.org/anthology/M/M95/M95-1005.pdf">http://aclweb.org/anthology/M/M95/M95-1005.pdf</a>&gt;</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.phi4">
+<em class="property">static </em><code class="descname">phi4</code><span class="sig-paren">(</span><em>gold_clustering</em>, <em>predicted_clustering</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L173-L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.phi4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subroutine for ceafe. Computes the mention F measure between gold and
+predicted mentions in a cluster.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.training.metrics.conll_coref_scores.Scorer.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>predicted</em>, <em>gold</em>, <em>mention_to_predicted</em>, <em>mention_to_gold</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/conll_coref_scores.py#L98-L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.conll_coref_scores.Scorer.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

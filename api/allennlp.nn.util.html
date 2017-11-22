@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -123,6 +124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -144,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -172,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -252,8 +257,55 @@
 <span id="allennlp-nn-util"></span><h1>allennlp.nn.util<a class="headerlink" href="#module-allennlp.nn.util" title="Permalink to this headline">¶</a></h1>
 <p>Assorted utilities for working with neural networks in AllenNLP.</p>
 <dl class="function">
+<dt id="allennlp.nn.util.add_sentence_boundary_token_ids">
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">add_sentence_boundary_token_ids</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em>, <em>mask: torch.FloatTensor</em>, <em>sentence_begin_token: typing.Any</em>, <em>sentence_end_token: typing.Any</em><span class="sig-paren">)</span> &#x2192; typing.Tuple[torch.FloatTensor, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L772-L825"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.add_sentence_boundary_token_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add begin/end of sentence tokens to the batch of sentences.
+Given a batch of sentences with size <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps)</span></code> or
+<code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">dim)</span></code> this returns a tensor of shape
+<code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps</span> <span class="pre">+</span> <span class="pre">2)</span></code> or <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps</span> <span class="pre">+</span> <span class="pre">2,</span> <span class="pre">dim)</span></code> respectively.</p>
+<p>Returns both the new tensor and updated mask.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tensor</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code></p>
+<blockquote>
+<div><p>A tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps)</span></code> or <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">dim)</span></code></p>
+</div></blockquote>
+<p><strong>mask</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code></p>
+<blockquote>
+<div><p>A tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps)</span></code></p>
+</div></blockquote>
+<p><strong>sentence_begin_token: Any (anything that can be broadcast in torch for assignment)</strong></p>
+<blockquote>
+<div><p>For 2D input, a scalar with the &lt;S&gt; id. For 3D input, a tensor with length dim.</p>
+</div></blockquote>
+<p><strong>sentence_end_token: Any (anything that can be broadcast in torch for assignment)</strong></p>
+<blockquote>
+<div><p>For 2D input, a scalar with the &lt;/S&gt; id. For 3D input, a tensor with length dim.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tensor_with_boundary_tokens</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code></p>
+<blockquote>
+<div><p>The tensor with the appended and prepended boundary tokens. If the input was 2D,
+it has shape (batch_size, timesteps + 2) and if the input was 3D, it has shape
+(batch_size, timesteps + 2, dim).</p>
+</div></blockquote>
+<p><strong>new_mask</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code></p>
+<blockquote class="last">
+<div><p>The new mask for the tensor, taking into account the appended tokens
+marking the beginning and end of the sentence.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="allennlp.nn.util.arrays_to_variables">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">arrays_to_variables</code><span class="sig-paren">(</span><em>data_structure: typing.Dict[str, typing.Union[dict, numpy.ndarray]], cuda_device: int = -1, add_batch_dimension: bool = False, for_training: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L104-L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.arrays_to_variables" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">arrays_to_variables</code><span class="sig-paren">(</span><em>data_structure: typing.Dict[str, typing.Union[dict, numpy.ndarray]], cuda_device: int = -1, add_batch_dimension: bool = False, for_training: bool = True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L105-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.arrays_to_variables" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an (optionally) nested dictionary of arrays to Pytorch <code class="docutils literal"><span class="pre">Variables</span></code>,
 suitable for use in a computation graph.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -292,8 +344,89 @@ disables gradient computations in the graph.  This makes inference more efficien
 </dd></dl>
 
 <dl class="function">
+<dt id="allennlp.nn.util.batched_index_select">
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">batched_index_select</code><span class="sig-paren">(</span><em>target: torch.FloatTensor</em>, <em>indices: torch.LongTensor</em>, <em>flattened_indices: typing.Union[torch.LongTensor</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L636-L686"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.batched_index_select" title="Permalink to this definition">¶</a></dt>
+<dd><p>The given <cite>indices</cite> of size <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">d_1,</span> <span class="pre">...,</span> <span class="pre">d_n)</span></code> indexes into the sequence dimension
+(dimension 2) of the target, which has size <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">embedding_size)</span></code>.</p>
+<p>This function returns selected values in the target with respect to the provided indices, which
+have size <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">d_1,</span> <span class="pre">...,</span> <span class="pre">d_n,</span> <span class="pre">embedding_size)</span></code>. This can use the optionally precomputed
+<code class="xref py py-func docutils literal"><span class="pre">flattened_indices()</span></code> with size <code class="docutils literal"><span class="pre">(batch_size</span> <span class="pre">*</span> <span class="pre">d_1</span> <span class="pre">*</span> <span class="pre">...</span> <span class="pre">*</span> <span class="pre">d_n)</span></code> if given.</p>
+<p>An example use case of this function is looking up the start and end indices of spans in a
+sequence tensor. This is used in the
+<code class="xref py py-class docutils literal"><span class="pre">CoreferenceResolver</span></code>. Model to select
+contextual word representations corresponding to the start and end indices of mentions. The
+key reason this can&#8217;t be done with basic torch functions is that we want to be able to use
+look-up tensors with an arbitrary number of dimensions (for example, in the coref model,
+we don&#8217;t know a-priori how many spans we are looking up).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>target</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code>, required.</p>
+<blockquote>
+<div><p>A 3 dimensional tensor of shape (batch_size, sequence_length, embedding_size).
+This is the tensor to be indexed.</p>
+</div></blockquote>
+<p><strong>indices</strong> : <code class="docutils literal"><span class="pre">torch.LongTensor</span></code></p>
+<blockquote>
+<div><p>A tensor of shape (batch_size, ...), where each element is an index into the
+<code class="docutils literal"><span class="pre">sequence_length</span></code> dimension of the <code class="docutils literal"><span class="pre">target</span></code> tensor.</p>
+</div></blockquote>
+<p><strong>flattened_indices</strong> : Optional[torch.Tensor], optional (default = None)</p>
+<blockquote>
+<div><p>An optional tensor representing the result of calling :func:~`flatten_and_batch_shift_indices`
+on <code class="docutils literal"><span class="pre">indices</span></code>. This is helpful in the case that the indices can be flattened once and
+cached for many batch lookups.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>selected_targets</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code></p>
+<blockquote class="last">
+<div><p>A tensor with shape [indices.size(), target.size(-1)] representing the embedded indices
+extracted from the batch flattened target tensor.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.nn.util.bucket_values">
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">bucket_values</code><span class="sig-paren">(</span><em>distances: torch.FloatTensor</em>, <em>num_identity_buckets: int = 4</em>, <em>num_total_buckets: int = 10</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L733-L770"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.bucket_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Places the given values (designed for distances) into <code class="docutils literal"><span class="pre">num_total_buckets``semi-logscale</span>
+<span class="pre">buckets,</span> <span class="pre">with</span> <span class="pre">``num_identity_buckets</span></code> of these capturing single values.</p>
+<p>The default settings will bucket values into the following buckets:
+[0, 1, 2, 3, 4, 5-7, 8-15, 16-31, 32-63, 64+].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>distances</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code>, required.</p>
+<blockquote>
+<div><p>A Tensor of any size, to be bucketed.</p>
+</div></blockquote>
+<p><strong>num_identity_buckets: int, optional (default = 4).</strong></p>
+<blockquote>
+<div><p>The number of identity buckets (those only holding a single value).</p>
+</div></blockquote>
+<p><strong>num_total_buckets</strong> : int, (default = 10)</p>
+<blockquote>
+<div><p>The total number of buckets to bucket values into.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A tensor of the same shape as the input, containing the indices of the buckets</p>
+<p class="last">the values were placed in.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="allennlp.nn.util.combine_tensors">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">combine_tensors</code><span class="sig-paren">(</span><em>combination: str, tensors: typing.List[torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L457-L485"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.combine_tensors" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">combine_tensors</code><span class="sig-paren">(</span><em>combination: str, tensors: typing.List[torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L478-L506"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.combine_tensors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Combines a list of tensors using element-wise operations and concatenation, specified by a
 <code class="docutils literal"><span class="pre">combination</span></code> string.  The string refers to (1-indexed) positions in the input tensor list,
 and looks like <code class="docutils literal"><span class="pre">&quot;1,2,1+2,3-1&quot;</span></code>.</p>
@@ -315,15 +448,84 @@ string.</p>
 
 <dl class="function">
 <dt id="allennlp.nn.util.device_mapping">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">device_mapping</code><span class="sig-paren">(</span><em>cuda_device: int</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L435-L446"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.device_mapping" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">device_mapping</code><span class="sig-paren">(</span><em>cuda_device: int</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L456-L467"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.device_mapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>In order to <cite>torch.load()</cite> a GPU-trained model onto a CPU (or specific GPU),
 you have to supply a <cite>map_location</cite> function. Call this with
 the desired <cite>cuda_device</cite> to get the function that <cite>torch.load()</cite> needs.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="allennlp.nn.util.flatten_and_batch_shift_indices">
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">flatten_and_batch_shift_indices</code><span class="sig-paren">(</span><em>indices: torch.FloatTensor</em>, <em>sequence_length: int</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L592-L633"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.flatten_and_batch_shift_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a subroutine for <a class="reference internal" href="#allennlp.nn.util.batched_index_select" title="allennlp.nn.util.batched_index_select"><code class="xref py py-func docutils literal"><span class="pre">batched_index_select()</span></code></a>. The given <code class="docutils literal"><span class="pre">indices</span></code> of size
+<code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">d_1,</span> <span class="pre">...,</span> <span class="pre">d_n)</span></code> indexes into dimension 2 of a target tensor, which has size
+<code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">embedding_size)</span></code>. This function returns a vector that
+correctly indexes into the flattened target. The sequence length of the target must be
+provided to compute the appropriate offsets.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
+<span class="c1"># Sequence length of the target tensor.</span>
+<span class="n">sequence_length</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">shifted_indices</span> <span class="o">=</span> <span class="n">flatten_and_batch_shift_indices</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">sequence_length</span><span class="p">)</span>
+<span class="c1"># Indices into the second element in the batch are correctly shifted</span>
+<span class="c1"># to take into account that the target tensor will be flattened before</span>
+<span class="c1"># the indices are applied.</span>
+<span class="k">assert</span> <span class="n">shifted_indices</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>indices</strong> : <code class="docutils literal"><span class="pre">torch.LongTensor</span></code>, required.</p>
+<p><strong>sequence_length</strong> : <code class="docutils literal"><span class="pre">int</span></code>, required.</p>
+<blockquote>
+<div><p>The length of the sequence the indices index into.
+This must be the second dimension of the tensor.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>offset_indices</strong> : <code class="docutils literal"><span class="pre">torch.LongTensor</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.nn.util.flattened_index_select">
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">flattened_index_select</code><span class="sig-paren">(</span><em>target: torch.FloatTensor</em>, <em>indices: torch.LongTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L689-L718"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.flattened_index_select" title="Permalink to this definition">¶</a></dt>
+<dd><p>The given <code class="docutils literal"><span class="pre">indices</span></code> of size <code class="docutils literal"><span class="pre">(set_size,</span> <span class="pre">subset_size)</span></code> specifies subsets of the <code class="docutils literal"><span class="pre">target</span></code>
+that each of the set_size rows should select. The <cite>target</cite> has size
+<code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">embedding_size)</span></code>, and the resulting selected tensor has size
+<code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">set_size,</span> <span class="pre">subset_size,</span> <span class="pre">embedding_size)</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>target</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code>, required.</p>
+<blockquote>
+<div><p>A Tensor of shape (batch_size, sequence_length, embedding_size).</p>
+</div></blockquote>
+<p><strong>indices</strong> : <code class="docutils literal"><span class="pre">torch.LongTensor</span></code>, required.</p>
+<blockquote>
+<div><p>A LongTensor of shape (set_size, subset_size). All indices must be &lt; sequence_length
+as this tensor is an index into the sequence_length dimension of the target.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>selected</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code>, required.</p>
+<blockquote class="last">
+<div><p>A Tensor of shape (batch_size, set_size, subset_size, embedding_size).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="allennlp.nn.util.get_combined_dim">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">get_combined_dim</code><span class="sig-paren">(</span><em>combination: str, tensor_dims: typing.List[int]</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L510-L529"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.get_combined_dim" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">get_combined_dim</code><span class="sig-paren">(</span><em>combination: str, tensor_dims: typing.List[int]</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L531-L550"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.get_combined_dim" title="Permalink to this definition">¶</a></dt>
 <dd><p>For use with <a class="reference internal" href="#allennlp.nn.util.combine_tensors" title="allennlp.nn.util.combine_tensors"><code class="xref py py-func docutils literal"><span class="pre">combine_tensors()</span></code></a>.  This function computes the resultant dimension when
 calling <code class="docutils literal"><span class="pre">combine_tensors(combination,</span> <span class="pre">tensors)</span></code>, when the tensor dimension is known.  This is
 necessary for knowing the sizes of weight matrices when building models that use
@@ -350,7 +552,7 @@ that will be input to <a class="reference internal" href="#allennlp.nn.util.comb
 
 <dl class="function">
 <dt id="allennlp.nn.util.get_dropout_mask">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">get_dropout_mask</code><span class="sig-paren">(</span><em>dropout_probability: float</em>, <em>tensor_for_masking: torch.autograd.variable.Variable</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L77-L101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.get_dropout_mask" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">get_dropout_mask</code><span class="sig-paren">(</span><em>dropout_probability: float</em>, <em>tensor_for_masking: torch.autograd.variable.Variable</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L78-L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.get_dropout_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes and returns an element-wise dropout mask for a given tensor, where
 each element in the mask is dropped out with probability dropout_probability.
 Note that the mask is NOT applied to the tensor - the tensor is passed to retain
@@ -379,7 +581,7 @@ the correct CUDA tensor type for the mask.</p>
 
 <dl class="function">
 <dt id="allennlp.nn.util.get_lengths_from_binary_sequence_mask">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">get_lengths_from_binary_sequence_mask</code><span class="sig-paren">(</span><em>mask: torch.FloatTensor</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L17-L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.get_lengths_from_binary_sequence_mask" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">get_lengths_from_binary_sequence_mask</code><span class="sig-paren">(</span><em>mask: torch.FloatTensor</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L18-L34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.get_lengths_from_binary_sequence_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute sequence lengths for each batch element in a tensor using a
 binary mask.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -402,8 +604,15 @@ calculate the per-batch sequence lengths from.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="allennlp.nn.util.get_range_vector">
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">get_range_vector</code><span class="sig-paren">(</span><em>size: int</em>, <em>is_cuda: bool</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L721-L730"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.get_range_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a range vector with the desired size, starting at 0. The CUDA implementation
+is meant to avoid copy data from CPU to GPU.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="allennlp.nn.util.get_text_field_mask">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">get_text_field_mask</code><span class="sig-paren">(</span><em>text_field_tensors: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; torch.LongTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L279-L302"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.get_text_field_mask" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">get_text_field_mask</code><span class="sig-paren">(</span><em>text_field_tensors: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; torch.LongTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L280-L303"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.get_text_field_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes the dictionary of tensors produced by a <code class="docutils literal"><span class="pre">TextField</span></code> and returns a mask of shape
 <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">num_tokens)</span></code>.  This mask will be 0 where the tokens are padding, and 1
 otherwise.</p>
@@ -421,18 +630,24 @@ when doing mask manipulation, such as summing to get the lengths of sequences - 
 </dd></dl>
 
 <dl class="function">
+<dt id="allennlp.nn.util.last_dim_log_softmax">
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">last_dim_log_softmax</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em>, <em>mask: typing.Union[torch.FloatTensor</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L336-L342"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.last_dim_log_softmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a tensor with 3 or more dimensions and does a masked log softmax over the last dimension.
+We assume the tensor has shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">...,</span> <span class="pre">sequence_length)</span></code> and that the mask (if given)
+has shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="allennlp.nn.util.last_dim_softmax">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">last_dim_softmax</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em>, <em>mask: typing.Union[torch.FloatTensor</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L305-L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.last_dim_softmax" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">last_dim_softmax</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em>, <em>mask: typing.Union[torch.FloatTensor</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L327-L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.last_dim_softmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a tensor with 3 or more dimensions and does a masked softmax over the last dimension.  We
 assume the tensor has shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">...,</span> <span class="pre">sequence_length)</span></code> and that the mask (if given)
-has shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>.  We first unsqueeze and expand the mask so that it
-has the same shape as the tensor, then flatten them both to be 2D, pass them through
-<a class="reference internal" href="#allennlp.nn.util.masked_softmax" title="allennlp.nn.util.masked_softmax"><code class="xref py py-func docutils literal"><span class="pre">masked_softmax()</span></code></a>, then put the tensor back in its original shape.</p>
+has shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length)</span></code>.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="allennlp.nn.util.logsumexp">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">logsumexp</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em>, <em>dim: int = -1</em>, <em>keepdim: bool = False</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L547-L569"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.logsumexp" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">logsumexp</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em>, <em>dim: int = -1</em>, <em>keepdim: bool = False</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L568-L590"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.logsumexp" title="Permalink to this definition">¶</a></dt>
 <dd><p>A numerically stable computation of logsumexp. This is mathematically equivalent to
 <cite>tensor.exp().sum(dim, keep=keepdim).log()</cite>.  This function is typically used for summing log
 probabilities.</p>
@@ -460,7 +675,7 @@ probabilities.</p>
 
 <dl class="function">
 <dt id="allennlp.nn.util.masked_log_softmax">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">masked_log_softmax</code><span class="sig-paren">(</span><em>vector</em>, <em>mask</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L176-L190"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.masked_log_softmax" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">masked_log_softmax</code><span class="sig-paren">(</span><em>vector</em>, <em>mask</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L177-L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.masked_log_softmax" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="docutils literal"><span class="pre">torch.nn.functional.log_softmax(vector)</span></code> does not work if some elements of <code class="docutils literal"><span class="pre">vector</span></code> should be
 masked.  This performs a log_softmax on just the non-masked portions of <code class="docutils literal"><span class="pre">vector</span></code>.  Passing
 <code class="docutils literal"><span class="pre">None</span></code> in for the mask is also acceptable; you&#8217;ll just get a regular log_softmax.</p>
@@ -472,7 +687,7 @@ case, anyway, so it shouldn&#8217;t matter.</p>
 
 <dl class="function">
 <dt id="allennlp.nn.util.masked_softmax">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">masked_softmax</code><span class="sig-paren">(</span><em>vector</em>, <em>mask</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L154-L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.masked_softmax" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">masked_softmax</code><span class="sig-paren">(</span><em>vector</em>, <em>mask</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L155-L174"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.masked_softmax" title="Permalink to this definition">¶</a></dt>
 <dd><p><code class="docutils literal"><span class="pre">torch.nn.functional.softmax(vector)</span></code> does not work if some elements of <code class="docutils literal"><span class="pre">vector</span></code> should be
 masked.  This performs a softmax on just the non-masked portions of <code class="docutils literal"><span class="pre">vector</span></code>.  Passing
 <code class="docutils literal"><span class="pre">None</span></code> in for the mask is also acceptable; you&#8217;ll just get a regular softmax.</p>
@@ -484,14 +699,14 @@ that uses categorical cross-entropy loss.</p>
 
 <dl class="function">
 <dt id="allennlp.nn.util.ones_like">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">ones_like</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L449-L454"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.ones_like" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">ones_like</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L470-L475"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.ones_like" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use clone() + fill_() to make sure that a ones tensor ends up on the right
 device at runtime.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="allennlp.nn.util.replace_masked_values">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">replace_masked_values</code><span class="sig-paren">(</span><em>tensor: torch.autograd.variable.Variable</em>, <em>mask: torch.autograd.variable.Variable</em>, <em>replace_with: float</em><span class="sig-paren">)</span> &#x2192; torch.autograd.variable.Variable<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L420-L432"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.replace_masked_values" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">replace_masked_values</code><span class="sig-paren">(</span><em>tensor: torch.autograd.variable.Variable</em>, <em>mask: torch.autograd.variable.Variable</em>, <em>replace_with: float</em><span class="sig-paren">)</span> &#x2192; torch.autograd.variable.Variable<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L441-L453"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.replace_masked_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Replaces all masked values in <code class="docutils literal"><span class="pre">tensor</span></code> with <code class="docutils literal"><span class="pre">replace_with</span></code>.  <code class="docutils literal"><span class="pre">mask</span></code> must be broadcastable
 to the same shape as <code class="docutils literal"><span class="pre">tensor</span></code>. We require that <code class="docutils literal"><span class="pre">tensor.dim()</span> <span class="pre">==</span> <span class="pre">mask.dim()</span></code>, as otherwise we
 won&#8217;t know which dimensions of the mask to unsqueeze.</p>
@@ -499,7 +714,7 @@ won&#8217;t know which dimensions of the mask to unsqueeze.</p>
 
 <dl class="function">
 <dt id="allennlp.nn.util.sequence_cross_entropy_with_logits">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">sequence_cross_entropy_with_logits</code><span class="sig-paren">(</span><em>logits: torch.FloatTensor</em>, <em>targets: torch.LongTensor</em>, <em>weights: torch.FloatTensor</em>, <em>batch_average: bool = True</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L363-L417"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.sequence_cross_entropy_with_logits" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">sequence_cross_entropy_with_logits</code><span class="sig-paren">(</span><em>logits: torch.FloatTensor</em>, <em>targets: torch.LongTensor</em>, <em>weights: torch.FloatTensor</em>, <em>batch_average: bool = True</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L384-L438"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.sequence_cross_entropy_with_logits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the cross entropy loss of a sequence, weighted with respect to
 some user provided weights. Note that the weighting here is not the same as
 in the <code class="xref py py-func docutils literal"><span class="pre">torch.nn.CrossEntropyLoss()</span></code> criterion, which is weighting
@@ -541,7 +756,7 @@ or returned as a vector of losses per batch element.</p>
 
 <dl class="function">
 <dt id="allennlp.nn.util.sort_batch_by_length">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">sort_batch_by_length</code><span class="sig-paren">(</span><em>tensor: torch.autograd.variable.Variable</em>, <em>sequence_lengths: torch.autograd.variable.Variable</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L36-L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.sort_batch_by_length" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">sort_batch_by_length</code><span class="sig-paren">(</span><em>tensor: torch.autograd.variable.Variable</em>, <em>sequence_lengths: torch.autograd.variable.Variable</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L37-L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.sort_batch_by_length" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sort a batch first tensor by some specified lengths.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -579,7 +794,7 @@ we want to sort by.</p>
 
 <dl class="function">
 <dt id="allennlp.nn.util.viterbi_decode">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">viterbi_decode</code><span class="sig-paren">(</span><em>tag_sequence: torch.FloatTensor, transition_matrix: torch.FloatTensor, tag_observations: typing.Union[typing.List[int], NoneType] = None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L193-L276"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.viterbi_decode" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">viterbi_decode</code><span class="sig-paren">(</span><em>tag_sequence: torch.FloatTensor, transition_matrix: torch.FloatTensor, tag_observations: typing.Union[typing.List[int], NoneType] = None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L194-L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.viterbi_decode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform Viterbi decoding in log space over a sequence given a transition matrix
 specifying pairwise (transition) potentials between tags and a matrix of shape
 (sequence_length, num_tags) specifying unary potentials for possible tags per
@@ -626,7 +841,7 @@ lies with the user.</p>
 
 <dl class="function">
 <dt id="allennlp.nn.util.weighted_sum">
-<code class="descclassname">allennlp.nn.util.</code><code class="descname">weighted_sum</code><span class="sig-paren">(</span><em>matrix: torch.FloatTensor</em>, <em>attention: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L324-L360"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.weighted_sum" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">weighted_sum</code><span class="sig-paren">(</span><em>matrix: torch.FloatTensor</em>, <em>attention: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L345-L381"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.weighted_sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a matrix of vectors and a set of weights over the rows in the matrix (which we call an
 &#8220;attention&#8221; vector), and returns a weighted sum of the rows in the matrix.  This is the typical
 computation performed after an attention mechanism.</p>

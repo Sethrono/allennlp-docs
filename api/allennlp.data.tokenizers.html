@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -123,6 +124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -144,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -172,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -636,18 +641,18 @@ first check to be sure the token isn&#8217;t in our list of special cases.</p>
 
 <dl class="class">
 <dt id="allennlp.data.tokenizers.word_splitter.SpacyWordSplitter">
-<em class="property">class </em><code class="descclassname">allennlp.data.tokenizers.word_splitter.</code><code class="descname">SpacyWordSplitter</code><span class="sig-paren">(</span><em>language: str = 'en'</em>, <em>pos_tags: bool = False</em>, <em>parse: bool = False</em>, <em>ner: bool = False</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/tokenizers/word_splitter.py#L161-L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.tokenizers.word_splitter.SpacyWordSplitter" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.data.tokenizers.word_splitter.</code><code class="descname">SpacyWordSplitter</code><span class="sig-paren">(</span><em>language: str = 'en_core_web_sm'</em>, <em>pos_tags: bool = False</em>, <em>parse: bool = False</em>, <em>ner: bool = False</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/tokenizers/word_splitter.py#L161-L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.tokenizers.word_splitter.SpacyWordSplitter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.data.tokenizers.word_splitter.WordSplitter" title="allennlp.data.tokenizers.word_splitter.WordSplitter"><code class="xref py py-class docutils literal"><span class="pre">allennlp.data.tokenizers.word_splitter.WordSplitter</span></code></a></p>
 <p>A <code class="docutils literal"><span class="pre">WordSplitter</span></code> that uses spaCy&#8217;s tokenizer.  It&#8217;s fast and reasonable - this is the
 recommended <code class="docutils literal"><span class="pre">WordSplitter</span></code>.</p>
 <dl class="classmethod">
 <dt id="allennlp.data.tokenizers.word_splitter.SpacyWordSplitter.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.data.tokenizers.word_splitter.WordSplitter<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/tokenizers/word_splitter.py#L195-L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.tokenizers.word_splitter.SpacyWordSplitter.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.data.tokenizers.word_splitter.WordSplitter<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/tokenizers/word_splitter.py#L177-L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.tokenizers.word_splitter.SpacyWordSplitter.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.tokenizers.word_splitter.SpacyWordSplitter.split_words">
-<code class="descname">split_words</code><span class="sig-paren">(</span><em>sentence: str</em><span class="sig-paren">)</span> &#x2192; typing.List[allennlp.data.tokenizers.token.Token]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/tokenizers/word_splitter.py#L177-L179"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.tokenizers.word_splitter.SpacyWordSplitter.split_words" title="Permalink to this definition">¶</a></dt>
+<code class="descname">split_words</code><span class="sig-paren">(</span><em>sentence: str</em><span class="sig-paren">)</span> &#x2192; typing.List[allennlp.data.tokenizers.token.Token]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/tokenizers/word_splitter.py#L173-L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.tokenizers.word_splitter.SpacyWordSplitter.split_words" title="Permalink to this definition">¶</a></dt>
 <dd><p>Splits <code class="docutils literal"><span class="pre">sentence</span></code> into a list of <code class="xref py py-class docutils literal"><span class="pre">Token</span></code> objects.</p>
 </dd></dl>
 

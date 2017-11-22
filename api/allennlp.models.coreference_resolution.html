@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>allennlp.models.decomposable_attention &mdash; AllenNLP 0.0 documentation</title>
+  <title>allennlp.models.coreference_resolution &mdash; AllenNLP 0.0 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
         <link rel="up" title="allennlp.models" href="allennlp.models.html"/>
-        <link rel="next" title="allennlp.models.encoder_decoders" href="allennlp.models.encoder_decoders.html"/>
-        <link rel="prev" title="allennlp.models.crf_tagger" href="allennlp.models.crf_tagger.html"/> 
+        <link rel="next" title="allennlp.models.semantic_role_labeler" href="allennlp.models.semantic_role_labeler.html"/>
+        <link rel="prev" title="allennlp.models.reading_comprehension" href="allennlp.models.reading_comprehension.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -143,10 +143,10 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.model.html">allennlp.models.model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.archival.html">allennlp.models.archival</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.crf_tagger.html">allennlp.models.crf_tagger</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.models.decomposable_attention</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -234,13 +234,13 @@
         
           <li><a href="allennlp.models.html">allennlp.models</a> &raquo;</li>
         
-      <li>allennlp.models.decomposable_attention</li>
+      <li>allennlp.models.coreference_resolution</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/allennlp.models.decomposable_attention.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/allennlp.models.coreference_resolution.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -253,23 +253,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-allennlp.models.decomposable_attention">
-<span id="allennlp-models-decomposable-attention"></span><h1>allennlp.models.decomposable_attention<a class="headerlink" href="#module-allennlp.models.decomposable_attention" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="allennlp.models.decomposable_attention.DecomposableAttention">
-<em class="property">class </em><code class="descclassname">allennlp.models.decomposable_attention.</code><code class="descname">DecomposableAttention</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>attend_feedforward: allennlp.modules.feedforward.FeedForward</em>, <em>similarity_function: allennlp.modules.similarity_functions.similarity_function.SimilarityFunction</em>, <em>compare_feedforward: allennlp.modules.feedforward.FeedForward</em>, <em>aggregate_feedforward: allennlp.modules.feedforward.FeedForward</em>, <em>premise_encoder: typing.Union[allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>NoneType] = None</em>, <em>hypothesis_encoder: typing.Union[allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>NoneType] = None</em>, <em>initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em>regularizer: typing.Union[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/decomposable_attention.py#L17-L216"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.decomposable_attention.DecomposableAttention" title="Permalink to this definition">¶</a></dt>
+  <div class="section" id="module-allennlp.models.coreference_resolution">
+<span id="allennlp-models-coreference-resolution"></span><h1>allennlp.models.coreference_resolution<a class="headerlink" href="#module-allennlp.models.coreference_resolution" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-allennlp.models.coreference_resolution.coref"></span><dl class="class">
+<dt id="allennlp.models.coreference_resolution.coref.CoreferenceResolver">
+<em class="property">class </em><code class="descclassname">allennlp.models.coreference_resolution.coref.</code><code class="descname">CoreferenceResolver</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>context_layer: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>mention_feedforward: allennlp.modules.feedforward.FeedForward</em>, <em>antecedent_feedforward: allennlp.modules.feedforward.FeedForward</em>, <em>feature_size: int</em>, <em>max_span_width: int</em>, <em>spans_per_word: float</em>, <em>max_antecedents: int</em>, <em>lexical_dropout: float = 0.2</em>, <em>initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em>regularizer: typing.Union[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/coreference_resolution/coref.py#L23-L796"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.coreference_resolution.coref.CoreferenceResolver" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">allennlp.models.model.Model</span></code></a></p>
-<p>This <code class="docutils literal"><span class="pre">Model</span></code> implements the Decomposable Attention model described in <a class="reference external" href="https://www.semanticscholar.org/paper/A-Decomposable-Attention-Model-for-Natural-Languag-Parikh-T%C3%A4ckstr%C3%B6m/07a9478e87a8304fc3267fa16e83e9f3bbd98b27">&#8220;A Decomposable
-Attention Model for Natural Language Inference&#8221;</a>
-by Parikh et al., 2016, with some optional enhancements before the decomposable attention
-actually happens.  Parikh&#8217;s original model allowed for computing an &#8220;intra-sentence&#8221; attention
-before doing the decomposable entailment step.  We generalize this to any
-<code class="xref py py-class docutils literal"><span class="pre">Seq2SeqEncoder</span></code> that can be applied to the premise and/or the hypothesis before
-computing entailment.</p>
-<p>The basic outline of this model is to get an embedded representation of each word in the
-premise and hypothesis, align words between the two, compare the aligned phrases, and make a
-final entailment decision based on this aggregated comparison.  Each step in this process uses
-a feedforward network to modify the representation.</p>
+<p>This <code class="docutils literal"><span class="pre">Model</span></code> implements the coreference resolution model described &#8220;End-to-end Neural
+Coreference Resolution&#8221;
+&lt;<a class="reference external" href="https://www.semanticscholar.org/paper/End-to-end-Neural-Coreference-Resolution-Lee-He/3f2114893dc44eacac951f148fbff142ca200e83">https://www.semanticscholar.org/paper/End-to-end-Neural-Coreference-Resolution-Lee-He/3f2114893dc44eacac951f148fbff142ca200e83</a>&gt;
+by Lee et al., 2017.
+The basic outline of this model is to get an embedded representation of each span in the
+document. These span representations are scored and used to prune away spans that are unlikely
+to occur in a coreference cluster. For the remaining spans, the model decides which antecedent
+span (if any) they are coreferent with. The resulting coreference links, after applying
+transitivity, imply a clustering of the spans in the document.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -277,39 +275,42 @@ a feedforward network to modify the representation.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>vocab</strong> : <code class="docutils literal"><span class="pre">Vocabulary</span></code></p>
 <p><strong>text_field_embedder</strong> : <code class="docutils literal"><span class="pre">TextFieldEmbedder</span></code></p>
 <blockquote>
-<div><p>Used to embed the <code class="docutils literal"><span class="pre">premise</span></code> and <code class="docutils literal"><span class="pre">hypothesis</span></code> <code class="docutils literal"><span class="pre">TextFields</span></code> we get as input to the
-model.</p>
+<div><p>Used to embed the <code class="docutils literal"><span class="pre">text</span></code> <code class="docutils literal"><span class="pre">TextField</span></code> we get as input to the model.</p>
 </div></blockquote>
-<p><strong>attend_feedforward</strong> : <code class="docutils literal"><span class="pre">FeedForward</span></code></p>
+<p><strong>context_layer</strong> : <code class="docutils literal"><span class="pre">Seq2SeqEncoder</span></code></p>
 <blockquote>
-<div><p>This feedforward network is applied to the encoded sentence representations before the
-similarity matrix is computed between words in the premise and words in the hypothesis.</p>
+<div><p>This layer incorporates contextual information for each word in the document.</p>
 </div></blockquote>
-<p><strong>similarity_function</strong> : <code class="docutils literal"><span class="pre">SimilarityFunction</span></code></p>
+<p><strong>mention_feedforward</strong> : <code class="docutils literal"><span class="pre">FeedForward</span></code></p>
 <blockquote>
-<div><p>This is the similarity function used when computing the similarity matrix between words in
-the premise and words in the hypothesis.</p>
+<div><p>This feedforward network is applied to the span representations which is then scored
+by a linear layer.</p>
 </div></blockquote>
-<p><strong>compare_feedforward</strong> : <code class="docutils literal"><span class="pre">FeedForward</span></code></p>
+<p><strong>antecedent_feedforward: ``FeedForward``</strong></p>
 <blockquote>
-<div><p>This feedforward network is applied to the aligned premise and hypothesis representations,
-individually.</p>
+<div><p>This feedforward network is applied to pairs of span representation, along with any
+pairwise features, which is then scored by a linear layer.</p>
 </div></blockquote>
-<p><strong>aggregate_feedforward</strong> : <code class="docutils literal"><span class="pre">FeedForward</span></code></p>
+<p><strong>feature_size: ``int``</strong></p>
 <blockquote>
-<div><p>This final feedforward network is applied to the concatenated, summed result of the
-<code class="docutils literal"><span class="pre">compare_feedforward</span></code> network, and its output is used as the entailment class logits.</p>
+<div><p>The embedding size for all the embedded features, such as distances or span widths.</p>
 </div></blockquote>
-<p><strong>premise_encoder</strong> : <code class="docutils literal"><span class="pre">Seq2SeqEncoder</span></code>, optional (default=``None``)</p>
+<p><strong>max_span_width: ``int``</strong></p>
 <blockquote>
-<div><p>After embedding the premise, we can optionally apply an encoder.  If this is <code class="docutils literal"><span class="pre">None</span></code>, we
-will do nothing.</p>
+<div><p>The maximum width of candidate spans.</p>
 </div></blockquote>
-<p><strong>hypothesis_encoder</strong> : <code class="docutils literal"><span class="pre">Seq2SeqEncoder</span></code>, optional (default=``None``)</p>
+<p><strong>spans_per_word: float, required.</strong></p>
 <blockquote>
-<div><p>After embedding the hypothesis, we can optionally apply an encoder.  If this is <code class="docutils literal"><span class="pre">None</span></code>,
-we will use the <code class="docutils literal"><span class="pre">premise_encoder</span></code> for the encoding (doing nothing if <code class="docutils literal"><span class="pre">premise_encoder</span></code>
-is also <code class="docutils literal"><span class="pre">None</span></code>).</p>
+<div><p>A multiplier between zero and one which controls what percentage of candidate mention
+spans we retain with respect to the number of words in the document.</p>
+</div></blockquote>
+<p><strong>max_antecedents: int, required.</strong></p>
+<blockquote>
+<div><p>For each mention which survives the pruning stage, we consider this many antecedents.</p>
+</div></blockquote>
+<p><strong>lexical_dropout: ``int``</strong></p>
+<blockquote>
+<div><p>The probability of dropping out dimensions of the embedded text.</p>
 </div></blockquote>
 <p><strong>initializer</strong> : <code class="docutils literal"><span class="pre">InitializerApplicator</span></code>, optional (default=``InitializerApplicator()``)</p>
 <blockquote>
@@ -324,38 +325,82 @@ is also <code class="docutils literal"><span class="pre">None</span></code>).</p
 </tbody>
 </table>
 <dl class="method">
-<dt id="allennlp.models.decomposable_attention.DecomposableAttention.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>premise: typing.Dict[str, torch.LongTensor], hypothesis: typing.Dict[str, torch.LongTensor], label: torch.IntTensor = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/decomposable_attention.py#L99-L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.decomposable_attention.DecomposableAttention.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="allennlp.models.coreference_resolution.coref.CoreferenceResolver.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/coreference_resolution/coref.py#L314-L390"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.coreference_resolution.coref.CoreferenceResolver.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the list of spans and predicted antecedent indices into clusters
+of spans for each element in the batch.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>output_dict</strong> : <code class="docutils literal"><span class="pre">Dict[str,</span> <span class="pre">torch.Tensor]</span></code>, required.</p>
+<blockquote>
+<div><p>The result of calling <a class="reference internal" href="#allennlp.models.coreference_resolution.coref.CoreferenceResolver.forward" title="allennlp.models.coreference_resolution.coref.CoreferenceResolver.forward"><code class="xref py py-func docutils literal"><span class="pre">forward()</span></code></a> on an instance or batch of instances.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The same output dictionary, but with an additional <code class="docutils literal"><span class="pre">clusters</span></code> key:</p>
+<p><strong>clusters</strong> : <code class="docutils literal"><span class="pre">List[List[List[Tuple[int,</span> <span class="pre">int]]]]</span></code></p>
+<blockquote class="last">
+<div><p>A nested list, representing, for each instance in the batch, the list of clusters,
+which are in turn comprised of a list of (start, end) inclusive spans into the
+original document.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.models.coreference_resolution.coref.CoreferenceResolver.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>text: typing.Dict[str, torch.LongTensor], span_starts: torch.IntTensor, span_ends: torch.IntTensor, span_labels: torch.IntTensor = None, metadata: typing.List[typing.Dict[str, typing.Any]] = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/coreference_resolution/coref.py#L104-L312"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.coreference_resolution.coref.CoreferenceResolver.forward" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>premise</strong> : Dict[str, torch.LongTensor]</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>text</strong> : <code class="docutils literal"><span class="pre">Dict[str,</span> <span class="pre">torch.LongTensor]</span></code>, required.</p>
 <blockquote>
-<div><p>From a <code class="docutils literal"><span class="pre">TextField</span></code></p>
+<div><p>The output of a <code class="docutils literal"><span class="pre">TextField</span></code> representing the text of
+the document.</p>
 </div></blockquote>
-<p><strong>hypothesis</strong> : Dict[str, torch.LongTensor]</p>
+<p><strong>span_starts</strong> : <code class="docutils literal"><span class="pre">torch.IntTensor</span></code>, required.</p>
 <blockquote>
-<div><p>From a <code class="docutils literal"><span class="pre">TextField</span></code></p>
+<div><p>A tensor of shape (batch_size, num_spans, 1), representing the start indices of
+candidate spans for mentions. Comes from a <code class="docutils literal"><span class="pre">ListField[IndexField]</span></code> of indices into
+the text of the document.</p>
 </div></blockquote>
-<p><strong>label</strong> : torch.IntTensor, optional (default = None)</p>
+<p><strong>span_ends</strong> : <code class="docutils literal"><span class="pre">torch.IntTensor</span></code>, required.</p>
 <blockquote>
-<div><p>From a <code class="docutils literal"><span class="pre">LabelField</span></code></p>
+<div><p>A tensor of shape (batch_size, num_spans, 1), representing the end indices of
+candidate spans for mentions. Comes from a <code class="docutils literal"><span class="pre">ListField[IndexField]</span></code> of indices into
+the text of the document.</p>
+</div></blockquote>
+<p><strong>span_labels</strong> : <code class="docutils literal"><span class="pre">torch.IntTensor</span></code>, optional (default = None)</p>
+<blockquote>
+<div><p>A tensor of shape (batch_size, num_spans), representing the cluster ids
+of each span, or -1 for those which do not appear in any clusters.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">An output dictionary consisting of:</p>
-<p><strong>label_logits</strong> : torch.FloatTensor</p>
+<p><strong>top_spans</strong> : <code class="docutils literal"><span class="pre">torch.IntTensor</span></code></p>
 <blockquote>
-<div><p>A tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">num_labels)</span></code> representing unnormalised log
-probabilities of the entailment label.</p>
+<div><p>A tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">num_spans_to_keep,</span> <span class="pre">2)</span></code> representing
+the start and end word indices of the top spans that survived the pruning stage.</p>
 </div></blockquote>
-<p><strong>label_probs</strong> : torch.FloatTensor</p>
+<p><strong>antecedent_indices</strong> : <code class="docutils literal"><span class="pre">torch.IntTensor</span></code></p>
 <blockquote>
-<div><p>A tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">num_labels)</span></code> representing probabilities of the
-entailment label.</p>
+<div><p>A tensor of shape <code class="docutils literal"><span class="pre">(num_spans_to_keep,</span> <span class="pre">max_antecedents)</span></code> representing for each top span
+the index (with respect to top_spans) of the possible antecedents the model considered.</p>
 </div></blockquote>
-<p><strong>loss</strong> : torch.FloatTensor, optional</p>
+<p><strong>predicted_antecedents</strong> : <code class="docutils literal"><span class="pre">torch.IntTensor</span></code></p>
+<blockquote>
+<div><p>A tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">num_spans_to_keep)</span></code> representing, for each top span, the
+index (with respect to antecedent_indices) of the most likely antecedent. -1 means there
+was no predicted link.</p>
+</div></blockquote>
+<p><strong>loss</strong> : <code class="docutils literal"><span class="pre">torch.FloatTensor</span></code>, optional</p>
 <blockquote class="last">
 <div><p>A scalar loss to be optimised.</p>
 </div></blockquote>
@@ -366,14 +411,23 @@ entailment label.</p>
 </dd></dl>
 
 <dl class="classmethod">
-<dt id="allennlp.models.decomposable_attention.DecomposableAttention.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.decomposable_attention.DecomposableAttention<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/decomposable_attention.py#L183-L216"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.decomposable_attention.DecomposableAttention.from_params" title="Permalink to this definition">¶</a></dt>
+<dt id="allennlp.models.coreference_resolution.coref.CoreferenceResolver.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.coreference_resolution.coref.CoreferenceResolver<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/coreference_resolution/coref.py#L763-L796"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.coreference_resolution.coref.CoreferenceResolver.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="allennlp.models.decomposable_attention.DecomposableAttention.get_metrics">
-<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/decomposable_attention.py#L178-L181"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.decomposable_attention.DecomposableAttention.get_metrics" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="allennlp.models.coreference_resolution.coref.CoreferenceResolver.get_metrics">
+<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/coreference_resolution/coref.py#L392-L400"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.coreference_resolution.coref.CoreferenceResolver.get_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of metrics. This method will be called by
+<code class="xref py py-class docutils literal"><span class="pre">allennlp.training.Trainer</span></code> in order to compute and use model metrics for early
+stopping and model serialisation.  We return an empty dictionary here rather than raising
+as it is not required to implement metrics for a new model.  A boolean <cite>reset</cite> parameter is
+passed, as frequently a metric accumulator will have some state which should be reset
+between epochs. This is also compatible with <code class="xref py py-class docutils literal"> <span class="pre">Metrics</span>
+<span class="pre">should</span> <span class="pre">be</span> <span class="pre">populated</span> <span class="pre">during</span> <span class="pre">the</span> <span class="pre">call</span> <span class="pre">to</span> <span class="pre">``forward`</span></code>, with the
+<code class="xref py py-class docutils literal"><span class="pre">Metric</span></code> handling the accumulation of the metric until this
+method is called.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -389,10 +443,10 @@ entailment label.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="allennlp.models.encoder_decoders.html" class="btn btn-neutral float-right" title="allennlp.models.encoder_decoders" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="allennlp.models.semantic_role_labeler.html" class="btn btn-neutral float-right" title="allennlp.models.semantic_role_labeler" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="allennlp.models.crf_tagger.html" class="btn btn-neutral" title="allennlp.models.crf_tagger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="allennlp.models.reading_comprehension.html" class="btn btn-neutral" title="allennlp.models.reading_comprehension" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

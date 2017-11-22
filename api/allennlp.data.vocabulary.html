@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -120,8 +121,10 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -143,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -171,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -253,7 +259,7 @@
 out-of-vocabulary token.</p>
 <dl class="class">
 <dt id="allennlp.data.vocabulary.Vocabulary">
-<em class="property">class </em><code class="descclassname">allennlp.data.vocabulary.</code><code class="descname">Vocabulary</code><span class="sig-paren">(</span><em>counter: typing.Dict[str</em>, <em>typing.Dict[str</em>, <em>int]] = None</em>, <em>min_count: int = 1</em>, <em>max_vocab_size: typing.Union[int</em>, <em>typing.Dict[str</em>, <em>int]] = None</em>, <em>non_padded_namespaces: typing.Sequence[str] = ('*tags'</em>, <em>'*labels')</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L92-L363"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.data.vocabulary.</code><code class="descname">Vocabulary</code><span class="sig-paren">(</span><em>counter: typing.Dict[str, typing.Dict[str, int]] = None, min_count: int = 1, max_vocab_size: typing.Union[int, typing.Dict[str, int]] = None, non_padded_namespaces: typing.Sequence[str] = ('*tags', '*labels'), pretrained_files: typing.Union[typing.Dict[str, str], NoneType] = None, only_include_pretrained_words: bool = False</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L102-L409"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>A Vocabulary maps strings to integers, allowing for strings to be mapped to an
 out-of-vocabulary token.</p>
@@ -290,7 +296,7 @@ to be no larger than this.  If you specify a dictionary, then each namespace in 
 of <code class="docutils literal"><span class="pre">None</span></code>, which means no cap on the vocabulary size.</p>
 </div></blockquote>
 <p><strong>non_padded_namespaces</strong> : <code class="docutils literal"><span class="pre">Sequence[str]</span></code>, optional</p>
-<blockquote class="last">
+<blockquote>
 <div><p>By default, we assume you are mapping word / character tokens to integers, and so you want
 to reserve word indices for padding and out-of-vocabulary tokens.  However, if you are
 mapping NER or SRL tags, or class labels, to integers, you probably do not want to reserve
@@ -303,20 +309,38 @@ The default is <code class="docutils literal"><span class="pre">(&quot;*tags&quo
 &#8220;labels&#8221; (which is true by default for all tag and label fields in this code), you don&#8217;t
 have to specify anything here.</p>
 </div></blockquote>
+<p><strong>pretrained_files</strong> : <code class="docutils literal"><span class="pre">Dict[str,</span> <span class="pre">str]</span></code>, optional</p>
+<blockquote>
+<div><p>If provided, this map specifies the path to optional pretrained embedding files for each
+namespace. This can be used to either restrict the vocabulary to only words which appear
+in this file, or to ensure that any words in this file are included in the vocabulary
+regardless of their count, depending on the value of <code class="docutils literal"><span class="pre">only_include_pretrained_words</span></code>.
+Words which appear in the pretrained embedding file but not in the data are NOT included
+in the Vocabulary.</p>
+</div></blockquote>
+<p><strong>only_include_pretrained_words</strong> : bool, optional (default = False)</p>
+<blockquote class="last">
+<div><p>This defines the stategy for using any pretrained embedding files which may have been
+specified in <code class="docutils literal"><span class="pre">pretrained_files</span></code>. If False, an inclusive stategy is used: and words
+which are in the <code class="docutils literal"><span class="pre">counter</span></code> and in the pretrained file are added to the <code class="docutils literal"><span class="pre">Vocabulary</span></code>,
+regardless of whether their count exceeds <code class="docutils literal"><span class="pre">min_count</span></code> or not. If True, we use an
+exclusive strategy: words are only included in the Vocabulary if they are in the pretrained
+embedding file (their count must still be at least <code class="docutils literal"><span class="pre">min_count</span></code>).</p>
+</div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="allennlp.data.vocabulary.Vocabulary.add_token_to_namespace">
-<code class="descname">add_token_to_namespace</code><span class="sig-paren">(</span><em>token: str</em>, <em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L334-L348"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.add_token_to_namespace" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_token_to_namespace</code><span class="sig-paren">(</span><em>token: str</em>, <em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L380-L394"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.add_token_to_namespace" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds <code class="docutils literal"><span class="pre">token</span></code> to the index, if it is not already present.  Either way, we return the index of
 the token.</p>
 </dd></dl>
 
 <dl class="classmethod">
 <dt id="allennlp.data.vocabulary.Vocabulary.from_dataset">
-<em class="property">classmethod </em><code class="descname">from_dataset</code><span class="sig-paren">(</span><em>dataset</em>, <em>min_count: int = 1</em>, <em>max_vocab_size: typing.Union[int</em>, <em>typing.Dict[str</em>, <em>int]] = None</em>, <em>non_padded_namespaces: typing.Sequence[str] = ('*tags'</em>, <em>'*labels')</em><span class="sig-paren">)</span> &#x2192; allennlp.data.vocabulary.Vocabulary<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L273-L292"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.from_dataset" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_dataset</code><span class="sig-paren">(</span><em>dataset, min_count: int = 1, max_vocab_size: typing.Union[int, typing.Dict[str, int]] = None, non_padded_namespaces: typing.Sequence[str] = ('*tags', '*labels'), pretrained_files: typing.Union[typing.Dict[str, str], NoneType] = None, only_include_pretrained_words: bool = False</em><span class="sig-paren">)</span> &#x2192; allennlp.data.vocabulary.Vocabulary<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L311-L334"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.from_dataset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructs a vocabulary given a <a class="reference internal" href="allennlp.data.dataset.html#allennlp.data.dataset.Dataset" title="allennlp.data.dataset.Dataset"><code class="xref py py-class docutils literal"><span class="pre">Dataset</span></code></a> and some parameters.  We count all of the
 vocabulary items in the dataset, then pass those counts, and the other parameters, to
 <code class="xref py py-func docutils literal"><span class="pre">__init__()</span></code>.  See that method for a description of what the other parameters do.</p>
@@ -324,7 +348,7 @@ vocabulary items in the dataset, then pass those counts, and the other parameter
 
 <dl class="classmethod">
 <dt id="allennlp.data.vocabulary.Vocabulary.from_files">
-<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>directory: str</em><span class="sig-paren">)</span> &#x2192; allennlp.data.vocabulary.Vocabulary<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L191-L219"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.from_files" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_files</code><span class="sig-paren">(</span><em>directory: str</em><span class="sig-paren">)</span> &#x2192; allennlp.data.vocabulary.Vocabulary<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L229-L257"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.from_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Loads a <code class="docutils literal"><span class="pre">Vocabulary</span></code> that was serialized using <code class="docutils literal"><span class="pre">save_to_files</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -342,7 +366,7 @@ vocabulary items in the dataset, then pass those counts, and the other parameter
 
 <dl class="classmethod">
 <dt id="allennlp.data.vocabulary.Vocabulary.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em>, <em>dataset=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L294-L332"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em>, <em>dataset=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L336-L378"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.from_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>There are two possible ways to build a vocabulary; from a
 pre-existing dataset, using <a class="reference internal" href="#allennlp.data.vocabulary.Vocabulary.from_dataset" title="allennlp.data.vocabulary.Vocabulary.from_dataset"><code class="xref py py-func docutils literal"><span class="pre">Vocabulary.from_dataset()</span></code></a>, or
 from a pre-saved vocabulary, using <a class="reference internal" href="#allennlp.data.vocabulary.Vocabulary.from_files" title="allennlp.data.vocabulary.Vocabulary.from_files"><code class="xref py py-func docutils literal"><span class="pre">Vocabulary.from_files()</span></code></a>.
@@ -369,27 +393,27 @@ the <code class="docutils literal"><span class="pre">Vocabulary</span></code> ca
 
 <dl class="method">
 <dt id="allennlp.data.vocabulary.Vocabulary.get_index_to_token_vocabulary">
-<code class="descname">get_index_to_token_vocabulary</code><span class="sig-paren">(</span><em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; typing.Dict[int, str]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L350-L351"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_index_to_token_vocabulary" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_index_to_token_vocabulary</code><span class="sig-paren">(</span><em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; typing.Dict[int, str]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L396-L397"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_index_to_token_vocabulary" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.vocabulary.Vocabulary.get_token_from_index">
-<code class="descname">get_token_from_index</code><span class="sig-paren">(</span><em>index: int</em>, <em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L359-L360"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_token_from_index" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_token_from_index</code><span class="sig-paren">(</span><em>index: int</em>, <em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; str<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L405-L406"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_token_from_index" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.vocabulary.Vocabulary.get_token_index">
-<code class="descname">get_token_index</code><span class="sig-paren">(</span><em>token: str</em>, <em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L353-L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_token_index" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_token_index</code><span class="sig-paren">(</span><em>token: str</em>, <em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L399-L403"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_token_index" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.vocabulary.Vocabulary.get_vocab_size">
-<code class="descname">get_vocab_size</code><span class="sig-paren">(</span><em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L362-L363"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_vocab_size" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_vocab_size</code><span class="sig-paren">(</span><em>namespace: str = 'tokens'</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L408-L409"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.get_vocab_size" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.vocabulary.Vocabulary.save_to_files">
-<code class="descname">save_to_files</code><span class="sig-paren">(</span><em>directory: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L165-L189"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.save_to_files" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_to_files</code><span class="sig-paren">(</span><em>directory: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L203-L227"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.save_to_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>Persist this Vocabulary to files so it can be reloaded later.
 Each namespace corresponds to one file.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -408,7 +432,7 @@ Each namespace corresponds to one file.</p>
 
 <dl class="method">
 <dt id="allennlp.data.vocabulary.Vocabulary.set_from_file">
-<code class="descname">set_from_file</code><span class="sig-paren">(</span><em>filename: str</em>, <em>is_padded: bool = True</em>, <em>oov_token: str = '&#64;&#64;UNKNOWN&#64;&#64;'</em>, <em>namespace: str = 'tokens'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L221-L271"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.set_from_file" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_from_file</code><span class="sig-paren">(</span><em>filename: str</em>, <em>is_padded: bool = True</em>, <em>oov_token: str = '&#64;&#64;UNKNOWN&#64;&#64;'</em>, <em>namespace: str = 'tokens'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/vocabulary.py#L259-L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.vocabulary.Vocabulary.set_from_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>If you already have a vocabulary file for a trained model somewhere, and you really want to
 use that vocabulary file instead of just setting the vocabulary from a dataset, for
 whatever reason, you can do that with this method.  You must specify the namespace to use,

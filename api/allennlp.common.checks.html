@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -123,6 +124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -144,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -172,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -254,24 +259,16 @@
 AllenNLP and its models are configured correctly.</p>
 <dl class="exception">
 <dt id="allennlp.common.checks.ConfigurationError">
-<em class="property">exception </em><code class="descclassname">allennlp.common.checks.</code><code class="descname">ConfigurationError</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/checks.py#L14-L24"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.checks.ConfigurationError" title="Permalink to this definition">¶</a></dt>
+<em class="property">exception </em><code class="descclassname">allennlp.common.checks.</code><code class="descname">ConfigurationError</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/checks.py#L11-L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.checks.ConfigurationError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">Exception</span></code></p>
 <p>The exception raised by any AllenNLP object when it&#8217;s misconfigured
 (e.g. missing properties, invalid properties, unknown properties).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="allennlp.common.checks.ensure_pythonhashseed_set">
-<code class="descclassname">allennlp.common.checks.</code><code class="descname">ensure_pythonhashseed_set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/checks.py#L27-L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.checks.ensure_pythonhashseed_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>Makes sure that the <code class="docutils literal"><span class="pre">PYTHONHASHSEED</span></code> environment variable is set to the correct value,
-which it must be in order to get repeatable results (and for the tests to pass).</p>
-</dd></dl>
-
-<dl class="function">
 <dt id="allennlp.common.checks.log_pytorch_version_info">
-<code class="descclassname">allennlp.common.checks.</code><code class="descname">log_pytorch_version_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/checks.py#L41-L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.checks.log_pytorch_version_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Logs the PyTorch version.</p>
-</dd></dl>
+<code class="descclassname">allennlp.common.checks.</code><code class="descname">log_pytorch_version_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/checks.py#L24-L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.checks.log_pytorch_version_info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 

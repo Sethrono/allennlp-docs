@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -120,8 +121,10 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -143,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -171,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -252,15 +258,23 @@
 <p>Various utilities that don&#8217;t fit anwhere else.</p>
 <dl class="function">
 <dt id="allennlp.common.util.add_noise_to_dict_values">
-<code class="descclassname">allennlp.common.util.</code><code class="descname">add_noise_to_dict_values</code><span class="sig-paren">(</span><em>dictionary: typing.Dict[A, float], noise_param: float</em><span class="sig-paren">)</span> &#x2192; typing.Dict[A, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L99-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.add_noise_to_dict_values" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.common.util.</code><code class="descname">add_noise_to_dict_values</code><span class="sig-paren">(</span><em>dictionary: typing.Dict[A, float], noise_param: float</em><span class="sig-paren">)</span> &#x2192; typing.Dict[A, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L103-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.add_noise_to_dict_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a new dictionary with noise added to every key in <code class="docutils literal"><span class="pre">dictionary</span></code>.  The noise is
 uniformly distributed within <code class="docutils literal"><span class="pre">noise_param</span></code> percent of the value for every value in the
 dictionary.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="allennlp.common.util.get_spacy_model">
+<code class="descclassname">allennlp.common.util.</code><code class="descname">get_spacy_model</code><span class="sig-paren">(</span><em>spacy_model_name: str</em>, <em>pos_tags: bool</em>, <em>parse: bool</em>, <em>ner: bool</em><span class="sig-paren">)</span> &#x2192; typing.Any<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L165-L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.get_spacy_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>In order to avoid loading spacy models a whole bunch of times, we&#8217;ll save references to them,
+keyed by the options we used to create the spacy model, so any particular configuration only
+gets loaded once.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="allennlp.common.util.group_by_count">
-<code class="descclassname">allennlp.common.util.</code><code class="descname">group_by_count</code><span class="sig-paren">(</span><em>iterable: typing.List[typing.Any], count: int, default_value: typing.Any</em><span class="sig-paren">)</span> &#x2192; typing.List[typing.List[typing.Any]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L43-L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.group_by_count" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.common.util.</code><code class="descname">group_by_count</code><span class="sig-paren">(</span><em>iterable: typing.List[typing.Any], count: int, default_value: typing.Any</em><span class="sig-paren">)</span> &#x2192; typing.List[typing.List[typing.Any]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L47-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.group_by_count" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a list and groups it into sublists of size <code class="docutils literal"><span class="pre">count</span></code>, using <code class="docutils literal"><span class="pre">default_value</span></code> to pad the
 list at the end if the list is not divisable by <code class="docutils literal"><span class="pre">count</span></code>.</p>
 <p>For example:
@@ -272,7 +286,7 @@ make a function out of it.</p>
 
 <dl class="function">
 <dt id="allennlp.common.util.namespace_match">
-<code class="descclassname">allennlp.common.util.</code><code class="descname">namespace_match</code><span class="sig-paren">(</span><em>pattern: str</em>, <em>namespace: str</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L113-L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.namespace_match" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.common.util.</code><code class="descname">namespace_match</code><span class="sig-paren">(</span><em>pattern: str</em>, <em>namespace: str</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L117-L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.namespace_match" title="Permalink to this definition">¶</a></dt>
 <dd><p>Matches a namespace pattern against a namespace string.  For example, <code class="docutils literal"><span class="pre">*tags</span></code> matches
 <code class="docutils literal"><span class="pre">passage_tags</span></code> and <code class="docutils literal"><span class="pre">question_tags</span></code> and <code class="docutils literal"><span class="pre">tokens</span></code> matches <code class="docutils literal"><span class="pre">tokens</span></code> but not
 <code class="docutils literal"><span class="pre">stemmed_tokens</span></code>.</p>
@@ -280,7 +294,7 @@ make a function out of it.</p>
 
 <dl class="function">
 <dt id="allennlp.common.util.pad_sequence_to_length">
-<code class="descclassname">allennlp.common.util.</code><code class="descname">pad_sequence_to_length</code><span class="sig-paren">(</span><em>sequence: typing.List</em>, <em>desired_length: int</em>, <em>default_value: typing.Callable[typing.Any] = &lt;function &lt;lambda&gt;&gt;</em>, <em>padding_on_right: bool = True</em><span class="sig-paren">)</span> &#x2192; typing.List<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L58-L95"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.pad_sequence_to_length" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.common.util.</code><code class="descname">pad_sequence_to_length</code><span class="sig-paren">(</span><em>sequence: typing.List</em>, <em>desired_length: int</em>, <em>default_value: typing.Callable[typing.Any] = &lt;function &lt;lambda&gt;&gt;</em>, <em>padding_on_right: bool = True</em><span class="sig-paren">)</span> &#x2192; typing.List<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L62-L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.pad_sequence_to_length" title="Permalink to this definition">¶</a></dt>
 <dd><p>Take a list of objects and pads it to the desired length, returning the padded list.  The
 original list is not modified.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -316,7 +330,7 @@ the left?</p>
 
 <dl class="function">
 <dt id="allennlp.common.util.prepare_environment">
-<code class="descclassname">allennlp.common.util.</code><code class="descname">prepare_environment</code><span class="sig-paren">(</span><em>params: typing.Union[allennlp.common.params.Params, typing.Dict[str, typing.Any]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L126-L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.prepare_environment" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.common.util.</code><code class="descname">prepare_environment</code><span class="sig-paren">(</span><em>params: typing.Union[allennlp.common.params.Params, typing.Dict[str, typing.Any]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L130-L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.prepare_environment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets random seeds for reproducible experiments. This may not work as expected
 if you use this from within a python project in which you have already imported Pytorch.
 If you use the scripts/run_model.py entry point to training models with this library,
@@ -340,7 +354,7 @@ parallel execution, which is exacerbated by using GPUs.</p>
 
 <dl class="function">
 <dt id="allennlp.common.util.sanitize">
-<code class="descclassname">allennlp.common.util.</code><code class="descname">sanitize</code><span class="sig-paren">(</span><em>x: typing.Any</em><span class="sig-paren">)</span> &#x2192; typing.Any<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L17-L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.sanitize" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.common.util.</code><code class="descname">sanitize</code><span class="sig-paren">(</span><em>x: typing.Any</em><span class="sig-paren">)</span> &#x2192; typing.Any<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/util.py#L19-L45"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.util.sanitize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sanitize turns PyTorch and Numpy types into basic Python types so they
 can be serialized into JSON.</p>
 </dd></dl>

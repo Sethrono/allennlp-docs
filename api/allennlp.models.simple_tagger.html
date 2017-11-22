@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -120,8 +121,10 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -143,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -171,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -251,7 +257,7 @@
 <span id="allennlp-models-simple-tagger"></span><h1>allennlp.models.simple_tagger<a class="headerlink" href="#module-allennlp.models.simple_tagger" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="allennlp.models.simple_tagger.SimpleTagger">
-<em class="property">class </em><code class="descclassname">allennlp.models.simple_tagger.</code><code class="descname">SimpleTagger</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>stacked_encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em>regularizer: typing.Union[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/simple_tagger.py#L20-L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.simple_tagger.SimpleTagger" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.models.simple_tagger.</code><code class="descname">SimpleTagger</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>stacked_encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em>regularizer: typing.Union[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/simple_tagger.py#L20-L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.simple_tagger.SimpleTagger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">allennlp.models.model.Model</span></code></a></p>
 <p>This <code class="docutils literal"><span class="pre">SimpleTagger</span></code> simply encodes a sequence of text with a stacked <code class="docutils literal"><span class="pre">Seq2SeqEncoder</span></code>, then
 predicts a tag for each token in the sequence.</p>
@@ -286,7 +292,7 @@ and predicting output tags.</p>
 </table>
 <dl class="method">
 <dt id="allennlp.models.simple_tagger.SimpleTagger.decode">
-<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/simple_tagger.py#L118-L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.simple_tagger.SimpleTagger.decode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/simple_tagger.py#L118-L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.simple_tagger.SimpleTagger.decode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Does a simple position-wise argmax over each token, converts indices to string labels, and
 adds a <code class="docutils literal"><span class="pre">&quot;tags&quot;</span></code> key to the dictionary with the result.</p>
 </dd></dl>
@@ -339,12 +345,12 @@ a distribution of the tag classes per word.</p>
 
 <dl class="classmethod">
 <dt id="allennlp.models.simple_tagger.SimpleTagger.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.simple_tagger.SimpleTagger<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/simple_tagger.py#L146-L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.simple_tagger.SimpleTagger.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.simple_tagger.SimpleTagger<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/simple_tagger.py#L143-L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.simple_tagger.SimpleTagger.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.models.simple_tagger.SimpleTagger.get_metrics">
-<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/simple_tagger.py#L142-L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.simple_tagger.SimpleTagger.get_metrics" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/simple_tagger.py#L139-L141"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.simple_tagger.SimpleTagger.get_metrics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary of metrics. This method will be called by
 <code class="xref py py-class docutils literal"><span class="pre">allennlp.training.Trainer</span></code> in order to compute and use model metrics for early
 stopping and model serialisation.  We return an empty dictionary here rather than raising

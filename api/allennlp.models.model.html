@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -120,8 +121,10 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -143,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -171,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -253,7 +259,7 @@
 an AllenNLP model.</p>
 <dl class="class">
 <dt id="allennlp.models.model.Model">
-<em class="property">class </em><code class="descclassname">allennlp.models.model.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>regularizer: allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L25-L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.models.model.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>regularizer: allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L26-L253"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">torch.nn.modules.module.Module</span></code>, <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
 <p>This abstract class represents a model to be trained. Rather than relying completely
 on the Pytorch Module, we modify the output spec of <code class="docutils literal"><span class="pre">forward</span></code> to be a dictionary.</p>
@@ -271,7 +277,7 @@ of early stopping and best-model serialization based on a validation metric in
 <code class="xref py py-class docutils literal"><span class="pre">Trainer</span></code>.</p>
 <dl class="method">
 <dt id="allennlp.models.model.Model.decode">
-<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L125-L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.decode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L158-L173"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.decode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes the result of <a class="reference internal" href="#allennlp.models.model.Model.forward" title="allennlp.models.model.Model.forward"><code class="xref py py-func docutils literal"><span class="pre">forward()</span></code></a> and runs inference / decoding / whatever
 post-processing you need to do your model.  The intent is that <code class="docutils literal"><span class="pre">model.forward()</span></code> should
 produce potentials or probabilities, and then <code class="docutils literal"><span class="pre">model.decode()</span></code> can take those results and
@@ -285,7 +291,7 @@ override this method.</p>
 
 <dl class="method">
 <dt id="allennlp.models.model.Model.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>*inputs</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L62-L101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>*inputs</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L63-L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Defines the forward pass of the model. In addition, to facilitate easy training,
 this method is designed to compute a loss function defined by a user.</p>
 <p>The input is comprised of everything required to perform a
@@ -333,7 +339,7 @@ scalar <code class="docutils literal"><span class="pre">torch.Tensor</span></cod
 
 <dl class="method">
 <dt id="allennlp.models.model.Model.forward_on_instance">
-<code class="descname">forward_on_instance</code><span class="sig-paren">(</span><em>instance: allennlp.data.instance.Instance</em>, <em>cuda_device: int</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, numpy.ndarray]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L103-L123"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.forward_on_instance" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward_on_instance</code><span class="sig-paren">(</span><em>instance: allennlp.data.instance.Instance</em>, <em>cuda_device: int</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, numpy.ndarray]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L104-L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.forward_on_instance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes an <a class="reference internal" href="allennlp.data.instance.html#allennlp.data.instance.Instance" title="allennlp.data.instance.Instance"><code class="xref py py-class docutils literal"><span class="pre">Instance</span></code></a>, which typically has raw text in it,
 converts that text into arrays using this model&#8217;s <code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code>, passes those arrays
 through <code class="xref py py-func docutils literal"><span class="pre">self.forward()</span></code> and <code class="xref py py-func docutils literal"><span class="pre">self.decode()</span></code> (which by default does nothing)
@@ -341,14 +347,27 @@ and returns the result.  Before returning the result, we convert any <code class
 or <code class="docutils literal"><span class="pre">torch.Tensors</span></code> into numpy arrays and remove the batch dimension.</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="allennlp.models.model.Model.forward_on_instances">
+<code class="descname">forward_on_instances</code><span class="sig-paren">(</span><em>instances: typing.List[allennlp.data.instance.Instance], cuda_device: int</em><span class="sig-paren">)</span> &#x2192; typing.List[typing.Dict[str, numpy.ndarray]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L128-L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.forward_on_instances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a list of  <code class="xref py py-class docutils literal"><span class="pre">Instance`s,</span> <span class="pre">converts</span> <span class="pre">that</span> <span class="pre">text</span> <span class="pre">into</span>
+<span class="pre">arrays</span> <span class="pre">using</span> <span class="pre">this</span> <span class="pre">model's</span> <span class="pre">:class:`Vocabulary</span></code>, passes those arrays through
+<code class="xref py py-func docutils literal"><span class="pre">self.forward()</span></code> and <code class="xref py py-func docutils literal"><span class="pre">self.decode()</span></code> (which by default does nothing)
+and returns the result.  Before returning the result, we convert any
+<code class="docutils literal"><span class="pre">torch.autograd.Variables</span></code> or <code class="docutils literal"><span class="pre">torch.Tensors</span></code> into numpy arrays and separate the
+batched output into a list of individual dicts per instance. Note that typically
+this will be faster on a GPU (and conditionally, on a CPU) than repeated calls to
+<a class="reference internal" href="#allennlp.models.model.Model.forward_on_instance" title="allennlp.models.model.Model.forward_on_instance"><code class="xref py py-func docutils literal"><span class="pre">forward_on_instance()</span></code></a>.</p>
+</dd></dl>
+
 <dl class="classmethod">
 <dt id="allennlp.models.model.Model.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.model.Model<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L157-L161"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.model.Model<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L190-L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.models.model.Model.get_metrics">
-<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L142-L155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.get_metrics" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L175-L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.get_metrics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary of metrics. This method will be called by
 <code class="xref py py-class docutils literal"><span class="pre">allennlp.training.Trainer</span></code> in order to compute and use model metrics for early
 stopping and model serialisation.  We return an empty dictionary here rather than raising
@@ -362,14 +381,14 @@ method is called.</p>
 
 <dl class="method">
 <dt id="allennlp.models.model.Model.get_regularization_penalty">
-<code class="descname">get_regularization_penalty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Union[float, torch.autograd.variable.Variable]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L52-L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.get_regularization_penalty" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_regularization_penalty</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Union[float, torch.autograd.variable.Variable]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L53-L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.get_regularization_penalty" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the regularization penalty for the model.
 Returns 0 if the model was not configured to use regularization.</p>
 </dd></dl>
 
 <dl class="classmethod">
 <dt id="allennlp.models.model.Model.load">
-<em class="property">classmethod </em><code class="descname">load</code><span class="sig-paren">(</span><em>config: allennlp.common.params.Params</em>, <em>serialization_dir: str</em>, <em>weights_file: str = None</em>, <em>cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; allennlp.models.model.Model<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L163-L220"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.load" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">load</code><span class="sig-paren">(</span><em>config: allennlp.common.params.Params</em>, <em>serialization_dir: str</em>, <em>weights_file: str = None</em>, <em>cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; allennlp.models.model.Model<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/model.py#L196-L253"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.model.Model.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiates an already-trained model, based on the experiment
 configuration and some optional overrides.</p>
 <table class="docutils field-list" frame="void" rules="none">

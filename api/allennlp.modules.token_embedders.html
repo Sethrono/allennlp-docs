@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -120,8 +121,10 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset.html">allennlp.data.dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.data.dataset_readers.html">allennlp.data.dataset_readers</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.dataset_reader.html">allennlp.data.dataset_readers.dataset_reader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -143,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -171,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -255,6 +261,7 @@ embeds one-hot-encoded tokens as vectors.</p>
 <li><a class="reference internal" href="#token-embedder"><span class="std std-ref">TokenEmbedder</span></a></li>
 <li><a class="reference internal" href="#embedding"><span class="std std-ref">Embedding</span></a></li>
 <li><a class="reference internal" href="#token-characters-encoder"><span class="std std-ref">TokenCharactersEncoder</span></a></li>
+<li><a class="reference internal" href="#elmo-token-embedder"><span class="std std-ref">ELMoTokenEmbedder</span></a></li>
 </ul>
 <span class="target" id="module-allennlp.modules.token_embedders.token_embedder"><span id="token-embedder"></span></span><dl class="class">
 <dt id="allennlp.modules.token_embedders.token_embedder.TokenEmbedder">
@@ -410,6 +417,94 @@ optionally apply dropout after the token-level encoder.</p>
 <dt id="allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder.get_output_dim">
 <code class="descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/token_characters_encoder.py#L31-L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.token_characters_encoder.TokenCharactersEncoder.get_output_dim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.modules.token_embedders.elmo_token_embedder"><span id="elmo-token-embedder"></span></span><p>Compute the context insensitive token embeddings from pretrained biLMs.</p>
+<dl class="class">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder">
+<em class="property">class </em><code class="descclassname">allennlp.modules.token_embedders.elmo_token_embedder.</code><code class="descname">ELMoTokenEmbedder</code><span class="sig-paren">(</span><em>options_file: str</em>, <em>weight_file: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder.py#L33-L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.modules.token_embedders.token_embedder.TokenEmbedder" title="allennlp.modules.token_embedders.token_embedder.TokenEmbedder"><code class="xref py py-class docutils literal"><span class="pre">allennlp.modules.token_embedders.token_embedder.TokenEmbedder</span></code></a></p>
+<p>Compute context sensitive token representation using pretrained biLM.</p>
+<p>This embedder has input character ids of size (batch_size, sequence_length, 50)
+and returns (batch_size, sequence_length + 2, embedding_dim), where embedding_dim
+is specified in the options file (typically 512).</p>
+<p>We add special entries at the beginning and end of each sequence corresponding
+to &lt;S&gt; and &lt;/S&gt;, the beginning and end of sentence tokens.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>options_file</strong> : str</p>
+<blockquote>
+<div><p>ELMo JSON options file</p>
+</div></blockquote>
+<p><strong>weight_file</strong> : str</p>
+<blockquote>
+<div><p>ELMo hdf5 weight file</p>
+</div></blockquote>
+<p><strong>The relevant section of the options file is something like:</strong></p>
+<p><strong>.. example-code::</strong></p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;char_cnn&#39;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;activation&#39;</span><span class="p">:</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;embedding&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;dim&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="s1">&#39;filters&#39;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">64</span><span class="p">]],</span>
+    <span class="s1">&#39;max_characters_per_token&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s1">&#39;n_characters&#39;</span><span class="p">:</span> <span class="mi">262</span><span class="p">,</span>
+    <span class="s1">&#39;n_highway&#39;</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p class="last"><strong>something</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder.py#L85-L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute context insensitive token embeddings for ELMo representations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inputs: ``torch.autograd.Variable``</strong></p>
+<blockquote>
+<div><p>Shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">50)</span></code> of character ids representing the
+current batch.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dict with keys:</p>
+<p><code class="docutils literal"><span class="pre">'token_embedding'</span></code>: <code class="docutils literal"><span class="pre">torch.autograd.Variable</span></code></p>
+<blockquote>
+<div><p>Shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length</span> <span class="pre">+</span> <span class="pre">2,</span> <span class="pre">embedding_dim)</span></code> tensor with context
+insensitive token representations.</p>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">'mask'</span></code>:  <code class="docutils literal"><span class="pre">torch.autograd.Variable</span></code></p>
+<blockquote class="last">
+<div><p>Shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length</span> <span class="pre">+</span> <span class="pre">2)</span></code> long tensor with sequence mask.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder.py#L254-L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder.from_params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder.get_output_dim">
+<code class="descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/token_embedders/elmo_token_embedder.py#L81-L83"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the final output dimension that this <code class="docutils literal"><span class="pre">TokenEmbedder</span></code> uses to represent each
+token.  This is <cite>not</cite> the shape of the returned tensor, but the last element of that shape.</p>
+</dd></dl>
 
 </dd></dl>
 

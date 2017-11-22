@@ -40,7 +40,7 @@
     <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
         <link rel="up" title="allennlp.service" href="allennlp.service.html"/>
         <link rel="next" title="allennlp.service.server_sanic" href="allennlp.service.server_sanic.html"/>
-        <link rel="prev" title="allennlp.service" href="allennlp.service.html"/> 
+        <link rel="prev" title="allennlp.service.permalinks" href="allennlp.service.permalinks.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -123,6 +124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -144,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -172,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -263,24 +268,30 @@ a <code class="docutils literal"><span class="pre">Predictor</span></code> that 
 <li><a class="reference internal" href="#decomposable-attention"><span class="std std-ref">DecomposableAttentionPredictor</span></a></li>
 <li><a class="reference internal" href="#semantic-role-labeler"><span class="std std-ref">SemanticRoleLabelerPredictor</span></a></li>
 <li><a class="reference internal" href="#simple-tagger"><span class="std std-ref">SimpleTaggerPredictor</span></a></li>
+<li><a class="reference internal" href="#coreference-resolution"><span class="std std-ref">CorefPredictor</span></a></li>
 </ul>
 <span class="target" id="module-allennlp.service.predictors.predictor"><span id="predictor"></span></span><dl class="class">
 <dt id="allennlp.service.predictors.predictor.Predictor">
-<em class="property">class </em><code class="descclassname">allennlp.service.predictors.predictor.</code><code class="descname">Predictor</code><span class="sig-paren">(</span><em>model: allennlp.models.model.Model</em>, <em>dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L8-L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.Predictor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.service.predictors.predictor.</code><code class="descname">Predictor</code><span class="sig-paren">(</span><em>model: allennlp.models.model.Model</em>, <em>dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L9-L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.Predictor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
 <p>a <code class="docutils literal"><span class="pre">Predictor</span></code> is a thin wrapper around an AllenNLP model that handles JSON -&gt; JSON predictions
 that can be used for serving models through the web API or making predictions in bulk.</p>
 <dl class="classmethod">
 <dt id="allennlp.service.predictors.predictor.Predictor.from_archive">
-<em class="property">classmethod </em><code class="descname">from_archive</code><span class="sig-paren">(</span><em>archive: allennlp.models.archival.Archive</em>, <em>predictor_name: str</em><span class="sig-paren">)</span> &#x2192; allennlp.service.predictors.predictor.Predictor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L28-L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.Predictor.from_archive" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_archive</code><span class="sig-paren">(</span><em>archive: allennlp.models.archival.Archive</em>, <em>predictor_name: str</em><span class="sig-paren">)</span> &#x2192; allennlp.service.predictors.predictor.Predictor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L48-L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.Predictor.from_archive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Instantiate a <a class="reference internal" href="#allennlp.service.predictors.predictor.Predictor" title="allennlp.service.predictors.predictor.Predictor"><code class="xref py py-class docutils literal"><span class="pre">Predictor</span></code></a> from an <a class="reference internal" href="allennlp.models.archival.html#allennlp.models.archival.Archive" title="allennlp.models.archival.Archive"><code class="xref py py-class docutils literal"><span class="pre">Archive</span></code></a>;
 that is, from the result of training a model. Optionally specify which <cite>Predictor</cite>
 subclass; otherwise, the default one for the model will be used.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="allennlp.service.predictors.predictor.Predictor.predict_batch_json">
+<code class="descname">predict_batch_json</code><span class="sig-paren">(</span><em>inputs: typing.List[typing.Dict[str, typing.Any]], cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; typing.List[typing.Dict[str, typing.Any]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L29-L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.Predictor.predict_batch_json" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="allennlp.service.predictors.predictor.Predictor.predict_json">
-<code class="descname">predict_json</code><span class="sig-paren">(</span><em>inputs: typing.Dict[str, typing.Any], cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L17-L20"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.Predictor.predict_json" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict_json</code><span class="sig-paren">(</span><em>inputs: typing.Dict[str, typing.Any], cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L18-L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.Predictor.predict_json" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -308,7 +319,7 @@ subclass; otherwise, the default one for the model will be used.</p>
 
 <span class="target" id="module-allennlp.service.predictors.semantic_role_labeler"><span id="semantic-role-labeler"></span></span><dl class="class">
 <dt id="allennlp.service.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor">
-<em class="property">class </em><code class="descclassname">allennlp.service.predictors.semantic_role_labeler.</code><code class="descname">SemanticRoleLabelerPredictor</code><span class="sig-paren">(</span><em>model: allennlp.models.model.Model</em>, <em>dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/semantic_role_labeler.py#L13-L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.service.predictors.semantic_role_labeler.</code><code class="descname">SemanticRoleLabelerPredictor</code><span class="sig-paren">(</span><em>model: allennlp.models.model.Model</em>, <em>dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/semantic_role_labeler.py#L13-L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.service.predictors.predictor.Predictor" title="allennlp.service.predictors.predictor.Predictor"><code class="xref py py-class docutils literal"><span class="pre">allennlp.service.predictors.predictor.Predictor</span></code></a></p>
 <p>Wrapper for the <code class="xref py py-class docutils literal"><span class="pre">SemanticRoleLabeler</span></code> model.</p>
 <dl class="staticmethod">
@@ -318,7 +329,7 @@ subclass; otherwise, the default one for the model will be used.</p>
 
 <dl class="method">
 <dt id="allennlp.service.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_json">
-<code class="descname">predict_json</code><span class="sig-paren">(</span><em>inputs: typing.Dict[str, typing.Any], cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/semantic_role_labeler.py#L50-L89"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_json" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict_json</code><span class="sig-paren">(</span><em>inputs: typing.Dict[str, typing.Any], cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/semantic_role_labeler.py#L54-L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expects JSON that looks like <code class="docutils literal"><span class="pre">{&quot;sentence&quot;:</span> <span class="pre">&quot;...&quot;}</span></code>
 and returns JSON that looks like</p>
 <div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;words&quot;</span><span class="o">:</span> <span class="p">[...],</span>
@@ -340,6 +351,38 @@ and returns JSON that looks like</p>
 <p>Wrapper for the <code class="xref py py-class docutils literal"><span class="pre">SimpleTagger</span></code> model.</p>
 </dd></dl>
 
+<span class="target" id="module-allennlp.service.predictors.coref"><span id="coreference-resolution"></span></span><dl class="class">
+<dt id="allennlp.service.predictors.coref.CorefPredictor">
+<em class="property">class </em><code class="descclassname">allennlp.service.predictors.coref.</code><code class="descname">CorefPredictor</code><span class="sig-paren">(</span><em>model: allennlp.models.model.Model</em>, <em>dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/coref.py#L11-L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.coref.CorefPredictor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.service.predictors.predictor.Predictor" title="allennlp.service.predictors.predictor.Predictor"><code class="xref py py-class docutils literal"><span class="pre">allennlp.service.predictors.predictor.Predictor</span></code></a></p>
+<p>Wrapper for the <code class="xref py py-class docutils literal"><span class="pre">CoreferenceResolver</span></code> model.</p>
+<dl class="method">
+<dt id="allennlp.service.predictors.coref.CorefPredictor.predict_json">
+<code class="descname">predict_json</code><span class="sig-paren">(</span><em>inputs: typing.Dict[str, typing.Any], cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/coref.py#L28-L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.coref.CorefPredictor.predict_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expects JSON that looks like <code class="docutils literal"><span class="pre">{&quot;document&quot;:</span> <span class="pre">&quot;string</span> <span class="pre">of</span> <span class="pre">document</span> <span class="pre">text&quot;}</span></code>
+and returns JSON that looks like:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;document&quot;</span><span class="o">:</span> <span class="p">[</span><span class="nx">tokenised</span> <span class="nb">document</span> <span class="nx">text</span><span class="p">]</span>
+<span class="s2">&quot;clusters&quot;</span><span class="o">:</span>
+  <span class="p">[</span>
+    <span class="p">[</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">],</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">],</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">],</span>
+      <span class="p">[</span><span class="nx">start_index</span><span class="p">,</span> <span class="nx">end_index</span><span class="p">],</span>
+    <span class="p">],</span>
+    <span class="p">....</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -355,7 +398,7 @@ and returns JSON that looks like</p>
         <a href="allennlp.service.server_sanic.html" class="btn btn-neutral float-right" title="allennlp.service.server_sanic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="allennlp.service.html" class="btn btn-neutral" title="allennlp.service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="allennlp.service.permalinks.html" class="btn btn-neutral" title="allennlp.service.permalinks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

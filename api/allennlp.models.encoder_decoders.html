@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -123,6 +124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -144,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -172,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -252,7 +257,7 @@
 <span id="allennlp-models-encoder-decoders"></span><h1>allennlp.models.encoder_decoders<a class="headerlink" href="#module-allennlp.models.encoder_decoders" title="Permalink to this headline">¶</a></h1>
 <span class="target" id="module-allennlp.models.encoder_decoders.simple_seq2seq"></span><dl class="class">
 <dt id="allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq">
-<em class="property">class </em><code class="descclassname">allennlp.models.encoder_decoders.simple_seq2seq.</code><code class="descname">SimpleSeq2Seq</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>source_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>max_decoding_steps: int</em>, <em>target_namespace: str = 'tokens'</em>, <em>target_embedding_dim: int = None</em>, <em>attention_function: allennlp.modules.similarity_functions.similarity_function.SimilarityFunction = None</em>, <em>scheduled_sampling_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/encoder_decoders/simple_seq2seq.py#L23-L310"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.models.encoder_decoders.simple_seq2seq.</code><code class="descname">SimpleSeq2Seq</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>source_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>max_decoding_steps: int</em>, <em>target_namespace: str = 'tokens'</em>, <em>target_embedding_dim: int = None</em>, <em>attention_function: allennlp.modules.similarity_functions.similarity_function.SimilarityFunction = None</em>, <em>scheduled_sampling_ratio: float = 0.0</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/encoder_decoders/simple_seq2seq.py#L23-L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">allennlp.models.model.Model</span></code></a></p>
 <p>This <code class="docutils literal"><span class="pre">SimpleSeq2Seq</span></code> class is a <code class="xref py py-class docutils literal"><span class="pre">Model</span></code> which takes a sequence, encodes it, and then
 uses the encoded representations to decode another sequence.  You can use this as the basis for
@@ -319,7 +324,7 @@ Scheduled Sampling for Sequence Prediction with Recurrent Neural Networks. Bengi
 </table>
 <dl class="method">
 <dt id="allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.decode">
-<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/encoder_decoders/simple_seq2seq.py#L262-L287"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.decode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/encoder_decoders/simple_seq2seq.py#L261-L286"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.decode" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method overrides <code class="docutils literal"><span class="pre">Model.decode</span></code>, which gets called after <code class="docutils literal"><span class="pre">Model.forward</span></code>, at test
 time, to finalize predictions. The logic for the decoder part of the encoder-decoder lives
 within the <code class="docutils literal"><span class="pre">forward</span></code> method.</p>
@@ -329,7 +334,7 @@ corresponding tokens, and adds a field called <code class="docutils literal"><sp
 
 <dl class="method">
 <dt id="allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>source_tokens: typing.Dict[str, torch.LongTensor], target_tokens: typing.Dict[str, torch.LongTensor] = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/encoder_decoders/simple_seq2seq.py#L107-L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>source_tokens: typing.Dict[str, torch.LongTensor], target_tokens: typing.Dict[str, torch.LongTensor] = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/encoder_decoders/simple_seq2seq.py#L107-L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.forward" title="Permalink to this definition">¶</a></dt>
 <dd><p>Decoder logic for producing the entire target sequence.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -353,7 +358,7 @@ target tokens are also represented as a <code class="docutils literal"><span cla
 
 <dl class="classmethod">
 <dt id="allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/encoder_decoders/simple_seq2seq.py#L289-L310"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/encoder_decoders/simple_seq2seq.py#L288-L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

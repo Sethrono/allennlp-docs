@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -123,6 +124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -144,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -172,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -255,7 +260,7 @@ any base class with a named registry for its subclasses and a decorator
 for registering them.</p>
 <dl class="class">
 <dt id="allennlp.common.registrable.Registrable">
-<em class="property">class </em><code class="descclassname">allennlp.common.registrable.</code><code class="descname">Registrable</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/registrable.py#L15-L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.registrable.Registrable" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.common.registrable.</code><code class="descname">Registrable</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/registrable.py#L15-L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.registrable.Registrable" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Any class that inherits from <code class="docutils literal"><span class="pre">Registrable</span></code> gains access to a named registry for its
 subclasses. To register them, just decorate them with the classmethod
@@ -274,9 +279,8 @@ module in which they reside (as this causes any import of either the abstract cl
 a subclass to load all other subclasses and the abstract class).</p>
 <dl class="classmethod">
 <dt id="allennlp.common.registrable.Registrable.by_name">
-<em class="property">classmethod </em><code class="descname">by_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; typing.Type[T]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/registrable.py#L61-L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.registrable.Registrable.by_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the subclass registered under the supplied <code class="docutils literal"><span class="pre">name</span></code>.</p>
-</dd></dl>
+<em class="property">classmethod </em><code class="descname">by_name</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span> &#x2192; typing.Type[T]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/registrable.py#L53-L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.registrable.Registrable.by_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="allennlp.common.registrable.Registrable.default_implementation">
@@ -285,18 +289,14 @@ a subclass to load all other subclasses and the abstract class).</p>
 
 <dl class="classmethod">
 <dt id="allennlp.common.registrable.Registrable.list_available">
-<em class="property">classmethod </em><code class="descname">list_available</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/registrable.py#L70-L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.registrable.Registrable.list_available" title="Permalink to this definition">¶</a></dt>
-<dd><p>Lists the names of the registered subclasses.
-If a default has been set, it will be the first element in the list.</p>
+<em class="property">classmethod </em><code class="descname">list_available</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.List[str]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/registrable.py#L59-L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.registrable.Registrable.list_available" title="Permalink to this definition">¶</a></dt>
+<dd><p>List default first if it exists</p>
 </dd></dl>
 
 <dl class="classmethod">
 <dt id="allennlp.common.registrable.Registrable.register">
-<em class="property">classmethod </em><code class="descname">register</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/registrable.py#L40-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.registrable.Registrable.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decorator that adds the decorated subclass to this class&#8217;s registry
-under the specified name, allowing the subclass to be retrieved using
-<code class="docutils literal"><span class="pre">get_name</span></code>.</p>
-</dd></dl>
+<em class="property">classmethod </em><code class="descname">register</code><span class="sig-paren">(</span><em>name: str</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/registrable.py#L40-L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.registrable.Registrable.register" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 

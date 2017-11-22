@@ -99,6 +99,7 @@
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -123,6 +124,7 @@
 <li class="toctree-l3"><a class="reference internal" href="api/allennlp.data.dataset_readers.conll2003.html">allennlp.data.dataset_readers.conll2003</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/allennlp.data.dataset_readers.language_modeling.html">allennlp.data.dataset_readers.language_modeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/allennlp.data.dataset_readers.reading_comprehension.html">allennlp.data.dataset_readers.reading_comprehension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/allennlp.data.dataset_readers.coreference_resolution.html">allennlp.data.dataset_readers.coreference_resolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/allennlp.data.dataset_readers.semantic_role_labeling.html">allennlp.data.dataset_readers.semantic_role_labeling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/allennlp.data.dataset_readers.seq2seq.html">allennlp.data.dataset_readers.seq2seq</a></li>
 <li class="toctree-l3"><a class="reference internal" href="api/allennlp.data.dataset_readers.sequence_tagging.html">allennlp.data.dataset_readers.sequence_tagging</a></li>
@@ -144,6 +146,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.models.decomposable_attention.html">allennlp.models.decomposable_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.models.encoder_decoders.html">allennlp.models.encoder_decoders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.models.reading_comprehension.html">allennlp.models.reading_comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/allennlp.models.coreference_resolution.html">allennlp.models.coreference_resolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.models.semantic_role_labeler.html">allennlp.models.semantic_role_labeler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
@@ -172,6 +175,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/allennlp.service.html">allennlp.service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/allennlp.service.db.html">allennlp.service.db</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/allennlp.service.permalinks.html">allennlp.service.permalinks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.service.predictors.html">allennlp.service.predictors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.service.server_sanic.html">allennlp.service.server_sanic</a></li>
 </ul>
@@ -284,6 +289,11 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="api/allennlp.commands.subcommand.html#module-allennlp.commands.subcommand"><code class="xref">allennlp.commands.subcommand</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="api/allennlp.commands.train.html#module-allennlp.commands.train"><code class="xref">allennlp.commands.train</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -360,6 +370,11 @@
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="api/allennlp.data.dataset_readers.conll2003.html#module-allennlp.data.dataset_readers.conll2003"><code class="xref">allennlp.data.dataset_readers.conll2003</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/allennlp.data.dataset_readers.coreference_resolution.html#module-allennlp.data.dataset_readers.coreference_resolution.conll"><code class="xref">allennlp.data.dataset_readers.coreference_resolution.conll</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -499,6 +514,11 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="api/allennlp.data.token_indexers.html#module-allennlp.data.token_indexers.elmo_indexer"><code class="xref">allennlp.data.token_indexers.elmo_indexer</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="api/allennlp.data.token_indexers.html#module-allennlp.data.token_indexers.ner_tag_indexer"><code class="xref">allennlp.data.token_indexers.ner_tag_indexer</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -575,6 +595,16 @@
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="api/allennlp.models.archival.html#module-allennlp.models.archival"><code class="xref">allennlp.models.archival</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/allennlp.models.coreference_resolution.html#module-allennlp.models.coreference_resolution"><code class="xref">allennlp.models.coreference_resolution</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/allennlp.models.coreference_resolution.html#module-allennlp.models.coreference_resolution.coref"><code class="xref">allennlp.models.coreference_resolution.coref</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -769,6 +799,11 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="api/allennlp.modules.token_embedders.html#module-allennlp.modules.token_embedders.elmo_token_embedder"><code class="xref">allennlp.modules.token_embedders.elmo_token_embedder</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="api/allennlp.modules.token_embedders.html#module-allennlp.modules.token_embedders.embedding"><code class="xref">allennlp.modules.token_embedders.embedding</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -829,12 +864,27 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="api/allennlp.service.db.html#module-allennlp.service.db"><code class="xref">allennlp.service.db</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/allennlp.service.permalinks.html#module-allennlp.service.permalinks"><code class="xref">allennlp.service.permalinks</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors"><code class="xref">allennlp.service.predictors</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors.bidaf"><code class="xref">allennlp.service.predictors.bidaf</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors.coref"><code class="xref">allennlp.service.predictors.coref</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -899,12 +949,22 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="api/allennlp.training.metrics.html#module-allennlp.training.metrics.conll_coref_scores"><code class="xref">allennlp.training.metrics.conll_coref_scores</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="api/allennlp.training.metrics.html#module-allennlp.training.metrics.entropy"><code class="xref">allennlp.training.metrics.entropy</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="api/allennlp.training.metrics.html#module-allennlp.training.metrics.f1_measure"><code class="xref">allennlp.training.metrics.f1_measure</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="api/allennlp.training.metrics.html#module-allennlp.training.metrics.mention_recall"><code class="xref">allennlp.training.metrics.mention_recall</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
