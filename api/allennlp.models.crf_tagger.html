@@ -154,6 +154,8 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -257,7 +259,7 @@
 <span id="allennlp-models-crf-tagger"></span><h1>allennlp.models.crf_tagger<a class="headerlink" href="#module-allennlp.models.crf_tagger" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="allennlp.models.crf_tagger.CrfTagger">
-<em class="property">class </em><code class="descclassname">allennlp.models.crf_tagger.</code><code class="descname">CrfTagger</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>label_namespace: str = 'labels'</em>, <em>initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em>regularizer: typing.Union[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/crf_tagger.py#L17-L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.crf_tagger.CrfTagger" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.models.crf_tagger.</code><code class="descname">CrfTagger</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>text_field_embedder: allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder</em>, <em>encoder: allennlp.modules.seq2seq_encoders.seq2seq_encoder.Seq2SeqEncoder</em>, <em>label_namespace: str = 'labels'</em>, <em>initializer: allennlp.nn.initializers.InitializerApplicator = &lt;allennlp.nn.initializers.InitializerApplicator object&gt;</em>, <em>regularizer: typing.Union[allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/crf_tagger.py#L17-L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.crf_tagger.CrfTagger" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">allennlp.models.model.Model</span></code></a></p>
 <p>The <code class="docutils literal"><span class="pre">CrfTagger</span></code> encodes a sequence of text with a <code class="docutils literal"><span class="pre">Seq2SeqEncoder</span></code>,
 then uses a Conditional Random Field model to predict a tag for each token in the sequence.</p>
@@ -294,6 +296,14 @@ Unless you did something unusual, the default value should be what you want.</p>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="allennlp.models.crf_tagger.CrfTagger.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>output_dict: typing.Dict[str, torch.FloatTensor]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/crf_tagger.py#L123-L136"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.crf_tagger.CrfTagger.decode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the tag ids to the actual tags.
+<code class="docutils literal"><span class="pre">output_dict[&quot;tags&quot;]</span></code> is a list of lists of tag_ids,
+so we use an ugly nested list comprehension.</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="allennlp.models.crf_tagger.CrfTagger.forward">
 <code class="descname">forward</code><span class="sig-paren">(</span><em>tokens: typing.Dict[str, torch.LongTensor], tags: torch.LongTensor = None</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/crf_tagger.py#L64-L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.crf_tagger.CrfTagger.forward" title="Permalink to this definition">¶</a></dt>
@@ -344,12 +354,12 @@ token in your input.</p>
 
 <dl class="classmethod">
 <dt id="allennlp.models.crf_tagger.CrfTagger.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.crf_tagger.CrfTagger<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/crf_tagger.py#L128-L144"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.crf_tagger.CrfTagger.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>vocab: allennlp.data.vocabulary.Vocabulary</em>, <em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.models.crf_tagger.CrfTagger<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/crf_tagger.py#L143-L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.crf_tagger.CrfTagger.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.models.crf_tagger.CrfTagger.get_metrics">
-<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/crf_tagger.py#L123-L126"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.crf_tagger.CrfTagger.get_metrics" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_metrics</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, float]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/models/crf_tagger.py#L138-L141"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.models.crf_tagger.CrfTagger.get_metrics" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary of metrics. This method will be called by
 <code class="xref py py-class docutils literal"><span class="pre">allennlp.training.Trainer</span></code> in order to compute and use model metrics for early
 stopping and model serialisation.  We return an empty dictionary here rather than raising

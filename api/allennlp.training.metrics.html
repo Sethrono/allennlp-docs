@@ -154,6 +154,8 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -450,7 +452,7 @@ calculated for this tag only.</p>
 
 <span class="target" id="module-allennlp.training.metrics.span_based_f1_measure"><span id="span-based-f1-measure"></span></span><dl class="class">
 <dt id="allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure">
-<em class="property">class </em><code class="descclassname">allennlp.training.metrics.span_based_f1_measure.</code><code class="descname">SpanBasedF1Measure</code><span class="sig-paren">(</span><em>vocabulary: allennlp.data.vocabulary.Vocabulary</em>, <em>tag_namespace: str = 'tags'</em>, <em>ignore_classes: typing.List[str] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/span_based_f1_measure.py#L13-L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.training.metrics.span_based_f1_measure.</code><code class="descname">SpanBasedF1Measure</code><span class="sig-paren">(</span><em>vocabulary: allennlp.data.vocabulary.Vocabulary</em>, <em>tag_namespace: str = 'tags'</em>, <em>ignore_classes: typing.List[str] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/span_based_f1_measure.py#L13-L249"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.training.metrics.metric.Metric" title="allennlp.training.metrics.metric.Metric"><code class="xref py py-class docutils literal"><span class="pre">allennlp.training.metrics.metric.Metric</span></code></a></p>
 <p>The Conll SRL metrics are based on exact span matching. This metric
 implements span-based precision and recall metrics for a BIO tagging
@@ -462,7 +464,7 @@ as constituents of the original span. However, it is a close proxy, which
 can be helpful for judging model peformance during training.</p>
 <dl class="method">
 <dt id="allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.get_metric">
-<code class="descname">get_metric</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/span_based_f1_measure.py#L195-L232"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.get_metric" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_metric</code><span class="sig-paren">(</span><em>reset: bool = False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/span_based_f1_measure.py#L200-L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.get_metric" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -481,7 +483,7 @@ can be helpful for judging model peformance during training.</p>
 
 <dl class="method">
 <dt id="allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.reset">
-<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/span_based_f1_measure.py#L241-L244"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.reset" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/training/metrics/span_based_f1_measure.py#L246-L249"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.training.metrics.span_based_f1_measure.SpanBasedF1Measure.reset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

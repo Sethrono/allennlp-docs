@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>allennlp.commands.evaluate &mdash; AllenNLP 0.0 documentation</title>
+  <title>allennlp.modules.stacked_elmo_lstm &mdash; AllenNLP 0.0 documentation</title>
   
 
   
@@ -38,9 +38,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
-        <link rel="up" title="allennlp.commands" href="allennlp.commands.html"/>
-        <link rel="next" title="allennlp.commands.predict" href="allennlp.commands.predict.html"/>
-        <link rel="prev" title="allennlp.commands.subcommand" href="allennlp.commands.subcommand.html"/> 
+        <link rel="up" title="allennlp.modules" href="allennlp.modules.html"/>
+        <link rel="next" title="allennlp.modules.conditional_random_field" href="allennlp.modules.conditional_random_field.html"/>
+        <link rel="prev" title="allennlp.modules.lstm_cell_with_projection" href="allennlp.modules.lstm_cell_with_projection.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -98,9 +98,9 @@
             
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.commands.evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.train.html">allennlp.commands.train</a></li>
@@ -151,11 +151,11 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.stacked_elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -234,15 +234,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="allennlp.commands.html">allennlp.commands</a> &raquo;</li>
+          <li><a href="allennlp.modules.html">allennlp.modules</a> &raquo;</li>
         
-      <li>allennlp.commands.evaluate</li>
+      <li>allennlp.modules.stacked_elmo_lstm</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/allennlp.commands.evaluate.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/allennlp.modules.stacked_elmo_lstm.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -255,28 +255,94 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-allennlp.commands.evaluate">
-<span id="allennlp-commands-evaluate"></span><h1>allennlp.commands.evaluate<a class="headerlink" href="#module-allennlp.commands.evaluate" title="Permalink to this headline">¶</a></h1>
-<p>The <code class="docutils literal"><span class="pre">evaluate</span></code> subcommand can be used to
-evaluate a trained model against a dataset
-and report any metrics calculated by the model.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m allennlp.run evaluate --help
-usage: run <span class="o">[</span>command<span class="o">]</span> evaluate <span class="o">[</span>-h<span class="o">]</span> --archive_file ARCHIVE_FILE
-                            --evaluation_data_file EVALUATION_DATA_FILE
-                            <span class="o">[</span>--cuda_device CUDA_DEVICE<span class="o">]</span>
+  <div class="section" id="module-allennlp.modules.stacked_elmo_lstm">
+<span id="allennlp-modules-stacked-elmo-lstm"></span><h1>allennlp.modules.stacked_elmo_lstm<a class="headerlink" href="#module-allennlp.modules.stacked_elmo_lstm" title="Permalink to this headline">¶</a></h1>
+<p>A stacked bidirectional LSTM with skip connections between layers.</p>
+<dl class="class">
+<dt id="allennlp.modules.stacked_elmo_lstm.ElmoLstm">
+<em class="property">class </em><code class="descclassname">allennlp.modules.stacked_elmo_lstm.</code><code class="descname">ElmoLstm</code><span class="sig-paren">(</span><em>input_size: int</em>, <em>hidden_size: int</em>, <em>cell_size: int</em>, <em>num_layers: int</em>, <em>recurrent_dropout_probability: float = 0.0</em>, <em>memory_cell_clip_value: typing.Union[float</em>, <em>NoneType] = None</em>, <em>state_projection_clip_value: typing.Union[float</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/stacked_elmo_lstm.py#L12-L166"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.stacked_elmo_lstm.ElmoLstm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>A stacked, bidirectional LSTM which uses
+<code class="xref py py-class docutils literal"><span class="pre">LstmCellWithProjection</span></code>&#8216;s
+with highway layers between the inputs to layers.
+The inputs to the forward and backward directions are independent - forward and backward
+states are not concatenated between layers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>input_size</strong> : <code class="docutils literal"><span class="pre">int</span></code>, required</p>
+<blockquote>
+<div><p>The dimension of the inputs to the LSTM.</p>
+</div></blockquote>
+<p><strong>hidden_size</strong> : <code class="docutils literal"><span class="pre">int</span></code>, required</p>
+<blockquote>
+<div><p>The dimension of the outputs of the LSTM.</p>
+</div></blockquote>
+<p><strong>cell_size</strong> : <code class="docutils literal"><span class="pre">int</span></code>, required.</p>
+<blockquote>
+<div><p>The dimension of the memory cell of the
+<code class="xref py py-class docutils literal"><span class="pre">LstmCellWithProjection</span></code>.</p>
+</div></blockquote>
+<p><strong>num_layers</strong> : <code class="docutils literal"><span class="pre">int</span></code>, required</p>
+<blockquote>
+<div><p>The number of bidirectional LSTMs to use.</p>
+</div></blockquote>
+<p><strong>recurrent_dropout_probability: ``float``, optional (default = 0.0)</strong></p>
+<blockquote>
+<div><p>The dropout probability to be used in a dropout scheme as stated in
+<a class="reference external" href="https://arxiv.org/abs/1512.05287">A Theoretically Grounded Application of Dropout in Recurrent Neural Networks</a> .</p>
+</div></blockquote>
+<p><strong>state_projection_clip_value: ``float``, optional, (default = None)</strong></p>
+<blockquote>
+<div><p>The magnitude with which to clip the hidden_state after projecting it.</p>
+</div></blockquote>
+<p><strong>memory_cell_clip_value: ``float``, optional, (default = None)</strong></p>
+<blockquote class="last">
+<div><p>The magnitude with which to clip the memory cell.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="allennlp.modules.stacked_elmo_lstm.ElmoLstm.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.nn.utils.rnn.PackedSequence, initial_state: typing.Union[typing.Tuple[torch.FloatTensor, torch.FloatTensor], NoneType] = None</em><span class="sig-paren">)</span> &#x2192; typing.Tuple[torch.FloatTensor, typing.Tuple[torch.FloatTensor, torch.FloatTensor]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/stacked_elmo_lstm.py#L85-L166"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.stacked_elmo_lstm.ElmoLstm.forward" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inputs</strong> : <code class="docutils literal"><span class="pre">PackedSequence</span></code>, required.</p>
+<blockquote>
+<div><p>A batch first <code class="docutils literal"><span class="pre">PackedSequence</span></code> to run the stacked LSTM over.</p>
+</div></blockquote>
+<p><strong>initial_state</strong> : Tuple[torch.Tensor, torch.Tensor], optional, (default = None)</p>
+<blockquote>
+<div><p>A tuple (state, memory) representing the initial hidden state and memory
+of the LSTM, with shape (num_layers, batch_size, 2 * hidden_size) and
+(num_layers, batch_size, 2 * cell_size) respectively.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>output_sequence</strong> : <code class="docutils literal"><span class="pre">torch.FloatTensor</span></code></p>
+<blockquote>
+<div><p>The encoded sequence of shape (num_layers, batch_size, sequence_length, hidden_size)</p>
+</div></blockquote>
+<p>final_states: <code class="docutils literal"><span class="pre">Tuple[torch.FloatTensor,</span> <span class="pre">torch.FloatTensor]</span></code></p>
+<blockquote class="last">
+<div><p>The per-layer final (state, memory) states of the LSTM, with shape
+(num_layers, batch_size, 2 * hidden_size) and  (num_layers, batch_size, 2 * cell_size)
+respectively. The last dimension is duplicated because it contains the state/memory
+for both the forward and backward layers.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
-Evaluate the specified model + dataset
+</dd></dl>
 
-optional arguments:
--h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
---archive-file ARCHIVE_FILE
-                        path to an archived trained model
---evaluation-data-file EVALUATION_DATA_FILE
-                        path to the file containing the evaluation data
---cuda-device CUDA_DEVICE
-                        id of GPU to use <span class="o">(</span><span class="k">if</span> any<span class="o">)</span>
-</pre></div>
-</div>
 </div>
 
 
@@ -289,10 +355,10 @@ optional arguments:
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="allennlp.commands.predict.html" class="btn btn-neutral float-right" title="allennlp.commands.predict" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="allennlp.modules.conditional_random_field.html" class="btn btn-neutral float-right" title="allennlp.modules.conditional_random_field" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="allennlp.commands.subcommand.html" class="btn btn-neutral" title="allennlp.commands.subcommand" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="allennlp.modules.lstm_cell_with_projection.html" class="btn btn-neutral" title="allennlp.modules.lstm_cell_with_projection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

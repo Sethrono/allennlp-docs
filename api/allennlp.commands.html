@@ -153,6 +153,8 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -289,7 +291,7 @@ calls <code class="docutils literal"><span class="pre">main()</span></code>.</p>
 </div>
 <span class="target" id="module-allennlp.commands"></span><dl class="function">
 <dt id="allennlp.commands.main">
-<code class="descclassname">allennlp.commands.</code><code class="descname">main</code><span class="sig-paren">(</span><em>prog: str = None</em>, <em>model_overrides: typing.Dict[str</em>, <em>str] = {}</em>, <em>predictor_overrides: typing.Dict[str</em>, <em>str] = {}</em>, <em>subcommand_overrides: typing.Dict[str</em>, <em>allennlp.commands.subcommand.Subcommand] = {}</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/commands.py#L28-L74"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.commands.main" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.commands.</code><code class="descname">main</code><span class="sig-paren">(</span><em>prog: str = None</em>, <em>model_overrides: typing.Dict[str</em>, <em>allennlp.service.predictors.predictor.DemoModel] = {}</em>, <em>predictor_overrides: typing.Dict[str</em>, <em>str] = {}</em>, <em>subcommand_overrides: typing.Dict[str</em>, <em>allennlp.commands.subcommand.Subcommand] = {}</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/commands.py#L28-L79"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.commands.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="xref py py-mod docutils literal"><span class="pre">run</span></code> command only knows about the registered classes
 in the <code class="docutils literal"><span class="pre">allennlp</span></code> codebase. In particular, once you start creating your own
 <code class="docutils literal"><span class="pre">Model</span></code> s and so forth, it won&#8217;t work for them. However, <code class="docutils literal"><span class="pre">allennlp.run</span></code> is

@@ -154,6 +154,8 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -264,13 +266,26 @@ a <code class="docutils literal"><span class="pre">Predictor</span></code> that 
 <ul class="simple">
 <li><a class="reference internal" href="#predictor"><span class="std std-ref">Predictor</span></a></li>
 <li><a class="reference internal" href="#bidaf"><span class="std std-ref">BidafPredictor</span></a></li>
-<li><a class="reference internal" href="#crf-tagger"><span class="std std-ref">CrfTaggerPredictor</span></a></li>
 <li><a class="reference internal" href="#decomposable-attention"><span class="std std-ref">DecomposableAttentionPredictor</span></a></li>
 <li><a class="reference internal" href="#semantic-role-labeler"><span class="std std-ref">SemanticRoleLabelerPredictor</span></a></li>
-<li><a class="reference internal" href="#simple-tagger"><span class="std std-ref">SimpleTaggerPredictor</span></a></li>
+<li><a class="reference internal" href="#sentence-tagger"><span class="std std-ref">SentenceTaggerPredictor</span></a></li>
 <li><a class="reference internal" href="#coreference-resolution"><span class="std std-ref">CorefPredictor</span></a></li>
 </ul>
 <span class="target" id="module-allennlp.service.predictors.predictor"><span id="predictor"></span></span><dl class="class">
+<dt id="allennlp.service.predictors.predictor.DemoModel">
+<em class="property">class </em><code class="descclassname">allennlp.service.predictors.predictor.</code><code class="descname">DemoModel</code><span class="sig-paren">(</span><em>archive_file: str</em>, <em>predictor_name: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L66-L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.DemoModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A demo model is determined by both an archive file
+(representing the trained model)
+and a choice of predictor</p>
+<dl class="method">
+<dt id="allennlp.service.predictors.predictor.DemoModel.predictor">
+<code class="descname">predictor</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; allennlp.service.predictors.predictor.Predictor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L76-L78"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.DemoModel.predictor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="allennlp.service.predictors.predictor.Predictor">
 <em class="property">class </em><code class="descclassname">allennlp.service.predictors.predictor.</code><code class="descname">Predictor</code><span class="sig-paren">(</span><em>model: allennlp.models.model.Model</em>, <em>dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L9-L63"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.Predictor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
@@ -294,13 +309,6 @@ subclass; otherwise, the default one for the model will be used.</p>
 <code class="descname">predict_json</code><span class="sig-paren">(</span><em>inputs: typing.Dict[str, typing.Any], cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/predictor.py#L18-L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.predictor.Predictor.predict_json" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</dd></dl>
-
-<span class="target" id="module-allennlp.service.predictors.crf_tagger"><span id="crf-tagger"></span></span><dl class="class">
-<dt id="allennlp.service.predictors.crf_tagger.CrfTaggerPredictor">
-<em class="property">class </em><code class="descclassname">allennlp.service.predictors.crf_tagger.</code><code class="descname">CrfTaggerPredictor</code><span class="sig-paren">(</span><em>model: allennlp.models.model.Model</em>, <em>dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/crf_tagger.py#L11-L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.crf_tagger.CrfTaggerPredictor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#allennlp.service.predictors.predictor.Predictor" title="allennlp.service.predictors.predictor.Predictor"><code class="xref py py-class docutils literal"><span class="pre">allennlp.service.predictors.predictor.Predictor</span></code></a></p>
-<p>Wrapper for the <a class="reference internal" href="allennlp.models.crf_tagger.html#allennlp.models.crf_tagger.CrfTagger" title="allennlp.models.crf_tagger.CrfTagger"><code class="xref py py-class docutils literal"><span class="pre">CrfTagger</span></code></a> model.</p>
 </dd></dl>
 
 <span class="target" id="module-allennlp.service.predictors.bidaf"><span id="bidaf"></span></span><dl class="class">
@@ -344,11 +352,22 @@ and returns JSON that looks like</p>
 
 </dd></dl>
 
-<span class="target" id="module-allennlp.service.predictors.simple_tagger"><span id="simple-tagger"></span></span><dl class="class">
-<dt id="allennlp.service.predictors.simple_tagger.SimpleTaggerPredictor">
-<em class="property">class </em><code class="descclassname">allennlp.service.predictors.simple_tagger.</code><code class="descname">SimpleTaggerPredictor</code><span class="sig-paren">(</span><em>model: allennlp.models.model.Model</em>, <em>dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/simple_tagger.py#L11-L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.simple_tagger.SimpleTaggerPredictor" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-allennlp.service.predictors.sentence_tagger"><span id="sentence-tagger"></span></span><dl class="class">
+<dt id="allennlp.service.predictors.sentence_tagger.SentenceTaggerPredictor">
+<em class="property">class </em><code class="descclassname">allennlp.service.predictors.sentence_tagger.</code><code class="descname">SentenceTaggerPredictor</code><span class="sig-paren">(</span><em>model: allennlp.models.model.Model</em>, <em>dataset_reader: allennlp.data.dataset_readers.dataset_reader.DatasetReader</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/sentence_tagger.py#L11-L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.sentence_tagger.SentenceTaggerPredictor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.service.predictors.predictor.Predictor" title="allennlp.service.predictors.predictor.Predictor"><code class="xref py py-class docutils literal"><span class="pre">allennlp.service.predictors.predictor.Predictor</span></code></a></p>
-<p>Wrapper for the <code class="xref py py-class docutils literal"><span class="pre">SimpleTagger</span></code> model.</p>
+<p>Wrapper for any model that takes in a sentence and returns
+a single set of tags for it.  In particular, it can be used with
+the <a class="reference internal" href="allennlp.models.crf_tagger.html#allennlp.models.crf_tagger.CrfTagger" title="allennlp.models.crf_tagger.CrfTagger"><code class="xref py py-class docutils literal"><span class="pre">CrfTagger</span></code></a> model
+and also
+the <a class="reference internal" href="allennlp.models.simple_tagger.html#allennlp.models.simple_tagger.SimpleTagger" title="allennlp.models.simple_tagger.SimpleTagger"><code class="xref py py-class docutils literal"><span class="pre">SimpleTagger</span></code></a> model.</p>
+<dl class="method">
+<dt id="allennlp.service.predictors.sentence_tagger.SentenceTaggerPredictor.predict_json">
+<code class="descname">predict_json</code><span class="sig-paren">(</span><em>inputs: typing.Dict[str, typing.Any], cuda_device: int = -1</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Any]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/predictors/sentence_tagger.py#L30-L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.predictors.sentence_tagger.SentenceTaggerPredictor.predict_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expects JSON that looks like <code class="docutils literal"><span class="pre">{&quot;sentence&quot;:</span> <span class="pre">&quot;...&quot;}</span></code>.
+Runs the underlying model, and adds the <code class="docutils literal"><span class="pre">&quot;words&quot;</span></code> to the output.</p>
+</dd></dl>
+
 </dd></dl>
 
 <span class="target" id="module-allennlp.service.predictors.coref"><span id="coreference-resolution"></span></span><dl class="class">

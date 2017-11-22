@@ -154,6 +154,8 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -259,13 +261,13 @@
 predictions using a trained model and its <a class="reference internal" href="allennlp.service.predictors.html#allennlp.service.predictors.predictor.Predictor" title="allennlp.service.predictors.predictor.Predictor"><code class="xref py py-class docutils literal"><span class="pre">Predictor</span></code></a> wrapper.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ python -m allennlp.run predict --help
 usage: run <span class="o">[</span>command<span class="o">]</span> predict <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--output-file OUTPUT_FILE<span class="o">]</span> <span class="o">[</span>--print<span class="o">]</span>
-                            archive_file input-file
+                            archive_file input_file
 
 Run the specified model against a JSON-lines input file.
 
 positional arguments:
 archive_file          the archived model to make predictions with
-input-file            path to input file
+input_file            path to input file
 
 optional arguments:
 -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>

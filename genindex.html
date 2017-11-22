@@ -152,6 +152,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api/allennlp.modules.html">allennlp.modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -467,6 +469,8 @@
 </li>
       <li><a href="api/allennlp.modules.highway.html#module-allennlp.modules.highway">allennlp.modules.highway (module)</a>
 </li>
+      <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#module-allennlp.modules.lstm_cell_with_projection">allennlp.modules.lstm_cell_with_projection (module)</a>
+</li>
       <li><a href="api/allennlp.modules.matrix_attention.html#module-allennlp.modules.matrix_attention">allennlp.modules.matrix_attention (module)</a>
 </li>
       <li><a href="api/allennlp.modules.seq2seq_encoders.html#module-allennlp.modules.seq2seq_encoders">allennlp.modules.seq2seq_encoders (module)</a>
@@ -502,6 +506,8 @@
       <li><a href="api/allennlp.modules.similarity_functions.html#module-allennlp.modules.similarity_functions.similarity_function">allennlp.modules.similarity_functions.similarity_function (module)</a>
 </li>
       <li><a href="api/allennlp.modules.stacked_alternating_lstm.html#module-allennlp.modules.stacked_alternating_lstm">allennlp.modules.stacked_alternating_lstm (module)</a>
+</li>
+      <li><a href="api/allennlp.modules.stacked_elmo_lstm.html#module-allennlp.modules.stacked_elmo_lstm">allennlp.modules.stacked_elmo_lstm (module)</a>
 </li>
       <li><a href="api/allennlp.modules.text_field_embedders.html#module-allennlp.modules.text_field_embedders">allennlp.modules.text_field_embedders (module)</a>
 </li>
@@ -549,15 +555,13 @@
 </li>
       <li><a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors.coref">allennlp.service.predictors.coref (module)</a>
 </li>
-      <li><a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors.crf_tagger">allennlp.service.predictors.crf_tagger (module)</a>
-</li>
       <li><a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors.decomposable_attention">allennlp.service.predictors.decomposable_attention (module)</a>
 </li>
       <li><a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors.predictor">allennlp.service.predictors.predictor (module)</a>
 </li>
       <li><a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors.semantic_role_labeler">allennlp.service.predictors.semantic_role_labeler (module)</a>
 </li>
-      <li><a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors.simple_tagger">allennlp.service.predictors.simple_tagger (module)</a>
+      <li><a href="api/allennlp.service.predictors.html#module-allennlp.service.predictors.sentence_tagger">allennlp.service.predictors.sentence_tagger (module)</a>
 </li>
       <li><a href="api/allennlp.service.server_sanic.html#module-allennlp.service.server_sanic">allennlp.service.server_sanic (module)</a>
 </li>
@@ -755,8 +759,6 @@
       </ul></li>
       <li><a href="api/allennlp.models.crf_tagger.html#allennlp.models.crf_tagger.CrfTagger">CrfTagger (class in allennlp.models.crf_tagger)</a>
 </li>
-      <li><a href="api/allennlp.service.predictors.html#allennlp.service.predictors.crf_tagger.CrfTaggerPredictor">CrfTaggerPredictor (class in allennlp.service.predictors.crf_tagger)</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -772,6 +774,8 @@
       <li><a href="api/allennlp.models.coreference_resolution.html#allennlp.models.coreference_resolution.coref.CoreferenceResolver.decode">decode() (allennlp.models.coreference_resolution.coref.CoreferenceResolver method)</a>
 
       <ul>
+        <li><a href="api/allennlp.models.crf_tagger.html#allennlp.models.crf_tagger.CrfTagger.decode">(allennlp.models.crf_tagger.CrfTagger method)</a>
+</li>
         <li><a href="api/allennlp.models.encoder_decoders.html#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq.decode">(allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq method)</a>
 </li>
         <li><a href="api/allennlp.models.model.html#allennlp.models.model.Model.decode">(allennlp.models.model.Model method)</a>
@@ -819,6 +823,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.service.db.html#allennlp.service.db.DemoDatabase">DemoDatabase (class in allennlp.service.db)</a>
 </li>
+      <li><a href="api/allennlp.service.predictors.html#allennlp.service.predictors.predictor.DemoModel">DemoModel (class in allennlp.service.predictors.predictor)</a>
+</li>
       <li><a href="api/allennlp.data.token_indexers.html#allennlp.data.token_indexers.dep_label_indexer.DepLabelIndexer">DepLabelIndexer (class in allennlp.data.token_indexers.dep_label_indexer)</a>
 </li>
       <li><a href="api/allennlp.nn.util.html#allennlp.nn.util.device_mapping">device_mapping() (in module allennlp.nn.util)</a>
@@ -836,6 +842,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.data.token_indexers.html#allennlp.data.token_indexers.elmo_indexer.ELMoCharacterMapper">ELMoCharacterMapper (class in allennlp.data.token_indexers.elmo_indexer)</a>
+</li>
+      <li><a href="api/allennlp.modules.stacked_elmo_lstm.html#allennlp.modules.stacked_elmo_lstm.ElmoLstm">ElmoLstm (class in allennlp.modules.stacked_elmo_lstm)</a>
 </li>
       <li><a href="api/allennlp.data.token_indexers.html#allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer">ELMoTokenCharactersIndexer (class in allennlp.data.token_indexers.elmo_indexer)</a>
 </li>
@@ -938,6 +946,8 @@
 </li>
         <li><a href="api/allennlp.modules.highway.html#allennlp.modules.highway.Highway.forward">(allennlp.modules.highway.Highway method)</a>
 </li>
+        <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection.forward">(allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection method)</a>
+</li>
         <li><a href="api/allennlp.modules.matrix_attention.html#allennlp.modules.matrix_attention.MatrixAttention.forward">(allennlp.modules.matrix_attention.MatrixAttention method)</a>
 </li>
         <li><a href="api/allennlp.modules.seq2seq_encoders.html#allennlp.modules.seq2seq_encoders.intra_sentence_attention.IntraSentenceAttentionEncoder.forward">(allennlp.modules.seq2seq_encoders.intra_sentence_attention.IntraSentenceAttentionEncoder method)</a>
@@ -963,6 +973,8 @@
         <li><a href="api/allennlp.modules.similarity_functions.html#allennlp.modules.similarity_functions.similarity_function.SimilarityFunction.forward">(allennlp.modules.similarity_functions.similarity_function.SimilarityFunction method)</a>
 </li>
         <li><a href="api/allennlp.modules.stacked_alternating_lstm.html#allennlp.modules.stacked_alternating_lstm.StackedAlternatingLstm.forward">(allennlp.modules.stacked_alternating_lstm.StackedAlternatingLstm method)</a>
+</li>
+        <li><a href="api/allennlp.modules.stacked_elmo_lstm.html#allennlp.modules.stacked_elmo_lstm.ElmoLstm.forward">(allennlp.modules.stacked_elmo_lstm.ElmoLstm method)</a>
 </li>
         <li><a href="api/allennlp.modules.text_field_embedders.html#allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder.forward">(allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder method)</a>
 </li>
@@ -1411,10 +1423,10 @@
 </li>
       <li><a href="api/allennlp.training.learning_rate_schedulers.html#allennlp.training.learning_rate_schedulers.LearningRateScheduler">LearningRateScheduler (class in allennlp.training.learning_rate_schedulers)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.data.tokenizers.html#allennlp.data.tokenizers.word_splitter.LettersDigitsWordSplitter">LettersDigitsWordSplitter (class in allennlp.data.tokenizers.word_splitter)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.modules.similarity_functions.html#allennlp.modules.similarity_functions.linear.LinearSimilarity">LinearSimilarity (class in allennlp.modules.similarity_functions.linear)</a>
 </li>
       <li><a href="api/allennlp.common.registrable.html#allennlp.common.registrable.Registrable.list_available">list_available() (allennlp.common.registrable.Registrable class method)</a>
@@ -1428,6 +1440,8 @@
       <li><a href="api/allennlp.common.checks.html#allennlp.common.checks.log_pytorch_version_info">log_pytorch_version_info() (in module allennlp.common.checks)</a>
 </li>
       <li><a href="api/allennlp.nn.util.html#allennlp.nn.util.logsumexp">logsumexp() (in module allennlp.nn.util)</a>
+</li>
+      <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection">LSTMCellWithProjection (class in allennlp.modules.lstm_cell_with_projection)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1539,10 +1553,10 @@
 </li>
       <li><a href="api/allennlp.training.metrics.html#allennlp.training.metrics.conll_coref_scores.Scorer.phi4">phi4() (allennlp.training.metrics.conll_coref_scores.Scorer static method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.data.dataset_readers.reading_comprehension.html#allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader.pick_paragraphs">pick_paragraphs() (allennlp.data.dataset_readers.reading_comprehension.triviaqa.TriviaQaReader method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.common.params.html#allennlp.common.params.Params.pop">pop() (allennlp.common.params.Params method)</a>
 </li>
       <li><a href="api/allennlp.common.params.html#allennlp.common.params.Params.pop_choice">pop_choice() (allennlp.common.params.Params method)</a>
@@ -1566,8 +1580,12 @@
 </li>
         <li><a href="api/allennlp.service.predictors.html#allennlp.service.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor.predict_json">(allennlp.service.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor method)</a>
 </li>
+        <li><a href="api/allennlp.service.predictors.html#allennlp.service.predictors.sentence_tagger.SentenceTaggerPredictor.predict_json">(allennlp.service.predictors.sentence_tagger.SentenceTaggerPredictor method)</a>
+</li>
       </ul></li>
       <li><a href="api/allennlp.service.predictors.html#allennlp.service.predictors.predictor.Predictor">Predictor (class in allennlp.service.predictors.predictor)</a>
+</li>
+      <li><a href="api/allennlp.service.predictors.html#allennlp.service.predictors.predictor.DemoModel.predictor">predictor() (allennlp.service.predictors.predictor.DemoModel method)</a>
 </li>
       <li><a href="api/allennlp.common.util.html#allennlp.common.util.prepare_environment">prepare_environment() (in module allennlp.common.util)</a>
 </li>
@@ -1642,6 +1660,8 @@
       <li><a href="api/allennlp.modules.augmented_lstm.html#allennlp.modules.augmented_lstm.AugmentedLstm.reset_parameters">reset_parameters() (allennlp.modules.augmented_lstm.AugmentedLstm method)</a>
 
       <ul>
+        <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection.reset_parameters">(allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection method)</a>
+</li>
         <li><a href="api/allennlp.modules.similarity_functions.html#allennlp.modules.similarity_functions.bilinear.BilinearSimilarity.reset_parameters">(allennlp.modules.similarity_functions.bilinear.BilinearSimilarity method)</a>
 </li>
         <li><a href="api/allennlp.modules.similarity_functions.html#allennlp.modules.similarity_functions.linear.LinearSimilarity.reset_parameters">(allennlp.modules.similarity_functions.linear.LinearSimilarity method)</a>
@@ -1668,6 +1688,8 @@
       <li><a href="api/allennlp.models.semantic_role_labeler.html#allennlp.models.semantic_role_labeler.SemanticRoleLabeler">SemanticRoleLabeler (class in allennlp.models.semantic_role_labeler)</a>
 </li>
       <li><a href="api/allennlp.service.predictors.html#allennlp.service.predictors.semantic_role_labeler.SemanticRoleLabelerPredictor">SemanticRoleLabelerPredictor (class in allennlp.service.predictors.semantic_role_labeler)</a>
+</li>
+      <li><a href="api/allennlp.service.predictors.html#allennlp.service.predictors.sentence_tagger.SentenceTaggerPredictor">SentenceTaggerPredictor (class in allennlp.service.predictors.sentence_tagger)</a>
 </li>
       <li><a href="api/allennlp.data.dataset_readers.seq2seq.html#allennlp.data.dataset_readers.seq2seq.Seq2SeqDatasetReader">Seq2SeqDatasetReader (class in allennlp.data.dataset_readers.seq2seq)</a>
 </li>
@@ -1702,8 +1724,6 @@
       <li><a href="api/allennlp.models.encoder_decoders.html#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq">SimpleSeq2Seq (class in allennlp.models.encoder_decoders.simple_seq2seq)</a>
 </li>
       <li><a href="api/allennlp.models.simple_tagger.html#allennlp.models.simple_tagger.SimpleTagger">SimpleTagger (class in allennlp.models.simple_tagger)</a>
-</li>
-      <li><a href="api/allennlp.service.predictors.html#allennlp.service.predictors.simple_tagger.SimpleTaggerPredictor">SimpleTaggerPredictor (class in allennlp.service.predictors.simple_tagger)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>

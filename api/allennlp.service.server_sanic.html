@@ -154,6 +154,8 @@
 <li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -261,12 +263,12 @@ AllenNLP models as well as our demo.</p>
 rather than instantiating an <code class="docutils literal"><span class="pre">app</span></code> yourself.</p>
 <dl class="function">
 <dt id="allennlp.service.server_sanic.make_app">
-<code class="descclassname">allennlp.service.server_sanic.</code><code class="descname">make_app</code><span class="sig-paren">(</span><em>build_dir: str = None</em>, <em>demo_db: typing.Union[allennlp.service.db.DemoDatabase</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; sanic.app.Sanic<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/server_sanic.py#L55-L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.server_sanic.make_app" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.service.server_sanic.</code><code class="descname">make_app</code><span class="sig-paren">(</span><em>build_dir: str = None</em>, <em>demo_db: typing.Union[allennlp.service.db.DemoDatabase</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; sanic.app.Sanic<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/server_sanic.py#L53-L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.server_sanic.make_app" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="allennlp.service.server_sanic.run">
-<code class="descclassname">allennlp.service.server_sanic.</code><code class="descname">run</code><span class="sig-paren">(</span><em>port: int, workers: int, trained_models: typing.Dict[str, str], static_dir: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/server_sanic.py#L33-L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.server_sanic.run" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">allennlp.service.server_sanic.</code><code class="descname">run</code><span class="sig-paren">(</span><em>port: int, workers: int, trained_models: typing.Dict[str, allennlp.service.predictors.predictor.DemoModel], static_dir: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/server_sanic.py#L32-L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.server_sanic.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the server programatically</p>
 </dd></dl>
 
