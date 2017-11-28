@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>allennlp.commands.subcommand &mdash; AllenNLP 0.0 documentation</title>
+  <title>allennlp.modules.scalar_mix &mdash; AllenNLP 0.0 documentation</title>
   
 
   
@@ -38,9 +38,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
-        <link rel="up" title="allennlp.commands" href="allennlp.commands.html"/>
-        <link rel="next" title="allennlp.commands.evaluate" href="allennlp.commands.evaluate.html"/>
-        <link rel="prev" title="allennlp.commands" href="allennlp.commands.html"/> 
+        <link rel="up" title="allennlp.modules" href="allennlp.modules.html"/>
+        <link rel="next" title="allennlp.nn" href="allennlp.nn.html"/>
+        <link rel="prev" title="allennlp.modules.token_embedders" href="allennlp.modules.token_embedders.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -98,8 +98,8 @@
             
               <p class="caption"><span class="caption-text">Package Reference</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.commands.subcommand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="allennlp.commands.html">allennlp.commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.commands.subcommand.html">allennlp.commands.subcommand</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.evaluate.html">allennlp.commands.evaluate</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.predict.html">allennlp.commands.predict</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.commands.serve.html">allennlp.commands.serve</a></li>
@@ -151,7 +151,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.models.simple_tagger.html">allennlp.models.simple_tagger</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="allennlp.modules.html">allennlp.modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
@@ -167,7 +167,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.scalar_mix</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="allennlp.nn.html">allennlp.nn</a><ul>
@@ -235,15 +235,15 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="allennlp.commands.html">allennlp.commands</a> &raquo;</li>
+          <li><a href="allennlp.modules.html">allennlp.modules</a> &raquo;</li>
         
-      <li>allennlp.commands.subcommand</li>
+      <li>allennlp.modules.scalar_mix</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/allennlp.commands.subcommand.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/allennlp.modules.scalar_mix.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -256,17 +256,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-allennlp.commands.subcommand">
-<span id="allennlp-commands-subcommand"></span><h1>allennlp.commands.subcommand<a class="headerlink" href="#module-allennlp.commands.subcommand" title="Permalink to this headline">¶</a></h1>
-<p>Base class for subcommands under <code class="docutils literal"><span class="pre">allennlp.run</span></code>.</p>
+  <div class="section" id="module-allennlp.modules.scalar_mix">
+<span id="allennlp-modules-scalar-mix"></span><h1>allennlp.modules.scalar_mix<a class="headerlink" href="#module-allennlp.modules.scalar_mix" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="allennlp.commands.subcommand.Subcommand">
-<em class="property">class </em><code class="descclassname">allennlp.commands.subcommand.</code><code class="descname">Subcommand</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/commands/subcommand.py#L6-L18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.commands.subcommand.Subcommand" title="Permalink to this definition">¶</a></dt>
-<dd><p>An abstract class representing subcommands for allennlp.run.
-If you wanted to (for example) create your own custom <cite>special-evaluate</cite> command to use like</p>
-<p><code class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">allennlp.run</span> <span class="pre">special-evaluate</span> <span class="pre">...</span></code></p>
-<p>you would create a <code class="docutils literal"><span class="pre">Subcommand</span></code> subclass and then pass it as an override to
-<a class="reference internal" href="allennlp.commands.html#allennlp.commands.main" title="allennlp.commands.main"><code class="xref py py-func docutils literal"><span class="pre">main()</span></code></a> .</p>
+<dt id="allennlp.modules.scalar_mix.ScalarMix">
+<em class="property">class </em><code class="descclassname">allennlp.modules.scalar_mix.</code><code class="descname">ScalarMix</code><span class="sig-paren">(</span><em>mixture_size: int</em>, <em>do_layer_norm: bool = False</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/scalar_mix.py#L8-L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.scalar_mix.ScalarMix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Computes a parameterised scalar mixture of N tensors, <code class="docutils literal"><span class="pre">mixture</span> <span class="pre">=</span> <span class="pre">gamma</span> <span class="pre">*</span> <span class="pre">sum(s_k</span> <span class="pre">*</span> <span class="pre">tensor_k)</span></code>
+where <code class="docutils literal"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">softmax(w)</span></code>, with <code class="docutils literal"><span class="pre">w</span></code> and <code class="docutils literal"><span class="pre">gamma</span></code> scalar parameters.</p>
+<p>In addition, if <code class="docutils literal"><span class="pre">do_layer_norm=True</span></code> then apply layer normalization to each tensor
+before weighting.</p>
+<dl class="method">
+<dt id="allennlp.modules.scalar_mix.ScalarMix.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>tensors: typing.List[torch.FloatTensor], mask: torch.FloatTensor = None</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/scalar_mix.py#L26-L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.scalar_mix.ScalarMix.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute a weighted average of the <code class="docutils literal"><span class="pre">tensors</span></code>.  The input tensors an be any shape
+with at least two dimensions, but must all be the same shape.</p>
+<p>When <code class="docutils literal"><span class="pre">do_layer_norm=True</span></code>, the <code class="docutils literal"><span class="pre">mask</span></code> is required input.  If the <code class="docutils literal"><span class="pre">tensors</span></code> are
+dimensioned  <code class="docutils literal"><span class="pre">(dim_0,</span> <span class="pre">...,</span> <span class="pre">dim_{n-1},</span> <span class="pre">dim_n)</span></code>, then the <code class="docutils literal"><span class="pre">mask</span></code> is dimensioned
+<code class="docutils literal"><span class="pre">(dim_0,</span> <span class="pre">...,</span> <span class="pre">dim_{n-1})</span></code>, as in the typical case with <code class="docutils literal"><span class="pre">tensors</span></code> of shape
+<code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">dim)</span></code> and <code class="docutils literal"><span class="pre">mask</span></code> of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps)</span></code>.</p>
+<p>When <code class="docutils literal"><span class="pre">do_layer_norm=False</span></code> the <code class="docutils literal"><span class="pre">mask</span></code> is ignored.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -281,10 +292,10 @@ If you wanted to (for example) create your own custom <cite>special-evaluate</ci
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="allennlp.commands.evaluate.html" class="btn btn-neutral float-right" title="allennlp.commands.evaluate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="allennlp.nn.html" class="btn btn-neutral float-right" title="allennlp.nn" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="allennlp.commands.html" class="btn btn-neutral" title="allennlp.commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="allennlp.modules.token_embedders.html" class="btn btn-neutral" title="allennlp.modules.token_embedders" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

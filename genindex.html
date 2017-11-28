@@ -165,6 +165,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.text_field_embedders.html">allennlp.modules.text_field_embedders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.time_distributed.html">allennlp.modules.time_distributed</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.token_embedders.html">allennlp.modules.token_embedders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.scalar_mix.html">allennlp.modules.scalar_mix</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/allennlp.nn.html">allennlp.nn</a><ul>
@@ -455,10 +456,10 @@
 </li>
       <li><a href="api/allennlp.models.simple_tagger.html#module-allennlp.models.simple_tagger">allennlp.models.simple_tagger (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.modules.html#module-allennlp.modules">allennlp.modules (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.modules.attention.html#module-allennlp.modules.attention">allennlp.modules.attention (module)</a>
 </li>
       <li><a href="api/allennlp.modules.augmented_lstm.html#module-allennlp.modules.augmented_lstm">allennlp.modules.augmented_lstm (module)</a>
@@ -472,6 +473,8 @@
       <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#module-allennlp.modules.lstm_cell_with_projection">allennlp.modules.lstm_cell_with_projection (module)</a>
 </li>
       <li><a href="api/allennlp.modules.matrix_attention.html#module-allennlp.modules.matrix_attention">allennlp.modules.matrix_attention (module)</a>
+</li>
+      <li><a href="api/allennlp.modules.scalar_mix.html#module-allennlp.modules.scalar_mix">allennlp.modules.scalar_mix (module)</a>
 </li>
       <li><a href="api/allennlp.modules.seq2seq_encoders.html#module-allennlp.modules.seq2seq_encoders">allennlp.modules.seq2seq_encoders (module)</a>
 </li>
@@ -949,6 +952,8 @@
         <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection.forward">(allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection method)</a>
 </li>
         <li><a href="api/allennlp.modules.matrix_attention.html#allennlp.modules.matrix_attention.MatrixAttention.forward">(allennlp.modules.matrix_attention.MatrixAttention method)</a>
+</li>
+        <li><a href="api/allennlp.modules.scalar_mix.html#allennlp.modules.scalar_mix.ScalarMix.forward">(allennlp.modules.scalar_mix.ScalarMix method)</a>
 </li>
         <li><a href="api/allennlp.modules.seq2seq_encoders.html#allennlp.modules.seq2seq_encoders.intra_sentence_attention.IntraSentenceAttentionEncoder.forward">(allennlp.modules.seq2seq_encoders.intra_sentence_attention.IntraSentenceAttentionEncoder method)</a>
 </li>
@@ -1683,6 +1688,8 @@
 </li>
       <li><a href="api/allennlp.data.vocabulary.html#allennlp.data.vocabulary.Vocabulary.save_to_files">save_to_files() (allennlp.data.vocabulary.Vocabulary method)</a>
 </li>
+      <li><a href="api/allennlp.modules.scalar_mix.html#allennlp.modules.scalar_mix.ScalarMix">ScalarMix (class in allennlp.modules.scalar_mix)</a>
+</li>
       <li><a href="api/allennlp.training.metrics.html#allennlp.training.metrics.conll_coref_scores.Scorer">Scorer (class in allennlp.training.metrics.conll_coref_scores)</a>
 </li>
       <li><a href="api/allennlp.models.semantic_role_labeler.html#allennlp.models.semantic_role_labeler.SemanticRoleLabeler">SemanticRoleLabeler (class in allennlp.models.semantic_role_labeler)</a>
@@ -1723,10 +1730,10 @@
 </li>
       <li><a href="api/allennlp.models.encoder_decoders.html#allennlp.models.encoder_decoders.simple_seq2seq.SimpleSeq2Seq">SimpleSeq2Seq (class in allennlp.models.encoder_decoders.simple_seq2seq)</a>
 </li>
-      <li><a href="api/allennlp.models.simple_tagger.html#allennlp.models.simple_tagger.SimpleTagger">SimpleTagger (class in allennlp.models.simple_tagger)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/allennlp.models.simple_tagger.html#allennlp.models.simple_tagger.SimpleTagger">SimpleTagger (class in allennlp.models.simple_tagger)</a>
+</li>
       <li><a href="api/allennlp.data.tokenizers.html#allennlp.data.tokenizers.word_splitter.SimpleWordSplitter">SimpleWordSplitter (class in allennlp.data.tokenizers.word_splitter)</a>
 </li>
       <li><a href="api/allennlp.data.token_indexers.html#allennlp.data.token_indexers.single_id_token_indexer.SingleIdTokenIndexer">SingleIdTokenIndexer (class in allennlp.data.token_indexers.single_id_token_indexer)</a>
