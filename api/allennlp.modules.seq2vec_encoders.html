@@ -155,7 +155,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -351,7 +351,7 @@ the shape of the returned tensor, but the last element of that shape.</p>
 
 <span class="target" id="module-allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper"></span><dl class="class">
 <dt id="allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper">
-<em class="property">class </em><code class="descclassname">allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.</code><code class="descname">PytorchSeq2VecWrapper</code><span class="sig-paren">(</span><em>module: torch.nn.modules.rnn.RNNBase</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L9-L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.</code><code class="descname">PytorchSeq2VecWrapper</code><span class="sig-paren">(</span><em>module: torch.nn.modules.rnn.RNNBase</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L7-L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder" title="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder"><code class="xref py py-class docutils literal"><span class="pre">allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder</span></code></a></p>
 <p>Pytorch&#8217;s RNNs have two outputs: the hidden state for every time step, and the hidden state at
 the last time step for every layer.  We just want the second one as a single output.  This
@@ -382,25 +382,25 @@ bugs around masking.  If you already have a <code class="docutils literal"><span
 second parameter.</p>
 <dl class="method">
 <dt id="allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.FloatTensor</em>, <em>mask: torch.FloatTensor</em>, <em>hidden_state: torch.FloatTensor = None</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L59-L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.FloatTensor</em>, <em>mask: torch.FloatTensor</em>, <em>hidden_state: torch.FloatTensor = None</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L58-L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_input_dim">
-<code class="descname">get_input_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L49-L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_input_dim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_input_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L48-L49"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_input_dim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_output_dim">
-<code class="descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L52-L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/pytorch_seq2vec_wrapper.py#L51-L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.pytorch_seq2vec_wrapper.PytorchSeq2VecWrapper.get_output_dim" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <span class="target" id="module-allennlp.modules.seq2vec_encoders.seq2vec_encoder"></span><dl class="class">
 <dt id="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder">
-<em class="property">class </em><code class="descclassname">allennlp.modules.seq2vec_encoders.seq2vec_encoder.</code><code class="descname">Seq2VecEncoder</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L6-L34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">torch.nn.modules.module.Module</span></code>, <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
+<em class="property">class </em><code class="descclassname">allennlp.modules.seq2vec_encoders.seq2vec_encoder.</code><code class="descname">Seq2VecEncoder</code><span class="sig-paren">(</span><em>stateful: bool = False</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L5-L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">allennlp.modules.encoder_base._EncoderBase</span></code>, <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
 <p>A <code class="docutils literal"><span class="pre">Seq2VecEncoder</span></code> is a <code class="docutils literal"><span class="pre">Module</span></code> that takes as input a sequence of vectors and returns a
 single vector.  Input shape: <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">sequence_length,</span> <span class="pre">input_dim)</span></code>; output shape:
 <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">output_dim)</span></code>.</p>
@@ -409,12 +409,12 @@ You might need this if you want to construct a <code class="docutils literal"><s
 or to raise sensible errors for mis-matching input dimensions.</p>
 <dl class="classmethod">
 <dt id="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L31-L34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L30-L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_input_dim">
-<code class="descname">get_input_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L16-L22"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_input_dim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_input_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L15-L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_input_dim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the dimension of the vector input for each element in the sequence input
 to a <code class="docutils literal"><span class="pre">Seq2VecEncoder</span></code>. This is <cite>not</cite> the shape of the input tensor, but the
 last element of that shape.</p>
@@ -422,7 +422,7 @@ last element of that shape.</p>
 
 <dl class="method">
 <dt id="allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_output_dim">
-<code class="descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L24-L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/seq2vec_encoders/seq2vec_encoder.py#L23-L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.seq2vec_encoders.seq2vec_encoder.Seq2VecEncoder.get_output_dim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the dimension of the final vector output by this <code class="docutils literal"><span class="pre">Seq2VecEncoder</span></code>.  This is <cite>not</cite>
 the shape of the returned tensor, but the last element of that shape.</p>
 </dd></dl>

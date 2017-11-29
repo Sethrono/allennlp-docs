@@ -39,7 +39,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="AllenNLP 0.0 documentation" href="../index.html"/>
         <link rel="up" title="allennlp.modules" href="allennlp.modules.html"/>
-        <link rel="next" title="allennlp.modules.stacked_elmo_lstm" href="allennlp.modules.stacked_elmo_lstm.html"/>
+        <link rel="next" title="allennlp.modules.elmo_lstm" href="allennlp.modules.elmo_lstm.html"/>
         <link rel="prev" title="allennlp.modules.augmented_lstm" href="allennlp.modules.augmented_lstm.html"/> 
 
   
@@ -155,7 +155,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.lstm_cell_with_projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -261,8 +261,8 @@
 <p>An LSTM with Recurrent Dropout, a hidden_state which is projected and
 clipping on both the hidden state and the memory state of the LSTM.</p>
 <dl class="class">
-<dt id="allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection">
-<em class="property">class </em><code class="descclassname">allennlp.modules.lstm_cell_with_projection.</code><code class="descname">LSTMCellWithProjection</code><span class="sig-paren">(</span><em>input_size: int</em>, <em>hidden_size: int</em>, <em>cell_size: int</em>, <em>go_forward: bool = True</em>, <em>recurrent_dropout_probability: float = 0.0</em>, <em>memory_cell_clip_value: typing.Union[float</em>, <em>NoneType] = None</em>, <em>state_projection_clip_value: typing.Union[float</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/lstm_cell_with_projection.py#L15-L235"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection" title="Permalink to this definition">¶</a></dt>
+<dt id="allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection">
+<em class="property">class </em><code class="descclassname">allennlp.modules.lstm_cell_with_projection.</code><code class="descname">LstmCellWithProjection</code><span class="sig-paren">(</span><em>input_size: int</em>, <em>hidden_size: int</em>, <em>cell_size: int</em>, <em>go_forward: bool = True</em>, <em>recurrent_dropout_probability: float = 0.0</em>, <em>memory_cell_clip_value: typing.Union[float</em>, <em>NoneType] = None</em>, <em>state_projection_clip_value: typing.Union[float</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/lstm_cell_with_projection.py#L15-L235"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">torch.nn.modules.module.Module</span></code></p>
 <p>An LSTM with Recurrent Dropout and a projected and clipped hidden state and
 memory. Note: this implementation is slower than the native Pytorch LSTM because
@@ -325,8 +325,8 @@ API for returning stacked LSTM states.</p>
 </tbody>
 </table>
 <dl class="method">
-<dt id="allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.FloatTensor, batch_lengths: typing.List[int], initial_state: typing.Union[typing.Tuple[torch.FloatTensor, torch.FloatTensor], NoneType] = None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/lstm_cell_with_projection.py#L94-L235"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.FloatTensor, batch_lengths: typing.List[int], initial_state: typing.Union[typing.Tuple[torch.FloatTensor, torch.FloatTensor], NoneType] = None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/lstm_cell_with_projection.py#L94-L235"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection.forward" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -368,8 +368,8 @@ of the LSTM. The <code class="docutils literal"><span class="pre">state</span></
 </dd></dl>
 
 <dl class="method">
-<dt id="allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection.reset_parameters">
-<code class="descname">reset_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/lstm_cell_with_projection.py#L84-L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection.reset_parameters" title="Permalink to this definition">¶</a></dt>
+<dt id="allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection.reset_parameters">
+<code class="descname">reset_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/lstm_cell_with_projection.py#L84-L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection.reset_parameters" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -386,7 +386,7 @@ of the LSTM. The <code class="docutils literal"><span class="pre">state</span></
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="allennlp.modules.stacked_elmo_lstm.html" class="btn btn-neutral float-right" title="allennlp.modules.stacked_elmo_lstm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="allennlp.modules.elmo_lstm.html" class="btn btn-neutral float-right" title="allennlp.modules.elmo_lstm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="allennlp.modules.augmented_lstm.html" class="btn btn-neutral" title="allennlp.modules.augmented_lstm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

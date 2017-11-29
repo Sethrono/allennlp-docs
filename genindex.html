@@ -153,7 +153,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.stacked_elmo_lstm.html">allennlp.modules.stacked_elmo_lstm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.highway.html">allennlp.modules.highway</a></li>
@@ -466,6 +466,8 @@
 </li>
       <li><a href="api/allennlp.modules.conditional_random_field.html#module-allennlp.modules.conditional_random_field">allennlp.modules.conditional_random_field (module)</a>
 </li>
+      <li><a href="api/allennlp.modules.elmo_lstm.html#module-allennlp.modules.elmo_lstm">allennlp.modules.elmo_lstm (module)</a>
+</li>
       <li><a href="api/allennlp.modules.feedforward.html#module-allennlp.modules.feedforward">allennlp.modules.feedforward (module)</a>
 </li>
       <li><a href="api/allennlp.modules.highway.html#module-allennlp.modules.highway">allennlp.modules.highway (module)</a>
@@ -509,8 +511,6 @@
       <li><a href="api/allennlp.modules.similarity_functions.html#module-allennlp.modules.similarity_functions.similarity_function">allennlp.modules.similarity_functions.similarity_function (module)</a>
 </li>
       <li><a href="api/allennlp.modules.stacked_alternating_lstm.html#module-allennlp.modules.stacked_alternating_lstm">allennlp.modules.stacked_alternating_lstm (module)</a>
-</li>
-      <li><a href="api/allennlp.modules.stacked_elmo_lstm.html#module-allennlp.modules.stacked_elmo_lstm">allennlp.modules.stacked_elmo_lstm (module)</a>
 </li>
       <li><a href="api/allennlp.modules.text_field_embedders.html#module-allennlp.modules.text_field_embedders">allennlp.modules.text_field_embedders (module)</a>
 </li>
@@ -846,7 +846,7 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.data.token_indexers.html#allennlp.data.token_indexers.elmo_indexer.ELMoCharacterMapper">ELMoCharacterMapper (class in allennlp.data.token_indexers.elmo_indexer)</a>
 </li>
-      <li><a href="api/allennlp.modules.stacked_elmo_lstm.html#allennlp.modules.stacked_elmo_lstm.ElmoLstm">ElmoLstm (class in allennlp.modules.stacked_elmo_lstm)</a>
+      <li><a href="api/allennlp.modules.elmo_lstm.html#allennlp.modules.elmo_lstm.ElmoLstm">ElmoLstm (class in allennlp.modules.elmo_lstm)</a>
 </li>
       <li><a href="api/allennlp.data.token_indexers.html#allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer">ELMoTokenCharactersIndexer (class in allennlp.data.token_indexers.elmo_indexer)</a>
 </li>
@@ -945,11 +945,13 @@
 </li>
         <li><a href="api/allennlp.modules.conditional_random_field.html#allennlp.modules.conditional_random_field.ConditionalRandomField.forward">(allennlp.modules.conditional_random_field.ConditionalRandomField method)</a>
 </li>
+        <li><a href="api/allennlp.modules.elmo_lstm.html#allennlp.modules.elmo_lstm.ElmoLstm.forward">(allennlp.modules.elmo_lstm.ElmoLstm method)</a>
+</li>
         <li><a href="api/allennlp.modules.feedforward.html#allennlp.modules.feedforward.FeedForward.forward">(allennlp.modules.feedforward.FeedForward method)</a>
 </li>
         <li><a href="api/allennlp.modules.highway.html#allennlp.modules.highway.Highway.forward">(allennlp.modules.highway.Highway method)</a>
 </li>
-        <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection.forward">(allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection method)</a>
+        <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection.forward">(allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection method)</a>
 </li>
         <li><a href="api/allennlp.modules.matrix_attention.html#allennlp.modules.matrix_attention.MatrixAttention.forward">(allennlp.modules.matrix_attention.MatrixAttention method)</a>
 </li>
@@ -978,8 +980,6 @@
         <li><a href="api/allennlp.modules.similarity_functions.html#allennlp.modules.similarity_functions.similarity_function.SimilarityFunction.forward">(allennlp.modules.similarity_functions.similarity_function.SimilarityFunction method)</a>
 </li>
         <li><a href="api/allennlp.modules.stacked_alternating_lstm.html#allennlp.modules.stacked_alternating_lstm.StackedAlternatingLstm.forward">(allennlp.modules.stacked_alternating_lstm.StackedAlternatingLstm method)</a>
-</li>
-        <li><a href="api/allennlp.modules.stacked_elmo_lstm.html#allennlp.modules.stacked_elmo_lstm.ElmoLstm.forward">(allennlp.modules.stacked_elmo_lstm.ElmoLstm method)</a>
 </li>
         <li><a href="api/allennlp.modules.text_field_embedders.html#allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder.forward">(allennlp.modules.text_field_embedders.basic_text_field_embedder.BasicTextFieldEmbedder method)</a>
 </li>
@@ -1446,7 +1446,7 @@
 </li>
       <li><a href="api/allennlp.nn.util.html#allennlp.nn.util.logsumexp">logsumexp() (in module allennlp.nn.util)</a>
 </li>
-      <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection">LSTMCellWithProjection (class in allennlp.modules.lstm_cell_with_projection)</a>
+      <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection">LstmCellWithProjection (class in allennlp.modules.lstm_cell_with_projection)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1665,7 +1665,7 @@
       <li><a href="api/allennlp.modules.augmented_lstm.html#allennlp.modules.augmented_lstm.AugmentedLstm.reset_parameters">reset_parameters() (allennlp.modules.augmented_lstm.AugmentedLstm method)</a>
 
       <ul>
-        <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection.reset_parameters">(allennlp.modules.lstm_cell_with_projection.LSTMCellWithProjection method)</a>
+        <li><a href="api/allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection.reset_parameters">(allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection method)</a>
 </li>
         <li><a href="api/allennlp.modules.similarity_functions.html#allennlp.modules.similarity_functions.bilinear.BilinearSimilarity.reset_parameters">(allennlp.modules.similarity_functions.bilinear.BilinearSimilarity method)</a>
 </li>
