@@ -290,44 +290,44 @@ Returns <code class="docutils literal"><span class="pre">None</span></code> if n
 
 <dl class="class">
 <dt id="allennlp.service.db.InMemoryDemoDatabase">
-<em class="property">class </em><code class="descclassname">allennlp.service.db.</code><code class="descname">InMemoryDemoDatabase</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L178-L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.InMemoryDemoDatabase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.service.db.</code><code class="descname">InMemoryDemoDatabase</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L179-L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.InMemoryDemoDatabase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.service.db.DemoDatabase" title="allennlp.service.db.DemoDatabase"><code class="xref py py-class docutils literal"><span class="pre">allennlp.service.db.DemoDatabase</span></code></a></p>
 <p>This is just for unit tests, please don&#8217;t use it in production.</p>
 <dl class="method">
 <dt id="allennlp.service.db.InMemoryDemoDatabase.add_result">
-<code class="descname">add_result</code><span class="sig-paren">(</span><em>headers: typing.Dict[str, typing.Any], model_name: str, inputs: typing.Dict[str, typing.Any], outputs: typing.Dict[str, typing.Any]</em><span class="sig-paren">)</span> &#x2192; typing.Union[int, NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L185-L191"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.InMemoryDemoDatabase.add_result" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_result</code><span class="sig-paren">(</span><em>headers: typing.Dict[str, typing.Any], model_name: str, inputs: typing.Dict[str, typing.Any], outputs: typing.Dict[str, typing.Any]</em><span class="sig-paren">)</span> &#x2192; typing.Union[int, NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L186-L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.InMemoryDemoDatabase.add_result" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
 <dt id="allennlp.service.db.InMemoryDemoDatabase.from_environment">
-<em class="property">classmethod </em><code class="descname">from_environment</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Union[_ForwardRef('InMemoryDemoDatabase'), NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L199-L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.InMemoryDemoDatabase.from_environment" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_environment</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Union[_ForwardRef('InMemoryDemoDatabase'), NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L200-L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.InMemoryDemoDatabase.from_environment" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.service.db.InMemoryDemoDatabase.get_result">
-<code class="descname">get_result</code><span class="sig-paren">(</span><em>perma_id: int</em><span class="sig-paren">)</span> &#x2192; allennlp.service.permalinks.Permadata<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L193-L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.InMemoryDemoDatabase.get_result" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_result</code><span class="sig-paren">(</span><em>perma_id: int</em><span class="sig-paren">)</span> &#x2192; allennlp.service.permalinks.Permadata<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L194-L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.InMemoryDemoDatabase.get_result" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="allennlp.service.db.PostgresDemoDatabase">
-<em class="property">class </em><code class="descclassname">allennlp.service.db.</code><code class="descname">PostgresDemoDatabase</code><span class="sig-paren">(</span><em>dbname: str</em>, <em>host: str</em>, <em>port: str</em>, <em>user: str</em>, <em>password: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L68-L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.PostgresDemoDatabase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.service.db.</code><code class="descname">PostgresDemoDatabase</code><span class="sig-paren">(</span><em>dbname: str</em>, <em>host: str</em>, <em>port: str</em>, <em>user: str</em>, <em>password: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L68-L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.PostgresDemoDatabase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.service.db.DemoDatabase" title="allennlp.service.db.DemoDatabase"><code class="xref py py-class docutils literal"><span class="pre">allennlp.service.db.DemoDatabase</span></code></a></p>
 <p>Concrete Postgres implementation.</p>
 <dl class="method">
 <dt id="allennlp.service.db.PostgresDemoDatabase.add_result">
-<code class="descname">add_result</code><span class="sig-paren">(</span><em>headers: typing.Dict[str, typing.Any], model_name: str, inputs: typing.Dict[str, typing.Any], outputs: typing.Dict[str, typing.Any]</em><span class="sig-paren">)</span> &#x2192; typing.Union[int, NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L134-L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.PostgresDemoDatabase.add_result" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_result</code><span class="sig-paren">(</span><em>headers: typing.Dict[str, typing.Any], model_name: str, inputs: typing.Dict[str, typing.Any], outputs: typing.Dict[str, typing.Any]</em><span class="sig-paren">)</span> &#x2192; typing.Union[int, NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L135-L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.PostgresDemoDatabase.add_result" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="classmethod">
 <dt id="allennlp.service.db.PostgresDemoDatabase.from_environment">
-<em class="property">classmethod </em><code class="descname">from_environment</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Union[_ForwardRef('PostgresDemoDatabase'), NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L114-L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.PostgresDemoDatabase.from_environment" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_environment</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Union[_ForwardRef('PostgresDemoDatabase'), NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L115-L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.PostgresDemoDatabase.from_environment" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.service.db.PostgresDemoDatabase.get_result">
-<code class="descname">get_result</code><span class="sig-paren">(</span><em>perma_id: int</em><span class="sig-paren">)</span> &#x2192; typing.Union[allennlp.service.permalinks.Permadata, NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L159-L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.PostgresDemoDatabase.get_result" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_result</code><span class="sig-paren">(</span><em>perma_id: int</em><span class="sig-paren">)</span> &#x2192; typing.Union[allennlp.service.permalinks.Permadata, NoneType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/service/db.py#L160-L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.service.db.PostgresDemoDatabase.get_result" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
