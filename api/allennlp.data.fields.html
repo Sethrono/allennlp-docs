@@ -269,6 +269,7 @@ that ends up as an array in a model.</p>
 <li><a class="reference internal" href="#sequence-field"><span class="std std-ref">SequenceField</span></a></li>
 <li><a class="reference internal" href="#sequence-label-field"><span class="std std-ref">SequenceLabelField</span></a></li>
 <li><a class="reference internal" href="#text-field"><span class="std std-ref">TextField</span></a></li>
+<li><a class="reference internal" href="#array-field"><span class="std std-ref">ArrayField</span></a></li>
 </ul>
 <span class="target" id="module-allennlp.data.fields.field"><span id="field"></span></span><dl class="class">
 <dt id="allennlp.data.fields.field.Field">
@@ -871,6 +872,46 @@ not need to implement this method.</p>
 <dt id="allennlp.data.fields.text_field.TextField.sequence_length">
 <code class="descname">sequence_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L89-L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField.sequence_length" title="Permalink to this definition">¶</a></dt>
 <dd><p>How many elements are there in this sequence?</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-allennlp.data.fields.array_field"><span id="array-field"></span></span><dl class="class">
+<dt id="allennlp.data.fields.array_field.ArrayField">
+<em class="property">class </em><code class="descclassname">allennlp.data.fields.array_field.</code><code class="descname">ArrayField</code><span class="sig-paren">(</span><em>array: numpy.ndarray</em>, <em>padding_value: int = 0</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/array_field.py#L9-L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.array_field.ArrayField" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#allennlp.data.fields.field.Field" title="allennlp.data.fields.field.Field"><code class="xref py py-class docutils literal"><span class="pre">allennlp.data.fields.field.Field</span></code></a></p>
+<p>A class representing an array, which could have arbitrary dimensions.
+A batch of these arrays are padded to the max dimension length in the batch
+for each dimension.</p>
+<dl class="method">
+<dt id="allennlp.data.fields.array_field.ArrayField.as_array">
+<code class="descname">as_array</code><span class="sig-paren">(</span><em>padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/array_field.py#L24-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.array_field.ArrayField.as_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a set of specified padding lengths, actually pad the data in this field and return a
+numpy array of the correct shape.  This actually returns a list instead of a single array,
+in case there are several related arrays for this field (e.g., a <code class="docutils literal"><span class="pre">TextField</span></code> might have a
+word array and a characters-per-word array).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.fields.array_field.ArrayField.empty_field">
+<code class="descname">empty_field</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/array_field.py#L41-L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.array_field.ArrayField.empty_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>So that <code class="docutils literal"><span class="pre">ListField</span></code> can pad the number of fields in a list (e.g., the number of answer
+option <code class="docutils literal"><span class="pre">TextFields</span></code>), we need a representation of an empty field of each type.  This
+returns that.  This will only ever be called when we&#8217;re to the point of calling
+<a class="reference internal" href="#allennlp.data.fields.array_field.ArrayField.as_array" title="allennlp.data.fields.array_field.ArrayField.as_array"><code class="xref py py-func docutils literal"><span class="pre">as_array()</span></code></a>, so you don&#8217;t need to worry about <code class="docutils literal"><span class="pre">get_padding_lengths</span></code>,
+<code class="docutils literal"><span class="pre">count_vocab_items</span></code>, etc., being called on this empty field.</p>
+<p>We make this an instance method instead of a static method so that if there is any state
+in the Field, we can copy it over (e.g., the token indexers in <code class="docutils literal"><span class="pre">TextField</span></code>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="allennlp.data.fields.array_field.ArrayField.get_padding_lengths">
+<code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/array_field.py#L19-L22"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.array_field.ArrayField.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
+<dd><p>If there are things in this field that need padding, note them here.  In order to pad a
+batch of instance, we get all of the lengths from the batch, take the max, and pad
+everything to that length (or use a pre-specified maximum length).  The return value is a
+dictionary mapping keys to lengths, like {&#8216;num_tokens&#8217;: 13}.</p>
+<p>This is always called after <code class="xref py py-func docutils literal"><span class="pre">index()</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
