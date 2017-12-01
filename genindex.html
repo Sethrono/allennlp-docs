@@ -153,6 +153,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
@@ -460,13 +461,15 @@
 </li>
       <li><a href="api/allennlp.modules.html#module-allennlp.modules">allennlp.modules (module)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.modules.attention.html#module-allennlp.modules.attention">allennlp.modules.attention (module)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/allennlp.modules.augmented_lstm.html#module-allennlp.modules.augmented_lstm">allennlp.modules.augmented_lstm (module)</a>
 </li>
       <li><a href="api/allennlp.modules.conditional_random_field.html#module-allennlp.modules.conditional_random_field">allennlp.modules.conditional_random_field (module)</a>
+</li>
+      <li><a href="api/allennlp.modules.elmo.html#module-allennlp.modules.elmo">allennlp.modules.elmo (module)</a>
 </li>
       <li><a href="api/allennlp.modules.elmo_lstm.html#module-allennlp.modules.elmo_lstm">allennlp.modules.elmo_lstm (module)</a>
 </li>
@@ -850,13 +853,15 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/allennlp.modules.elmo.html#allennlp.modules.elmo.Elmo">Elmo (class in allennlp.modules.elmo)</a>
+</li>
       <li><a href="api/allennlp.data.token_indexers.html#allennlp.data.token_indexers.elmo_indexer.ELMoCharacterMapper">ELMoCharacterMapper (class in allennlp.data.token_indexers.elmo_indexer)</a>
 </li>
       <li><a href="api/allennlp.modules.elmo_lstm.html#allennlp.modules.elmo_lstm.ElmoLstm">ElmoLstm (class in allennlp.modules.elmo_lstm)</a>
 </li>
       <li><a href="api/allennlp.data.token_indexers.html#allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer">ELMoTokenCharactersIndexer (class in allennlp.data.token_indexers.elmo_indexer)</a>
 </li>
-      <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder">ELMoTokenEmbedder (class in allennlp.modules.token_embedders.elmo_token_embedder)</a>
+      <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder">ElmoTokenEmbedder (class in allennlp.modules.token_embedders.elmo_token_embedder)</a>
 </li>
       <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.embedding.Embedding">Embedding (class in allennlp.modules.token_embedders.embedding)</a>
 </li>
@@ -953,6 +958,8 @@
 </li>
         <li><a href="api/allennlp.modules.conditional_random_field.html#allennlp.modules.conditional_random_field.ConditionalRandomField.forward">(allennlp.modules.conditional_random_field.ConditionalRandomField method)</a>
 </li>
+        <li><a href="api/allennlp.modules.elmo.html#allennlp.modules.elmo.Elmo.forward">(allennlp.modules.elmo.Elmo method)</a>
+</li>
         <li><a href="api/allennlp.modules.elmo_lstm.html#allennlp.modules.elmo_lstm.ElmoLstm.forward">(allennlp.modules.elmo_lstm.ElmoLstm method)</a>
 </li>
         <li><a href="api/allennlp.modules.feedforward.html#allennlp.modules.feedforward.FeedForward.forward">(allennlp.modules.feedforward.FeedForward method)</a>
@@ -995,7 +1002,7 @@
 </li>
         <li><a href="api/allennlp.modules.time_distributed.html#allennlp.modules.time_distributed.TimeDistributed.forward">(allennlp.modules.time_distributed.TimeDistributed method)</a>
 </li>
-        <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder.forward">(allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder method)</a>
+        <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder.forward">(allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder method)</a>
 </li>
         <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.embedding.Embedding.forward">(allennlp.modules.token_embedders.embedding.Embedding method)</a>
 </li>
@@ -1107,6 +1114,8 @@
 </li>
         <li><a href="api/allennlp.modules.attention.html#allennlp.modules.attention.Attention.from_params">(allennlp.modules.attention.Attention class method)</a>
 </li>
+        <li><a href="api/allennlp.modules.elmo.html#allennlp.modules.elmo.Elmo.from_params">(allennlp.modules.elmo.Elmo class method)</a>
+</li>
         <li><a href="api/allennlp.modules.feedforward.html#allennlp.modules.feedforward.FeedForward.from_params">(allennlp.modules.feedforward.FeedForward class method)</a>
 </li>
         <li><a href="api/allennlp.modules.matrix_attention.html#allennlp.modules.matrix_attention.MatrixAttention.from_params">(allennlp.modules.matrix_attention.MatrixAttention class method)</a>
@@ -1137,7 +1146,7 @@
 </li>
         <li><a href="api/allennlp.modules.text_field_embedders.html#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.from_params">(allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder class method)</a>
 </li>
-        <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder.from_params">(allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder class method)</a>
+        <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder.from_params">(allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder class method)</a>
 </li>
         <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.embedding.Embedding.from_params">(allennlp.modules.token_embedders.embedding.Embedding class method)</a>
 </li>
@@ -1267,7 +1276,7 @@
 </li>
         <li><a href="api/allennlp.modules.text_field_embedders.html#allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder.get_output_dim">(allennlp.modules.text_field_embedders.text_field_embedder.TextFieldEmbedder method)</a>
 </li>
-        <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder.get_output_dim">(allennlp.modules.token_embedders.elmo_token_embedder.ELMoTokenEmbedder method)</a>
+        <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder.get_output_dim">(allennlp.modules.token_embedders.elmo_token_embedder.ElmoTokenEmbedder method)</a>
 </li>
         <li><a href="api/allennlp.modules.token_embedders.html#allennlp.modules.token_embedders.embedding.Embedding.get_output_dim">(allennlp.modules.token_embedders.embedding.Embedding method)</a>
 </li>
@@ -1451,6 +1460,8 @@
       <li><a href="api/allennlp.models.model.html#allennlp.models.model.Model.load">load() (allennlp.models.model.Model class method)</a>
 </li>
       <li><a href="api/allennlp.models.archival.html#allennlp.models.archival.load_archive">load_archive() (in module allennlp.models.archival)</a>
+</li>
+      <li><a href="api/allennlp.modules.elmo_lstm.html#allennlp.modules.elmo_lstm.ElmoLstm.load_weights">load_weights() (allennlp.modules.elmo_lstm.ElmoLstm method)</a>
 </li>
       <li><a href="api/allennlp.common.checks.html#allennlp.common.checks.log_pytorch_version_info">log_pytorch_version_info() (in module allennlp.common.checks)</a>
 </li>
@@ -1643,6 +1654,8 @@
       <li><a href="api/allennlp.nn.regularizers.html#allennlp.nn.regularizers.regularizer.Regularizer">Regularizer (class in allennlp.nn.regularizers.regularizer)</a>
 </li>
       <li><a href="api/allennlp.nn.regularizers.html#allennlp.nn.regularizers.regularizer_applicator.RegularizerApplicator">RegularizerApplicator (class in allennlp.nn.regularizers.regularizer_applicator)</a>
+</li>
+      <li><a href="api/allennlp.nn.util.html#allennlp.nn.util.remove_sentence_boundaries">remove_sentence_boundaries() (in module allennlp.nn.util)</a>
 </li>
       <li><a href="api/allennlp.nn.util.html#allennlp.nn.util.replace_masked_values">replace_masked_values() (in module allennlp.nn.util)</a>
 </li>

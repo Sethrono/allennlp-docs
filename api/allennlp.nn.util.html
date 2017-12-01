@@ -155,6 +155,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
@@ -705,6 +706,45 @@ that uses categorical cross-entropy loss.</p>
 <code class="descclassname">allennlp.nn.util.</code><code class="descname">ones_like</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L474-L479"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.ones_like" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use clone() + fill_() to make sure that a ones tensor ends up on the right
 device at runtime.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="allennlp.nn.util.remove_sentence_boundaries">
+<code class="descclassname">allennlp.nn.util.</code><code class="descname">remove_sentence_boundaries</code><span class="sig-paren">(</span><em>tensor: torch.FloatTensor</em>, <em>mask: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; typing.Tuple[torch.FloatTensor, torch.FloatTensor]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/nn/util.py#L831-L869"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.nn.util.remove_sentence_boundaries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove begin/end of sentence embeddings from the batch of sentences.
+Given a batch of sentences with size <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">dim)</span></code>
+this returns a tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps</span> <span class="pre">-</span> <span class="pre">2,</span> <span class="pre">dim)</span></code> after removing
+the beginning and end sentence markers.  The sentences are assumed to be padded on the right,
+with the beginning of each sentence assumed to occur at index 0 (i.e., <code class="docutils literal"><span class="pre">mask[:,</span> <span class="pre">0]</span></code> is assumed
+to be 1).</p>
+<p>Returns both the new tensor and updated mask.</p>
+<p>This function is the inverse of <code class="docutils literal"><span class="pre">add_sentence_boundary_token_ids</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>tensor</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code></p>
+<blockquote>
+<div><p>A tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">dim)</span></code></p>
+</div></blockquote>
+<p><strong>mask</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code></p>
+<blockquote>
+<div><p>A tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps)</span></code></p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tensor_without_boundary_tokens</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code></p>
+<blockquote>
+<div><p>The tensor after removing the boundary tokens of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps</span> <span class="pre">-</span> <span class="pre">2,</span> <span class="pre">dim)</span></code></p>
+</div></blockquote>
+<p><strong>new_mask</strong> : <code class="docutils literal"><span class="pre">torch.Tensor</span></code></p>
+<blockquote class="last">
+<div><p>The new mask for the tensor of shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps</span> <span class="pre">-</span> <span class="pre">2)</span></code>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">

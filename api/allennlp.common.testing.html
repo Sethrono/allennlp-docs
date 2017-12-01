@@ -155,6 +155,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
@@ -280,23 +281,23 @@ as a test fixture.</p>
 
 <span class="target" id="module-allennlp.common.testing.model_test_case"></span><dl class="class">
 <dt id="allennlp.common.testing.model_test_case.ModelTestCase">
-<em class="property">class </em><code class="descclassname">allennlp.common.testing.model_test_case.</code><code class="descname">ModelTestCase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/testing/model_test_case.py#L14-L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.testing.model_test_case.ModelTestCase" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.common.testing.model_test_case.</code><code class="descname">ModelTestCase</code><span class="sig-paren">(</span><em>methodName='runTest'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/testing/model_test_case.py#L14-L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.testing.model_test_case.ModelTestCase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.common.testing.test_case.AllenNlpTestCase" title="allennlp.common.testing.test_case.AllenNlpTestCase"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.testing.test_case.AllenNlpTestCase</span></code></a></p>
 <p>A subclass of <a class="reference internal" href="#allennlp.common.testing.test_case.AllenNlpTestCase" title="allennlp.common.testing.test_case.AllenNlpTestCase"><code class="xref py py-class docutils literal"><span class="pre">AllenNlpTestCase</span></code></a>
 with added methods for testing <a class="reference internal" href="allennlp.models.model.html#allennlp.models.model.Model" title="allennlp.models.model.Model"><code class="xref py py-class docutils literal"><span class="pre">Model</span></code></a> subclasses.</p>
 <dl class="staticmethod">
 <dt id="allennlp.common.testing.model_test_case.ModelTestCase.assert_fields_equal">
-<em class="property">static </em><code class="descname">assert_fields_equal</code><span class="sig-paren">(</span><em>field1</em>, <em>field2</em>, <em>tolerance: float = 1e-06</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/testing/model_test_case.py#L92-L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.testing.model_test_case.ModelTestCase.assert_fields_equal" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">assert_fields_equal</code><span class="sig-paren">(</span><em>field1</em>, <em>field2</em>, <em>tolerance: float = 1e-06</em>, <em>name: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/testing/model_test_case.py#L98-L106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.testing.model_test_case.ModelTestCase.assert_fields_equal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.common.testing.model_test_case.ModelTestCase.ensure_batch_predictions_are_consistent">
-<code class="descname">ensure_batch_predictions_are_consistent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/testing/model_test_case.py#L102-L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.testing.model_test_case.ModelTestCase.ensure_batch_predictions_are_consistent" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ensure_batch_predictions_are_consistent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/testing/model_test_case.py#L108-L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.testing.model_test_case.ModelTestCase.ensure_batch_predictions_are_consistent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.common.testing.model_test_case.ModelTestCase.ensure_model_can_train_save_and_load">
-<code class="descname">ensure_model_can_train_save_and_load</code><span class="sig-paren">(</span><em>param_file: str</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/testing/model_test_case.py#L32-L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.testing.model_test_case.ModelTestCase.ensure_model_can_train_save_and_load" title="Permalink to this definition">¶</a></dt>
+<code class="descname">ensure_model_can_train_save_and_load</code><span class="sig-paren">(</span><em>param_file: str</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/common/testing/model_test_case.py#L32-L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.common.testing.model_test_case.ModelTestCase.ensure_model_can_train_save_and_load" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

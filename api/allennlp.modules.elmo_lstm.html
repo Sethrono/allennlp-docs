@@ -40,7 +40,7 @@
     <link rel="top" title="AllenNLP 0.2.2 documentation" href="../index.html"/>
         <link rel="up" title="allennlp.modules" href="allennlp.modules.html"/>
         <link rel="next" title="allennlp.modules.conditional_random_field" href="allennlp.modules.conditional_random_field.html"/>
-        <link rel="prev" title="allennlp.modules.lstm_cell_with_projection" href="allennlp.modules.lstm_cell_with_projection.html"/> 
+        <link rel="prev" title="allennlp.modules.elmo" href="allennlp.modules.elmo.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -155,6 +155,7 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
@@ -261,7 +262,7 @@
 <p>A stacked bidirectional LSTM with skip connections between layers.</p>
 <dl class="class">
 <dt id="allennlp.modules.elmo_lstm.ElmoLstm">
-<em class="property">class </em><code class="descclassname">allennlp.modules.elmo_lstm.</code><code class="descname">ElmoLstm</code><span class="sig-paren">(</span><em>input_size: int</em>, <em>hidden_size: int</em>, <em>cell_size: int</em>, <em>num_layers: int</em>, <em>recurrent_dropout_probability: float = 0.0</em>, <em>memory_cell_clip_value: typing.Union[float</em>, <em>NoneType] = None</em>, <em>state_projection_clip_value: typing.Union[float</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/elmo_lstm.py#L13-L230"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.elmo_lstm.ElmoLstm" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.modules.elmo_lstm.</code><code class="descname">ElmoLstm</code><span class="sig-paren">(</span><em>input_size: int</em>, <em>hidden_size: int</em>, <em>cell_size: int</em>, <em>num_layers: int</em>, <em>recurrent_dropout_probability: float = 0.0</em>, <em>memory_cell_clip_value: typing.Union[float</em>, <em>NoneType] = None</em>, <em>state_projection_clip_value: typing.Union[float</em>, <em>NoneType] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/elmo_lstm.py#L17-L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.elmo_lstm.ElmoLstm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">allennlp.modules.encoder_base._EncoderBase</span></code></p>
 <p>A stacked, bidirectional LSTM which uses
 <a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html#allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection" title="allennlp.modules.lstm_cell_with_projection.LstmCellWithProjection"><code class="xref py py-class docutils literal"><span class="pre">LstmCellWithProjection</span></code></a>&#8216;s
@@ -314,7 +315,7 @@ carried across different sentences.</p>
 </table>
 <dl class="method">
 <dt id="allennlp.modules.elmo_lstm.ElmoLstm.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.FloatTensor</em>, <em>mask: torch.LongTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/elmo_lstm.py#L93-L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.elmo_lstm.ElmoLstm.forward" title="Permalink to this definition">¶</a></dt>
+<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.FloatTensor</em>, <em>mask: torch.LongTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/elmo_lstm.py#L97-L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.elmo_lstm.ElmoLstm.forward" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -338,6 +339,13 @@ non-padded elements in each sequence in the batch.</p>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="allennlp.modules.elmo_lstm.ElmoLstm.load_weights">
+<code class="descname">load_weights</code><span class="sig-paren">(</span><em>weight_file: str</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/elmo_lstm.py#L236-L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.elmo_lstm.ElmoLstm.load_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the pre-trained weights from the file.</p>
+<p>Note that this method also sets <code class="docutils literal"><span class="pre">requires_grad=False</span></code> to all class parameters.</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -355,7 +363,7 @@ non-padded elements in each sequence in the batch.</p>
         <a href="allennlp.modules.conditional_random_field.html" class="btn btn-neutral float-right" title="allennlp.modules.conditional_random_field" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="allennlp.modules.lstm_cell_with_projection.html" class="btn btn-neutral" title="allennlp.modules.lstm_cell_with_projection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="allennlp.modules.elmo.html" class="btn btn-neutral" title="allennlp.modules.elmo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

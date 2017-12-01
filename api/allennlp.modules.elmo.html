@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>allennlp.modules.feedforward &mdash; AllenNLP 0.2.2 documentation</title>
+  <title>allennlp.modules.elmo &mdash; AllenNLP 0.2.2 documentation</title>
   
 
   
@@ -39,8 +39,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="AllenNLP 0.2.2 documentation" href="../index.html"/>
         <link rel="up" title="allennlp.modules" href="allennlp.modules.html"/>
-        <link rel="next" title="allennlp.modules.highway" href="allennlp.modules.highway.html"/>
-        <link rel="prev" title="allennlp.modules.conditional_random_field" href="allennlp.modules.conditional_random_field.html"/> 
+        <link rel="next" title="allennlp.modules.elmo_lstm" href="allennlp.modules.elmo_lstm.html"/>
+        <link rel="prev" title="allennlp.modules.lstm_cell_with_projection" href="allennlp.modules.lstm_cell_with_projection.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -155,10 +155,10 @@
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.attention.html">allennlp.modules.attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.augmented_lstm.html">allennlp.modules.augmented_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.lstm_cell_with_projection.html">allennlp.modules.lstm_cell_with_projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo.html">allennlp.modules.elmo</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.elmo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.elmo_lstm.html">allennlp.modules.elmo_lstm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.conditional_random_field.html">allennlp.modules.conditional_random_field</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">allennlp.modules.feedforward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="allennlp.modules.feedforward.html">allennlp.modules.feedforward</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.highway.html">allennlp.modules.highway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.matrix_attention.html">allennlp.modules.matrix_attention</a></li>
 <li class="toctree-l2"><a class="reference internal" href="allennlp.modules.seq2seq_encoders.html">allennlp.modules.seq2seq_encoders</a></li>
@@ -238,13 +238,13 @@
         
           <li><a href="allennlp.modules.html">allennlp.modules</a> &raquo;</li>
         
-      <li>allennlp.modules.feedforward</li>
+      <li>allennlp.modules.elmo</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/api/allennlp.modules.feedforward.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/api/allennlp.modules.elmo.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -257,66 +257,77 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-allennlp.modules.feedforward">
-<span id="allennlp-modules-feedforward"></span><h1>allennlp.modules.feedforward<a class="headerlink" href="#module-allennlp.modules.feedforward" title="Permalink to this headline">¶</a></h1>
-<p>A feed-forward neural network.</p>
+  <div class="section" id="module-allennlp.modules.elmo">
+<span id="allennlp-modules-elmo"></span><h1>allennlp.modules.elmo<a class="headerlink" href="#module-allennlp.modules.elmo" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
-<dt id="allennlp.modules.feedforward.FeedForward">
-<em class="property">class </em><code class="descclassname">allennlp.modules.feedforward.</code><code class="descname">FeedForward</code><span class="sig-paren">(</span><em>input_dim: int, num_layers: int, hidden_dims: typing.Union[int, typing.Sequence[int]], activations: typing.Union[allennlp.nn.activations.Activation, typing.Sequence[allennlp.nn.activations.Activation]], dropout: typing.Union[float, typing.Sequence[float]] = 0.0</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/feedforward.py#L13-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.feedforward.FeedForward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">torch.nn.modules.module.Module</span></code></p>
-<p>This <code class="docutils literal"><span class="pre">Module</span></code> is a feed-forward neural network, just a sequence of <code class="docutils literal"><span class="pre">Linear</span></code> layers with
-activation functions in between.</p>
+<dt id="allennlp.modules.elmo.Elmo">
+<em class="property">class </em><code class="descclassname">allennlp.modules.elmo.</code><code class="descname">Elmo</code><span class="sig-paren">(</span><em>options_file: str</em>, <em>weight_file: str</em>, <em>num_output_representations: int</em>, <em>do_layer_norm: bool = False</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/elmo.py#L24-L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.elmo.Elmo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">torch.nn.modules.module.Module</span></code>, <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
+<p>Compute ELMo representations using a pre-trained bidirectional language model.</p>
+<p>See &#8220;Deep contextualized word representations&#8221;, Peters et al. for details.</p>
+<p>This module takes character id input and computes <code class="docutils literal"><span class="pre">num_output_representations</span></code> different layers
+of ELMo representations.  Typically <code class="docutils literal"><span class="pre">num_output_representations</span></code> is 1 or 2.  For example, in
+the case of the SRL model in the above paper, <code class="docutils literal"><span class="pre">num_output_representations=1</span></code> where ELMo was included at
+the input token representation layer.  In the case of the SQuAD model, <code class="docutils literal"><span class="pre">num_output_representations=2</span></code>
+as ELMo was also included at the GRU output layer.</p>
+<p>In the implementation below, we learn separate scalar weights for each output layer,
+but only run the biLM once on each input sequence for efficiency.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>input_dim</strong> : <code class="docutils literal"><span class="pre">int</span></code></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>options_file</strong> : <code class="docutils literal"><span class="pre">str</span></code></p>
 <blockquote>
-<div><p>The dimensionality of the input.  We assume the input has shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">input_dim)</span></code>.</p>
+<div><p>ELMo JSON options file</p>
 </div></blockquote>
-<p><strong>num_layers</strong> : <code class="docutils literal"><span class="pre">int</span></code></p>
+<p><strong>weight_file</strong> : <code class="docutils literal"><span class="pre">str</span></code></p>
 <blockquote>
-<div><p>The number of <code class="docutils literal"><span class="pre">Linear</span></code> layers to apply to the input.</p>
+<div><p>ELMo hdf5 weight file</p>
 </div></blockquote>
-<p><strong>hidden_dims</strong> : <code class="docutils literal"><span class="pre">Union[int,</span> <span class="pre">Sequence[int]]</span></code></p>
+<p><strong>num_output_representations: ``int``</strong></p>
 <blockquote>
-<div><p>The output dimension of each of the <code class="docutils literal"><span class="pre">Linear</span></code> layers.  If this is a single <code class="docutils literal"><span class="pre">int</span></code>, we use
-it for all <code class="docutils literal"><span class="pre">Linear</span></code> layers.  If it is a <code class="docutils literal"><span class="pre">Sequence[int]</span></code>, <code class="docutils literal"><span class="pre">len(hidden_dims)</span></code> must be
-<code class="docutils literal"><span class="pre">num_layers</span></code>.</p>
+<div><p>The number of ELMo representation layers to output.</p>
 </div></blockquote>
-<p><strong>activations</strong> : <code class="docutils literal"><span class="pre">Union[Callable,</span> <span class="pre">Sequence[Callable]]</span></code></p>
-<blockquote>
-<div><p>The activation function to use after each <code class="docutils literal"><span class="pre">Linear</span></code> layer.  If this is a single function,
-we use it after all <code class="docutils literal"><span class="pre">Linear</span></code> layers.  If it is a <code class="docutils literal"><span class="pre">Sequence[Callable]</span></code>,
-<code class="docutils literal"><span class="pre">len(activations)</span></code> must be <code class="docutils literal"><span class="pre">num_layers</span></code>.</p>
-</div></blockquote>
-<p><strong>dropout</strong> : <code class="docutils literal"><span class="pre">Union[float,</span> <span class="pre">Sequence[float]]</span></code>, optional</p>
+<p><strong>do_layer_norm: ``bool``</strong></p>
 <blockquote class="last">
-<div><p>If given, we will apply this amount of dropout after each layer.  Semantics of <code class="docutils literal"><span class="pre">float</span></code>
-versus <code class="docutils literal"><span class="pre">Sequence[float]</span></code> is the same as with other parameters.</p>
+<div><p>Should we apply layer normalization (passed to <code class="docutils literal"><span class="pre">ScalarMix</span></code>)?</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
-<dt id="allennlp.modules.feedforward.FeedForward.forward">
-<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; torch.FloatTensor<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/feedforward.py#L75-L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.feedforward.FeedForward.forward" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="allennlp.modules.elmo.Elmo.forward">
+<code class="descname">forward</code><span class="sig-paren">(</span><em>inputs: torch.FloatTensor</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, typing.Union[torch.FloatTensor, typing.List[torch.FloatTensor]]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/elmo.py#L65-L95"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.elmo.Elmo.forward" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inputs: ``torch.autograd.Variable``</strong></p>
+<blockquote>
+<div><p>Shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">50)</span></code> of character ids representing the current batch.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dict with keys:</p>
+<p><code class="docutils literal"><span class="pre">'elmo_representations'</span></code>: <code class="docutils literal"><span class="pre">List[torch.autograd.Variable]</span></code></p>
+<blockquote>
+<div><p>A <code class="docutils literal"><span class="pre">num_output_representations</span></code> list of ELMo representations for the input sequence.
+Each representation is shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps,</span> <span class="pre">embedding_dim)</span></code></p>
+</div></blockquote>
+<p><code class="docutils literal"><span class="pre">'mask'</span></code>:  <code class="docutils literal"><span class="pre">torch.autograd.Variable</span></code></p>
+<blockquote class="last">
+<div><p>Shape <code class="docutils literal"><span class="pre">(batch_size,</span> <span class="pre">timesteps)</span></code> long tensor with sequence mask.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="classmethod">
-<dt id="allennlp.modules.feedforward.FeedForward.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/feedforward.py#L82-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.feedforward.FeedForward.from_params" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="allennlp.modules.feedforward.FeedForward.get_input_dim">
-<code class="descname">get_input_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/feedforward.py#L72-L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.feedforward.FeedForward.get_input_dim" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="allennlp.modules.feedforward.FeedForward.get_output_dim">
-<code class="descname">get_output_dim</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/feedforward.py#L69-L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.feedforward.FeedForward.get_output_dim" title="Permalink to this definition">¶</a></dt>
+<dt id="allennlp.modules.elmo.Elmo.from_params">
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.modules.elmo.Elmo<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/modules/elmo.py#L97-L104"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.modules.elmo.Elmo.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -333,10 +344,10 @@ versus <code class="docutils literal"><span class="pre">Sequence[float]</span></
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="allennlp.modules.highway.html" class="btn btn-neutral float-right" title="allennlp.modules.highway" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="allennlp.modules.elmo_lstm.html" class="btn btn-neutral float-right" title="allennlp.modules.elmo_lstm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="allennlp.modules.conditional_random_field.html" class="btn btn-neutral" title="allennlp.modules.conditional_random_field" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="allennlp.modules.lstm_cell_with_projection.html" class="btn btn-neutral" title="allennlp.modules.lstm_cell_with_projection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
