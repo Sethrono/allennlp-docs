@@ -271,25 +271,24 @@
 </ul>
 <span class="target" id="module-allennlp.data.token_indexers.token_indexer"><span id="token-indexer"></span></span><dl class="class">
 <dt id="allennlp.data.token_indexers.token_indexer.TokenIndexer">
-<em class="property">class </em><code class="descclassname">allennlp.data.token_indexers.token_indexer.</code><code class="descname">TokenIndexer</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L9-L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.data.token_indexers.token_indexer.</code><code class="descname">TokenIndexer</code><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L9-L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">typing.Generic</span></code>, <a class="reference internal" href="allennlp.common.registrable.html#allennlp.common.registrable.Registrable" title="allennlp.common.registrable.Registrable"><code class="xref py py-class docutils literal"><span class="pre">allennlp.common.registrable.Registrable</span></code></a></p>
 <p>A <code class="docutils literal"><span class="pre">TokenIndexer</span></code> determines how string tokens get represented as arrays of indices in a model.
 This class both converts strings into numerical values, with the help of a
-<a class="reference internal" href="allennlp.data.vocabulary.html#allennlp.data.vocabulary.Vocabulary" title="allennlp.data.vocabulary.Vocabulary"><code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code></a>,
-and it produces actual arrays.</p>
+<a class="reference internal" href="allennlp.data.vocabulary.html#allennlp.data.vocabulary.Vocabulary" title="allennlp.data.vocabulary.Vocabulary"><code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code></a>, and it produces actual arrays.</p>
 <p>Tokens can be represented as single IDs (e.g., the word &#8220;cat&#8221; gets represented by the number
 34), or as lists of character IDs (e.g., &#8220;cat&#8221; gets represented by the numbers [23, 10, 18]),
 or in some other way that you can come up with (e.g., if you have some structured input you
 want to represent in a special way in your data arrays, you can do that here).</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.token_indexer.TokenIndexer.count_vocab_items">
-<code class="descname">count_vocab_items</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token, counter: typing.Dict[str, typing.Dict[str, int]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L23-L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.count_vocab_items" title="Permalink to this definition">¶</a></dt>
+<code class="descname">count_vocab_items</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token, counter: typing.Dict[str, typing.Dict[str, int]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L22-L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.count_vocab_items" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code> needs to assign indices to whatever strings we see in the training
-data (possibly doing some frequency filtering and using an OOV token).  This method takes
-a token and a dictionary of counts and increments counts for whatever vocabulary items are
-present in the token.  If this is a single token ID representation, the vocabulary item is
-likely the token itself.  If this is a token characters representation, the vocabulary
-items are all of the characters in the token.</p>
+data (possibly doing some frequency filtering and using an OOV, or out of vocabulary,
+token).  This method takes a token and a dictionary of counts and increments counts for
+whatever vocabulary items are present in the token.  If this is a single token ID
+representation, the vocabulary item is likely the token itself.  If this is a token
+characters representation, the vocabulary items are all of the characters in the token.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -299,7 +298,7 @@ items are all of the characters in the token.</p>
 
 <dl class="classmethod">
 <dt id="allennlp.data.token_indexers.token_indexer.TokenIndexer.dict_from_params">
-<em class="property">classmethod </em><code class="descname">dict_from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, allennlp.data.token_indexers.token_indexer.TokenIndexer]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L75-L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.dict_from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">dict_from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, allennlp.data.token_indexers.token_indexer.TokenIndexer]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L77-L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.dict_from_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>We typically use <code class="docutils literal"><span class="pre">TokenIndexers</span></code> in a dictionary, with each <code class="docutils literal"><span class="pre">TokenIndexer</span></code> getting a
 name.  The specification for this in a <code class="docutils literal"><span class="pre">Params</span></code> object is typically <code class="docutils literal"><span class="pre">{&quot;name&quot;</span> <span class="pre">-&gt;</span>
 <span class="pre">{indexer_params}}</span></code>.  This method reads that whole set of parameters and returns a
@@ -311,40 +310,42 @@ token indexers in the given <code class="docutils literal"><span class="pre">par
 
 <dl class="classmethod">
 <dt id="allennlp.data.token_indexers.token_indexer.TokenIndexer.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.data.token_indexers.token_indexer.TokenIndexer<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L70-L73"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.data.token_indexers.token_indexer.TokenIndexer<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L72-L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.from_params" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.token_indexer.TokenIndexer.get_padding_lengths">
-<code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><em>token: TokenType</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L49-L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method returns a padding dictionary for the given token.  For single ID tokens, e.g.,
-this dictionary will be empty, but for a token characters representation, this will return
-the number of characters in the token.</p>
+<code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><em>token: TokenType</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L48-L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a padding dictionary for the given token that specifies lengths for
+all arrays that need padding.  For example, for single ID tokens the returned dictionary
+will be empty, but for a token characters representation, this will return the number
+of characters in the token.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.token_indexer.TokenIndexer.get_padding_token">
-<code class="descname">get_padding_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; TokenType<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L42-L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.get_padding_token" title="Permalink to this definition">¶</a></dt>
+<code class="descname">get_padding_token</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; TokenType<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L41-L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.get_padding_token" title="Permalink to this definition">¶</a></dt>
 <dd><p>When we need to add padding tokens, what should they look like?  This method returns a
 &#8220;blank&#8221; token of whatever type is returned by <a class="reference internal" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.token_to_indices" title="allennlp.data.token_indexers.token_indexer.TokenIndexer.token_to_indices"><code class="xref py py-func docutils literal"><span class="pre">token_to_indices()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.token_indexer.TokenIndexer.pad_token_sequence">
-<code class="descname">pad_token_sequence</code><span class="sig-paren">(</span><em>tokens: typing.List[TokenType], desired_num_tokens: int, padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.List[TokenType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L57-L68"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.pad_token_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code>, including any necessary
-internal padding using whatever lengths are relevant in <code class="docutils literal"><span class="pre">padding_lengths</span></code>, returning a
-padded copy of the input list.  If each token is a single ID, this just adds 0 to the
-sequence (or truncates the sequence, if necessary).  If each token is, e.g., a list of
-characters, this method will pad both the characters and the number of tokens.</p>
+<code class="descname">pad_token_sequence</code><span class="sig-paren">(</span><em>tokens: typing.List[TokenType], desired_num_tokens: int, padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.List[TokenType]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L57-L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.pad_token_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> and returns a padded copy of the
+input tokens.  If the input token list is longer than <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> then it will be
+truncated.</p>
+<p><code class="docutils literal"><span class="pre">padding_lengths</span></code> is used to provide supplemental padding parameters which are needed
+in some cases.  For example, it contains the widths to pad characters to when doing
+character-level padding.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.token_indexer.TokenIndexer.token_to_indices">
-<code class="descname">token_to_indices</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token</em>, <em>vocabulary: allennlp.data.vocabulary.Vocabulary</em><span class="sig-paren">)</span> &#x2192; TokenType<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L34-L40"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.token_to_indices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes a string token and converts it into indices in some fashion.  This could be returning
-an ID for the token from the vocabulary, or it could be splitting the token into characters
-and return a list of IDs for each character from the vocabulary, or something else.</p>
+<code class="descname">token_to_indices</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token</em>, <em>vocabulary: allennlp.data.vocabulary.Vocabulary</em><span class="sig-paren">)</span> &#x2192; TokenType<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_indexer.py#L33-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer.token_to_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a string token and converts it into indices.  This could return an ID for the token
+from the vocabulary, or it could split the token into characters and return a list of
+IDs for each character from the vocabulary, or something else.</p>
 </dd></dl>
 
 </dd></dl>
@@ -371,11 +372,11 @@ by the <code class="docutils literal"><span class="pre">dep_</span></code> field
 <dt id="allennlp.data.token_indexers.dep_label_indexer.DepLabelIndexer.count_vocab_items">
 <code class="descname">count_vocab_items</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token, counter: typing.Dict[str, typing.Dict[str, int]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/dep_label_indexer.py#L31-L39"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.dep_label_indexer.DepLabelIndexer.count_vocab_items" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code> needs to assign indices to whatever strings we see in the training
-data (possibly doing some frequency filtering and using an OOV token).  This method takes
-a token and a dictionary of counts and increments counts for whatever vocabulary items are
-present in the token.  If this is a single token ID representation, the vocabulary item is
-likely the token itself.  If this is a token characters representation, the vocabulary
-items are all of the characters in the token.</p>
+data (possibly doing some frequency filtering and using an OOV, or out of vocabulary,
+token).  This method takes a token and a dictionary of counts and increments counts for
+whatever vocabulary items are present in the token.  If this is a single token ID
+representation, the vocabulary item is likely the token itself.  If this is a token
+characters representation, the vocabulary items are all of the characters in the token.</p>
 </dd></dl>
 
 <dl class="classmethod">
@@ -386,9 +387,10 @@ items are all of the characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.dep_label_indexer.DepLabelIndexer.get_padding_lengths">
 <code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><em>token: int</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/dep_label_indexer.py#L50-L52"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.dep_label_indexer.DepLabelIndexer.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method returns a padding dictionary for the given token.  For single ID tokens, e.g.,
-this dictionary will be empty, but for a token characters representation, this will return
-the number of characters in the token.</p>
+<dd><p>This method returns a padding dictionary for the given token that specifies lengths for
+all arrays that need padding.  For example, for single ID tokens the returned dictionary
+will be empty, but for a token characters representation, this will return the number
+of characters in the token.</p>
 </dd></dl>
 
 <dl class="method">
@@ -401,19 +403,20 @@ the number of characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.dep_label_indexer.DepLabelIndexer.pad_token_sequence">
 <code class="descname">pad_token_sequence</code><span class="sig-paren">(</span><em>tokens: typing.List[int], desired_num_tokens: int, padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.List[int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/dep_label_indexer.py#L54-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.dep_label_indexer.DepLabelIndexer.pad_token_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code>, including any necessary
-internal padding using whatever lengths are relevant in <code class="docutils literal"><span class="pre">padding_lengths</span></code>, returning a
-padded copy of the input list.  If each token is a single ID, this just adds 0 to the
-sequence (or truncates the sequence, if necessary).  If each token is, e.g., a list of
-characters, this method will pad both the characters and the number of tokens.</p>
+<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> and returns a padded copy of the
+input tokens.  If the input token list is longer than <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> then it will be
+truncated.</p>
+<p><code class="docutils literal"><span class="pre">padding_lengths</span></code> is used to provide supplemental padding parameters which are needed
+in some cases.  For example, it contains the widths to pad characters to when doing
+character-level padding.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.dep_label_indexer.DepLabelIndexer.token_to_indices">
 <code class="descname">token_to_indices</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token</em>, <em>vocabulary: allennlp.data.vocabulary.Vocabulary</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/dep_label_indexer.py#L41-L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.dep_label_indexer.DepLabelIndexer.token_to_indices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes a string token and converts it into indices in some fashion.  This could be returning
-an ID for the token from the vocabulary, or it could be splitting the token into characters
-and return a list of IDs for each character from the vocabulary, or something else.</p>
+<dd><p>Takes a string token and converts it into indices.  This could return an ID for the token
+from the vocabulary, or it could split the token into characters and return a list of
+IDs for each character from the vocabulary, or something else.</p>
 </dd></dl>
 
 </dd></dl>
@@ -440,11 +443,11 @@ determined by the <code class="docutils literal"><span class="pre">ent_type_</sp
 <dt id="allennlp.data.token_indexers.ner_tag_indexer.NerTagIndexer.count_vocab_items">
 <code class="descname">count_vocab_items</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token, counter: typing.Dict[str, typing.Dict[str, int]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/ner_tag_indexer.py#L30-L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.ner_tag_indexer.NerTagIndexer.count_vocab_items" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code> needs to assign indices to whatever strings we see in the training
-data (possibly doing some frequency filtering and using an OOV token).  This method takes
-a token and a dictionary of counts and increments counts for whatever vocabulary items are
-present in the token.  If this is a single token ID representation, the vocabulary item is
-likely the token itself.  If this is a token characters representation, the vocabulary
-items are all of the characters in the token.</p>
+data (possibly doing some frequency filtering and using an OOV, or out of vocabulary,
+token).  This method takes a token and a dictionary of counts and increments counts for
+whatever vocabulary items are present in the token.  If this is a single token ID
+representation, the vocabulary item is likely the token itself.  If this is a token
+characters representation, the vocabulary items are all of the characters in the token.</p>
 </dd></dl>
 
 <dl class="classmethod">
@@ -455,9 +458,10 @@ items are all of the characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.ner_tag_indexer.NerTagIndexer.get_padding_lengths">
 <code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><em>token: int</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/ner_tag_indexer.py#L48-L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.ner_tag_indexer.NerTagIndexer.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method returns a padding dictionary for the given token.  For single ID tokens, e.g.,
-this dictionary will be empty, but for a token characters representation, this will return
-the number of characters in the token.</p>
+<dd><p>This method returns a padding dictionary for the given token that specifies lengths for
+all arrays that need padding.  For example, for single ID tokens the returned dictionary
+will be empty, but for a token characters representation, this will return the number
+of characters in the token.</p>
 </dd></dl>
 
 <dl class="method">
@@ -470,19 +474,20 @@ the number of characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.ner_tag_indexer.NerTagIndexer.pad_token_sequence">
 <code class="descname">pad_token_sequence</code><span class="sig-paren">(</span><em>tokens: typing.List[int], desired_num_tokens: int, padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.List[int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/ner_tag_indexer.py#L52-L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.ner_tag_indexer.NerTagIndexer.pad_token_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code>, including any necessary
-internal padding using whatever lengths are relevant in <code class="docutils literal"><span class="pre">padding_lengths</span></code>, returning a
-padded copy of the input list.  If each token is a single ID, this just adds 0 to the
-sequence (or truncates the sequence, if necessary).  If each token is, e.g., a list of
-characters, this method will pad both the characters and the number of tokens.</p>
+<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> and returns a padded copy of the
+input tokens.  If the input token list is longer than <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> then it will be
+truncated.</p>
+<p><code class="docutils literal"><span class="pre">padding_lengths</span></code> is used to provide supplemental padding parameters which are needed
+in some cases.  For example, it contains the widths to pad characters to when doing
+character-level padding.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.ner_tag_indexer.NerTagIndexer.token_to_indices">
 <code class="descname">token_to_indices</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token</em>, <em>vocabulary: allennlp.data.vocabulary.Vocabulary</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/ner_tag_indexer.py#L37-L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.ner_tag_indexer.NerTagIndexer.token_to_indices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes a string token and converts it into indices in some fashion.  This could be returning
-an ID for the token from the vocabulary, or it could be splitting the token into characters
-and return a list of IDs for each character from the vocabulary, or something else.</p>
+<dd><p>Takes a string token and converts it into indices.  This could return an ID for the token
+from the vocabulary, or it could split the token into characters and return a list of
+IDs for each character from the vocabulary, or something else.</p>
 </dd></dl>
 
 </dd></dl>
@@ -514,11 +519,11 @@ fine-grained POS tags, respectively).</p>
 <dt id="allennlp.data.token_indexers.pos_tag_indexer.PosTagIndexer.count_vocab_items">
 <code class="descname">count_vocab_items</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token, counter: typing.Dict[str, typing.Dict[str, int]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/pos_tag_indexer.py#L35-L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.pos_tag_indexer.PosTagIndexer.count_vocab_items" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code> needs to assign indices to whatever strings we see in the training
-data (possibly doing some frequency filtering and using an OOV token).  This method takes
-a token and a dictionary of counts and increments counts for whatever vocabulary items are
-present in the token.  If this is a single token ID representation, the vocabulary item is
-likely the token itself.  If this is a token characters representation, the vocabulary
-items are all of the characters in the token.</p>
+data (possibly doing some frequency filtering and using an OOV, or out of vocabulary,
+token).  This method takes a token and a dictionary of counts and increments counts for
+whatever vocabulary items are present in the token.  If this is a single token ID
+representation, the vocabulary item is likely the token itself.  If this is a token
+characters representation, the vocabulary items are all of the characters in the token.</p>
 </dd></dl>
 
 <dl class="classmethod">
@@ -529,9 +534,10 @@ items are all of the characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.pos_tag_indexer.PosTagIndexer.get_padding_lengths">
 <code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><em>token: int</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/pos_tag_indexer.py#L62-L64"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.pos_tag_indexer.PosTagIndexer.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method returns a padding dictionary for the given token.  For single ID tokens, e.g.,
-this dictionary will be empty, but for a token characters representation, this will return
-the number of characters in the token.</p>
+<dd><p>This method returns a padding dictionary for the given token that specifies lengths for
+all arrays that need padding.  For example, for single ID tokens the returned dictionary
+will be empty, but for a token characters representation, this will return the number
+of characters in the token.</p>
 </dd></dl>
 
 <dl class="method">
@@ -544,19 +550,20 @@ the number of characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.pos_tag_indexer.PosTagIndexer.pad_token_sequence">
 <code class="descname">pad_token_sequence</code><span class="sig-paren">(</span><em>tokens: typing.List[int], desired_num_tokens: int, padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.List[int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/pos_tag_indexer.py#L66-L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.pos_tag_indexer.PosTagIndexer.pad_token_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code>, including any necessary
-internal padding using whatever lengths are relevant in <code class="docutils literal"><span class="pre">padding_lengths</span></code>, returning a
-padded copy of the input list.  If each token is a single ID, this just adds 0 to the
-sequence (or truncates the sequence, if necessary).  If each token is, e.g., a list of
-characters, this method will pad both the characters and the number of tokens.</p>
+<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> and returns a padded copy of the
+input tokens.  If the input token list is longer than <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> then it will be
+truncated.</p>
+<p><code class="docutils literal"><span class="pre">padding_lengths</span></code> is used to provide supplemental padding parameters which are needed
+in some cases.  For example, it contains the widths to pad characters to when doing
+character-level padding.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.pos_tag_indexer.PosTagIndexer.token_to_indices">
 <code class="descname">token_to_indices</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token</em>, <em>vocabulary: allennlp.data.vocabulary.Vocabulary</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/pos_tag_indexer.py#L48-L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.pos_tag_indexer.PosTagIndexer.token_to_indices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes a string token and converts it into indices in some fashion.  This could be returning
-an ID for the token from the vocabulary, or it could be splitting the token into characters
-and return a list of IDs for each character from the vocabulary, or something else.</p>
+<dd><p>Takes a string token and converts it into indices.  This could return an ID for the token
+from the vocabulary, or it could split the token into characters and return a list of
+IDs for each character from the vocabulary, or something else.</p>
 </dd></dl>
 
 </dd></dl>
@@ -587,11 +594,11 @@ vocabulary.</p>
 <dt id="allennlp.data.token_indexers.single_id_token_indexer.SingleIdTokenIndexer.count_vocab_items">
 <code class="descname">count_vocab_items</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token, counter: typing.Dict[str, typing.Dict[str, int]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/single_id_token_indexer.py#L30-L38"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.single_id_token_indexer.SingleIdTokenIndexer.count_vocab_items" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code> needs to assign indices to whatever strings we see in the training
-data (possibly doing some frequency filtering and using an OOV token).  This method takes
-a token and a dictionary of counts and increments counts for whatever vocabulary items are
-present in the token.  If this is a single token ID representation, the vocabulary item is
-likely the token itself.  If this is a token characters representation, the vocabulary
-items are all of the characters in the token.</p>
+data (possibly doing some frequency filtering and using an OOV, or out of vocabulary,
+token).  This method takes a token and a dictionary of counts and increments counts for
+whatever vocabulary items are present in the token.  If this is a single token ID
+representation, the vocabulary item is likely the token itself.  If this is a token
+characters representation, the vocabulary items are all of the characters in the token.</p>
 </dd></dl>
 
 <dl class="classmethod">
@@ -602,9 +609,10 @@ items are all of the characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.single_id_token_indexer.SingleIdTokenIndexer.get_padding_lengths">
 <code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><em>token: int</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/single_id_token_indexer.py#L57-L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.single_id_token_indexer.SingleIdTokenIndexer.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method returns a padding dictionary for the given token.  For single ID tokens, e.g.,
-this dictionary will be empty, but for a token characters representation, this will return
-the number of characters in the token.</p>
+<dd><p>This method returns a padding dictionary for the given token that specifies lengths for
+all arrays that need padding.  For example, for single ID tokens the returned dictionary
+will be empty, but for a token characters representation, this will return the number
+of characters in the token.</p>
 </dd></dl>
 
 <dl class="method">
@@ -617,26 +625,27 @@ the number of characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.single_id_token_indexer.SingleIdTokenIndexer.pad_token_sequence">
 <code class="descname">pad_token_sequence</code><span class="sig-paren">(</span><em>tokens: typing.List[int], desired_num_tokens: int, padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.List[int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/single_id_token_indexer.py#L61-L66"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.single_id_token_indexer.SingleIdTokenIndexer.pad_token_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code>, including any necessary
-internal padding using whatever lengths are relevant in <code class="docutils literal"><span class="pre">padding_lengths</span></code>, returning a
-padded copy of the input list.  If each token is a single ID, this just adds 0 to the
-sequence (or truncates the sequence, if necessary).  If each token is, e.g., a list of
-characters, this method will pad both the characters and the number of tokens.</p>
+<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> and returns a padded copy of the
+input tokens.  If the input token list is longer than <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> then it will be
+truncated.</p>
+<p><code class="docutils literal"><span class="pre">padding_lengths</span></code> is used to provide supplemental padding parameters which are needed
+in some cases.  For example, it contains the widths to pad characters to when doing
+character-level padding.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.single_id_token_indexer.SingleIdTokenIndexer.token_to_indices">
 <code class="descname">token_to_indices</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token</em>, <em>vocabulary: allennlp.data.vocabulary.Vocabulary</em><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/single_id_token_indexer.py#L40-L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.single_id_token_indexer.SingleIdTokenIndexer.token_to_indices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes a string token and converts it into indices in some fashion.  This could be returning
-an ID for the token from the vocabulary, or it could be splitting the token into characters
-and return a list of IDs for each character from the vocabulary, or something else.</p>
+<dd><p>Takes a string token and converts it into indices.  This could return an ID for the token
+from the vocabulary, or it could split the token into characters and return a list of
+IDs for each character from the vocabulary, or something else.</p>
 </dd></dl>
 
 </dd></dl>
 
 <span class="target" id="module-allennlp.data.token_indexers.token_characters_indexer"><span id="token-characters-indexer"></span></span><dl class="class">
 <dt id="allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer">
-<em class="property">class </em><code class="descclassname">allennlp.data.token_indexers.token_characters_indexer.</code><code class="descname">TokenCharactersIndexer</code><span class="sig-paren">(</span><em>namespace: str = 'token_characters'</em>, <em>character_tokenizer: allennlp.data.tokenizers.character_tokenizer.CharacterTokenizer = &lt;allennlp.data.tokenizers.character_tokenizer.CharacterTokenizer object&gt;</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_characters_indexer.py#L16-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.data.token_indexers.token_characters_indexer.</code><code class="descname">TokenCharactersIndexer</code><span class="sig-paren">(</span><em>namespace: str = 'token_characters'</em>, <em>character_tokenizer: allennlp.data.tokenizers.character_tokenizer.CharacterTokenizer = &lt;allennlp.data.tokenizers.character_tokenizer.CharacterTokenizer object&gt;</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_characters_indexer.py#L16-L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.data.token_indexers.token_indexer.TokenIndexer" title="allennlp.data.token_indexers.token_indexer.TokenIndexer"><code class="xref py py-class docutils literal"><span class="pre">allennlp.data.token_indexers.token_indexer.TokenIndexer</span></code></a></p>
 <p>This <code class="xref py py-class docutils literal"><span class="pre">TokenIndexer</span></code> represents tokens as lists of character indices.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -663,16 +672,16 @@ retains casing.</p>
 <dt id="allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.count_vocab_items">
 <code class="descname">count_vocab_items</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token, counter: typing.Dict[str, typing.Dict[str, int]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_characters_indexer.py#L38-L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.count_vocab_items" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code> needs to assign indices to whatever strings we see in the training
-data (possibly doing some frequency filtering and using an OOV token).  This method takes
-a token and a dictionary of counts and increments counts for whatever vocabulary items are
-present in the token.  If this is a single token ID representation, the vocabulary item is
-likely the token itself.  If this is a token characters representation, the vocabulary
-items are all of the characters in the token.</p>
+data (possibly doing some frequency filtering and using an OOV, or out of vocabulary,
+token).  This method takes a token and a dictionary of counts and increments counts for
+whatever vocabulary items are present in the token.  If this is a single token ID
+representation, the vocabulary item is likely the token itself.  If this is a token
+characters representation, the vocabulary items are all of the characters in the token.</p>
 </dd></dl>
 
 <dl class="classmethod">
 <dt id="allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.from_params">
-<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_characters_indexer.py#L93-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.from_params" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">from_params</code><span class="sig-paren">(</span><em>params: allennlp.common.params.Params</em><span class="sig-paren">)</span> &#x2192; allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_characters_indexer.py#L95-L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.from_params" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -697,9 +706,10 @@ tokenizer.  The default is to use unicode characters and to retain casing.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.get_padding_lengths">
 <code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><em>token: typing.List[int]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_characters_indexer.py#L63-L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method returns a padding dictionary for the given token.  For single ID tokens, e.g.,
-this dictionary will be empty, but for a token characters representation, this will return
-the number of characters in the token.</p>
+<dd><p>This method returns a padding dictionary for the given token that specifies lengths for
+all arrays that need padding.  For example, for single ID tokens the returned dictionary
+will be empty, but for a token characters representation, this will return the number
+of characters in the token.</p>
 </dd></dl>
 
 <dl class="method">
@@ -711,20 +721,21 @@ the number of characters in the token.</p>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.pad_token_sequence">
-<code class="descname">pad_token_sequence</code><span class="sig-paren">(</span><em>tokens: typing.List[typing.List[int]], desired_num_tokens: int, padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.List[typing.List[int]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_characters_indexer.py#L71-L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.pad_token_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code>, including any necessary
-internal padding using whatever lengths are relevant in <code class="docutils literal"><span class="pre">padding_lengths</span></code>, returning a
-padded copy of the input list.  If each token is a single ID, this just adds 0 to the
-sequence (or truncates the sequence, if necessary).  If each token is, e.g., a list of
-characters, this method will pad both the characters and the number of tokens.</p>
+<code class="descname">pad_token_sequence</code><span class="sig-paren">(</span><em>tokens: typing.List[typing.List[int]], desired_num_tokens: int, padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.List[typing.List[int]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_characters_indexer.py#L71-L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.pad_token_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> and returns a padded copy of the
+input tokens.  If the input token list is longer than <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> then it will be
+truncated.</p>
+<p><code class="docutils literal"><span class="pre">padding_lengths</span></code> is used to provide supplemental padding parameters which are needed
+in some cases.  For example, it contains the widths to pad characters to when doing
+character-level padding.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.token_to_indices">
 <code class="descname">token_to_indices</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token</em>, <em>vocabulary: allennlp.data.vocabulary.Vocabulary</em><span class="sig-paren">)</span> &#x2192; typing.List[int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/token_characters_indexer.py#L48-L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.token_characters_indexer.TokenCharactersIndexer.token_to_indices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes a string token and converts it into indices in some fashion.  This could be returning
-an ID for the token from the vocabulary, or it could be splitting the token into characters
-and return a list of IDs for each character from the vocabulary, or something else.</p>
+<dd><p>Takes a string token and converts it into indices.  This could return an ID for the token
+from the vocabulary, or it could split the token into characters and return a list of
+IDs for each character from the vocabulary, or something else.</p>
 </dd></dl>
 
 </dd></dl>
@@ -810,11 +821,11 @@ character indexers.</p>
 <dt id="allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer.count_vocab_items">
 <code class="descname">count_vocab_items</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token, counter: typing.Dict[str, typing.Dict[str, int]]</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/elmo_indexer.py#L92-L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer.count_vocab_items" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="xref py py-class docutils literal"><span class="pre">Vocabulary</span></code> needs to assign indices to whatever strings we see in the training
-data (possibly doing some frequency filtering and using an OOV token).  This method takes
-a token and a dictionary of counts and increments counts for whatever vocabulary items are
-present in the token.  If this is a single token ID representation, the vocabulary item is
-likely the token itself.  If this is a token characters representation, the vocabulary
-items are all of the characters in the token.</p>
+data (possibly doing some frequency filtering and using an OOV, or out of vocabulary,
+token).  This method takes a token and a dictionary of counts and increments counts for
+whatever vocabulary items are present in the token.  If this is a single token ID
+representation, the vocabulary item is likely the token itself.  If this is a token
+characters representation, the vocabulary items are all of the characters in the token.</p>
 </dd></dl>
 
 <dl class="classmethod">
@@ -833,9 +844,10 @@ items are all of the characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer.get_padding_lengths">
 <code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><em>token: typing.List[int]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/elmo_indexer.py#L104-L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method returns a padding dictionary for the given token.  For single ID tokens, e.g.,
-this dictionary will be empty, but for a token characters representation, this will return
-the number of characters in the token.</p>
+<dd><p>This method returns a padding dictionary for the given token that specifies lengths for
+all arrays that need padding.  For example, for single ID tokens the returned dictionary
+will be empty, but for a token characters representation, this will return the number
+of characters in the token.</p>
 </dd></dl>
 
 <dl class="method">
@@ -848,19 +860,20 @@ the number of characters in the token.</p>
 <dl class="method">
 <dt id="allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer.pad_token_sequence">
 <code class="descname">pad_token_sequence</code><span class="sig-paren">(</span><em>tokens: typing.List[typing.List[int]], desired_num_tokens: int, padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.List[typing.List[int]]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/elmo_indexer.py#L117-L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer.pad_token_sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code>, including any necessary
-internal padding using whatever lengths are relevant in <code class="docutils literal"><span class="pre">padding_lengths</span></code>, returning a
-padded copy of the input list.  If each token is a single ID, this just adds 0 to the
-sequence (or truncates the sequence, if necessary).  If each token is, e.g., a list of
-characters, this method will pad both the characters and the number of tokens.</p>
+<dd><p>This method pads a list of tokens to <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> and returns a padded copy of the
+input tokens.  If the input token list is longer than <code class="docutils literal"><span class="pre">desired_num_tokens</span></code> then it will be
+truncated.</p>
+<p><code class="docutils literal"><span class="pre">padding_lengths</span></code> is used to provide supplemental padding parameters which are needed
+in some cases.  For example, it contains the widths to pad characters to when doing
+character-level padding.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer.token_to_indices">
 <code class="descname">token_to_indices</code><span class="sig-paren">(</span><em>token: allennlp.data.tokenizers.token.Token</em>, <em>vocabulary: allennlp.data.vocabulary.Vocabulary</em><span class="sig-paren">)</span> &#x2192; typing.List[int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/token_indexers/elmo_indexer.py#L96-L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.token_indexers.elmo_indexer.ELMoTokenCharactersIndexer.token_to_indices" title="Permalink to this definition">¶</a></dt>
-<dd><p>Takes a string token and converts it into indices in some fashion.  This could be returning
-an ID for the token from the vocabulary, or it could be splitting the token into characters
-and return a list of IDs for each character from the vocabulary, or something else.</p>
+<dd><p>Takes a string token and converts it into indices.  This could return an ID for the token
+from the vocabulary, or it could split the token into characters and return a list of
+IDs for each character from the vocabulary, or something else.</p>
 </dd></dl>
 
 </dd></dl>

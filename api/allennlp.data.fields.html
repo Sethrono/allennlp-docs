@@ -796,7 +796,7 @@ not need to implement this method.</p>
 standard word vectors, or pass through an LSTM.</p>
 <dl class="class">
 <dt id="allennlp.data.fields.text_field.TextField">
-<em class="property">class </em><code class="descclassname">allennlp.data.fields.text_field.</code><code class="descname">TextField</code><span class="sig-paren">(</span><em>tokens: typing.List[allennlp.data.tokenizers.token.Token], token_indexers: typing.Dict[str, allennlp.data.token_indexers.token_indexer.TokenIndexer]</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L20-L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">allennlp.data.fields.text_field.</code><code class="descname">TextField</code><span class="sig-paren">(</span><em>tokens: typing.List[allennlp.data.tokenizers.token.Token], token_indexers: typing.Dict[str, allennlp.data.token_indexers.token_indexer.TokenIndexer]</em><span class="sig-paren">)</span> &#x2192; None<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L20-L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#allennlp.data.fields.sequence_field.SequenceField" title="allennlp.data.fields.sequence_field.SequenceField"><code class="xref py py-class docutils literal"><span class="pre">allennlp.data.fields.sequence_field.SequenceField</span></code></a></p>
 <p>This <code class="docutils literal"><span class="pre">Field</span></code> represents a list of string tokens.  Before constructing this object, you need
 to tokenize raw strings using a <a class="reference internal" href="allennlp.data.tokenizers.html#allennlp.data.tokenizers.tokenizer.Tokenizer" title="allennlp.data.tokenizers.tokenizer.Tokenizer"><code class="xref py py-class docutils literal"><span class="pre">Tokenizer</span></code></a>.</p>
@@ -810,7 +810,7 @@ something else.</p>
 <code class="docutils literal"><span class="pre">TokenCharactersIndexer</span></code> produces an array of shape (num_tokens, num_characters).</p>
 <dl class="method">
 <dt id="allennlp.data.fields.text_field.TextField.as_array">
-<code class="descname">as_array</code><span class="sig-paren">(</span><em>padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, numpy.ndarray]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L93-L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField.as_array" title="Permalink to this definition">¶</a></dt>
+<code class="descname">as_array</code><span class="sig-paren">(</span><em>padding_lengths: typing.Dict[str, int]</em><span class="sig-paren">)</span> &#x2192; typing.Dict[str, numpy.ndarray]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L100-L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField.as_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Given a set of specified padding lengths, actually pad the data in this field and return a
 numpy array of the correct shape.  This actually returns a list instead of a single array,
 in case there are several related arrays for this field (e.g., a <code class="docutils literal"><span class="pre">TextField</span></code> might have a
@@ -840,7 +840,7 @@ as a character, and the vocabulary sizes of words and characters are very differ
 
 <dl class="method">
 <dt id="allennlp.data.fields.text_field.TextField.empty_field">
-<code class="descname">empty_field</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L105-L112"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField.empty_field" title="Permalink to this definition">¶</a></dt>
+<code class="descname">empty_field</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L112-L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField.empty_field" title="Permalink to this definition">¶</a></dt>
 <dd><p>So that <code class="docutils literal"><span class="pre">ListField</span></code> can pad the number of fields in a list (e.g., the number of answer
 option <code class="docutils literal"><span class="pre">TextFields</span></code>), we need a representation of an empty field of each type.  This
 returns that.  This will only ever be called when we&#8217;re to the point of calling
@@ -852,12 +852,10 @@ in the Field, we can copy it over (e.g., the token indexers in <code class="docu
 
 <dl class="method">
 <dt id="allennlp.data.fields.text_field.TextField.get_padding_lengths">
-<code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L58-L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
-<dd><p>If there are things in this field that need padding, note them here.  In order to pad a
-batch of instance, we get all of the lengths from the batch, take the max, and pad
-everything to that length (or use a pre-specified maximum length).  The return value is a
-dictionary mapping keys to lengths, like {&#8216;num_tokens&#8217;: 13}.</p>
-<p>This is always called after <a class="reference internal" href="#allennlp.data.fields.text_field.TextField.index" title="allennlp.data.fields.text_field.TextField.index"><code class="xref py py-func docutils literal"><span class="pre">index()</span></code></a>.</p>
+<code class="descname">get_padding_lengths</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; typing.Dict[str, int]<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L58-L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField.get_padding_lengths" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <code class="docutils literal"><span class="pre">TextField</span></code> has a list of <code class="docutils literal"><span class="pre">Tokens</span></code>, and each <code class="docutils literal"><span class="pre">Token</span></code> gets converted into arrays by
+(potentially) several <code class="docutils literal"><span class="pre">TokenIndexers</span></code>.  This method gets the max length (over tokens)
+associated with each of these arrays.</p>
 </dd></dl>
 
 <dl class="method">
@@ -871,7 +869,7 @@ not need to implement this method.</p>
 
 <dl class="method">
 <dt id="allennlp.data.fields.text_field.TextField.sequence_length">
-<code class="descname">sequence_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L89-L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField.sequence_length" title="Permalink to this definition">¶</a></dt>
+<code class="descname">sequence_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference external" href="http://github.com/allenai/allennlp/blob/master/allennlp/data/fields/text_field.py#L96-L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#allennlp.data.fields.text_field.TextField.sequence_length" title="Permalink to this definition">¶</a></dt>
 <dd><p>How many elements are there in this sequence?</p>
 </dd></dl>
 
